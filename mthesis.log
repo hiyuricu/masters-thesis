@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.1415926-p3.4-110825-2.6 (utf8.euc) (TeX Live 2013) (format=platex 2014.11.26)  28 JUN 2015 21:18
+This is e-pTeX, Version 3.1415926-p3.4-110825-2.6 (utf8.euc) (TeX Live 2013) (format=platex 2014.11.26)  28 JUN 2015 21:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -754,7 +754,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 13.
 (/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.
 fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)) (./tex/class_setting/jabstract.tex [0]
+) [2]) (./tex/class_setting/jabstract.tex [0]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <14.4> on input line 4.
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 4.
@@ -911,8 +911,8 @@ Overfull \hbox (57.34758pt too wide) in paragraph at lines 94--123
  []
 
 
-Overfull \hbox (115.55858pt too wide) in paragraph at lines 144--154
- [] 
+Overfull \hbox (40.65887pt too wide) in paragraph at lines 144--154
+ [][] 
  []
 
 ) [12] [13] [14]
@@ -956,6 +956,6 @@ Here is how much of TeX's memory you used:
  10291 multiletter control sequences out of 15000+600000
  79474 words of font info for 110 fonts, out of 8000000 for 9000
  750 hyphenation exceptions out of 8191
- 31i,10n,30p,831b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,10n,30p,847b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on mthesis.dvi (26 pages, 76668 bytes).
+Output written on mthesis.dvi (27 pages, 76780 bytes).
