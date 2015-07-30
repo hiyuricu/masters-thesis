@@ -26,7 +26,7 @@ def levenshtein_distance(a, b):
 
     return m[-1][-1]
 
-def print_corrected_error_pair(before_B_string,corrected_string,user_name):
+def print_corrected_error_pair(before_B_string,corrected_string,typing_speed,user_name):
 	pre_correction_string_candidate_list = []
 	pre_correction_string_candidate = ""
 	lowest_levenshtein_distance = 1000
@@ -45,7 +45,7 @@ def print_corrected_error_pair(before_B_string,corrected_string,user_name):
 
 	pre_correction_string = before_B_string + pre_correction_string_candidate_list[-1][len(pre_correction_string_candidate):]
 
-	print before_B_string,pre_correction_string_candidate,pre_correction_string,corrected_string,lowest_levenshtein_distance,user_name
+	print before_B_string,pre_correction_string_candidate,lowest_levenshtein_distance,typing_speed,user_name,pre_correction_string,corrected_string
 
 def pair_compare():
 	for line in open(sys.argv[1]):
@@ -58,7 +58,7 @@ def pair_compare():
 				head_B_flag = 0
 			elif i == "B" and head_B_flag == 0:
 				if string != "":
-					print_corrected_error_pair(string,type_data_list[1],type_data_list[4])
+					print_corrected_error_pair(string,type_data_list[1],type_data_list[3],type_data_list[4])
 				string = string[:-1]
 				head_B_flag = 1
 			else:
