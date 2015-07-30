@@ -45,7 +45,7 @@ def print_corrected_error_pair(before_B_string,corrected_string,typing_speed,use
 
 	pre_correction_string = before_B_string + pre_correction_string_candidate_list[-1][len(pre_correction_string_candidate):]
 
-	print before_B_string,pre_correction_string_candidate,lowest_levenshtein_distance,typing_speed,user_name,pre_correction_string,corrected_string
+	print pre_correction_string,corrected_string,lowest_levenshtein_distance,typing_speed,user_name,before_B_string,pre_correction_string_candidate
 
 def pair_compare():
 	for line in open(sys.argv[1]):
