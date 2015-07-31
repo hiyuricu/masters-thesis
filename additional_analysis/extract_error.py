@@ -255,6 +255,14 @@ def pair_compare():
 						error_string = typing_list[0][i]
 						related_string = typing_list[1][i - 1]
 						print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+						break
+					elif sub_flag == 1 and i == len(typing_list[1]) - 1:
+						damerau_distance_type = "del"
+						error_position = str(i + 1)
+						error_string = typing_list[0][i + 1]
+						related_string = typing_list[1][i]
+						print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+						break
 
 
 
