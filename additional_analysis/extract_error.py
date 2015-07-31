@@ -22,6 +22,9 @@ def pair_compare():
 		line = line.strip()
 		typing_list = line.split()
 
+		# if int(typing_list[2]) >= 3:
+		# 	print line
+
 		if typing_list[2] == "1":
 			if len(typing_list[0]) == len(typing_list[1]):
 				damerau_distance_type = "sub"
@@ -44,24 +47,82 @@ def pair_compare():
 						error_position = str(i + 1)
 						error_string = typing_list[0][i]
 						related_string = typing_list[1][i]
-					print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+					# print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
 					break
 
 				elif i == len(typing_list[0]) - 1: # len(typing_list[0]) < len(typing_list[1])で、挿入する文字の場所が単語の最後尾だった場合
 					error_position = str(i + 2)
 					error_string = "_" # 挿入する文字の場所が最後尾だった場合
 					related_string = typing_list[1][i + 1]
-					print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+					# print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
 					break
 				elif i == len(typing_list[1]) - 1: # len(typing_list[0]) > len(typing_list[1])で、削除する文字の場所が単語の最後尾だった場合
 					error_position = str(i + 2)
 					error_string = typing_list[0][i + 1]
 					related_string = typing_list[1][i]
-					print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+					# print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
 					break
 
-		# elif typing_list[2] == "2":
-		# 	print ""
+		elif typing_list[2] == "2":
+
+			if len(typing_list[0]) - len(typing_list[1]) == 2:
+				damerau_distance_type = "del"
+				error_number = 1
+				for i in range(len(typing_list[1])):
+					if typing_list[0][i] != typing_list[1][i] and error_number == 1:
+						error_number += 1
+						error_position = str(i + 1)
+						error_string = typing_list[0][i]
+						related_string = typing_list[1][i - 1]
+						print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+
+					if typing_list[0][i + 1] != typing_list[1][i] and error_number == 2:
+						error_position = str(i + 2)
+						error_string = typing_list[0][i + 1]
+						related_string = typing_list[1][i - 1]
+						print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+						break
+
+					elif i == len(typing_list[1]) - 1:
+						if error_number == 1:
+							error_position = str(i + 2)
+							error_string = typing_list[0][i + 1]
+							related_string = typing_list[1][i]
+							print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+
+						error_position = str(i + 3)
+						error_string = typing_list[0][i + 2]
+						related_string = typing_list[1][i]
+						print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
