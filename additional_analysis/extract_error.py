@@ -26,7 +26,7 @@ def pair_compare():
 		typing_list = line.split()
 
 		# if int(typing_list[2]) >= 3:
-		# 	print line
+		# print line
 
 		if typing_list[2] == "1":
 			if len(typing_list[0]) == len(typing_list[1]):
@@ -197,7 +197,7 @@ def pair_compare():
 							error_position = str(i + 2)
 							error_string = typing_list[0][i + 1]
 							related_string = typing_list[1][i + 1]
-							print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+							# print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
 							break
 
 						if del_flag == 1 and i == len(typing_list[0]) - 2:
@@ -205,8 +205,66 @@ def pair_compare():
 							error_position = str(i + 2)
 							error_string = "_"
 							related_string = typing_list[1][i + 1]
+							# print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+							break
+
+			elif len(typing_list[0]) - len(typing_list[1]) == 1:
+				del_flag = 0
+				sub_flag = 0
+				for i in range(len(typing_list[1])):
+					if del_flag == 0 and sub_flag == 0 and typing_list[0][i] != typing_list[1][i]:
+						if i == len(typing_list[1]) - 1 or typing_list[0][i + 1] != typing_list[1][i + 1] and typing_list[0][i + 1] != typing_list[1][i]:
+							damerau_distance_type = "del"
+							error_position = str(i + 1)
+							error_string = typing_list[0][i]
+							related_string = typing_list[1][i - 1]
+							print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+
+							damerau_distance_type = "sub"
+							error_position = str(i + 1)
+							error_string = typing_list[0][i + 1]
+							related_string = typing_list[1][i]
 							print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
 							break
+
+						elif typing_list[0][i + 1] == typing_list[1][i]:
+							del_flag = 1
+							damerau_distance_type = "del"
+							error_position = str(i + 1)
+							error_string = typing_list[0][i]
+							related_string = typing_list[1][i - 1]
+							print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+						else:
+							sub_flag = 1
+							damerau_distance_type = "sub"
+							error_position = str(i + 1)
+							error_string = typing_list[0][i]
+							related_string = typing_list[1][i]
+							print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+
+					elif del_flag == 1 and typing_list[0][i + 1] != typing_list[1][i]:
+						damerau_distance_type = "sub"
+						error_position = str(i + 2)
+						error_string = typing_list[0][i + 1]
+						related_string = typing_list[1][i]
+						print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+						break
+					elif sub_flag == 1 and typing_list[0][i] != typing_list[1][i]:
+						damerau_distance_type = "del"
+						error_position = str(i + 1)
+						error_string = typing_list[0][i]
+						related_string = typing_list[1][i - 1]
+						print typing_list[0], typing_list[1], typing_list[2], typing_list[3], typing_list[4], damerau_distance_type, error_string, related_string, error_position
+
+
+
+
+
+
+
+
+
+
 
 
 
