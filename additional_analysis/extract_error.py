@@ -3,7 +3,9 @@
 
 # 文字単位のミスを抽出するスクリプトです。
 # インプットとしてcorrected_error_list.txtやun_corrected_error_list.txtを入力します。
-# アウトプットとしてadditonal_analysis_error.txtを出力し、？つの項目はそれぞれ、を表している。
+# アウトプットとしてadditonal_analysis_corrected_error.txtとadditonal_analysis_un_corrected_error.txtを出力し、9つの項目はそれぞれ
+# 編集前単語、編集後単語、編集距離、タイピング速度、ユーザ名、誤り分類、error_string、related_string、誤りの位置
+# を表している。
 
 # 文字を削除する場合(damerau_distance_type == "del"の場合)は削除する文字をerror_string、削除する文字の一つ前の文字をrelated_stringとする。
 # delの場合は削除する文字の前後をrelated_stringとした方が適切っぽい。
