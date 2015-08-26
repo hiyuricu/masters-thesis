@@ -1,0 +1,143 @@
+This is e-pTeX, Version 3.1415926-p3.4-110825-2.6 (utf8.euc) (TeX Live 2013) (format=platex 2014.11.26)  26 AUG 2015 17:10
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**2014m2templateA4
+(./2014m2templateA4.tex
+pLaTeX2e <2006/11/10> (based on LaTeX2e <2011/06/27> patch level 0)
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+
+(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/platex/base/jarticle
+.cls
+Document Class: jarticle 2006/06/27 v1.6 Standard pLaTeX class
+\c@@paper=\count81
+
+(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/platex/base/jsize10.
+clo
+File: jsize10.clo 2006/06/27 v1.6 Standard pLaTeX file (size option)
+)
+\c@part=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
+\c@figure=\count88
+\c@table=\count89
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 601.
+\toclineskip=\dimen118
+\@lnumwidth=\dimen119
+\bibindent=\dimen120
+\heisei=\count90
+) (./icspresen_m22.sty
+icspresen.sty ver. 0.8 by ICS
+\c@fig=\count91
+)
+No file 2014m2templateA4.aux.
+\openout1 = `2014m2templateA4.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 17.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 17.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 17.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 17.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 21.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 21.
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 32.
+
+LaTeX Font Info:    No file OMScmtt.fd. on input line 32.
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbackslash' on input line 32.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 32.
+
+(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
+
+Overfull \hbox (13.74385pt too wide) in paragraph at lines 32--40
+[]\OMS/cmtt/m/n/9 n\OT1/cmtt/m/n/9 Etitle\OMS/cmtt/m/n/9 f\OT1/cmr/m/n/9 A Stud
+y of How to Pre-pare the Manuscript\OMS/cmtt/m/n/9 g 
+ []
+
+
+Overfull \hbox (2.61954pt too wide) in paragraph at lines 32--40
+[]\OMS/cmtt/m/n/9 n\OT1/cmtt/m/n/9 Author\OMS/cmtt/m/n/9 f\OT1/cmr/m/n/9 000000
+00[][][]\JY1/mc/m/n/9 首都[]太郎[][][]指導教官[][]首都[]花
+ []
+
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 62.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 62.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 65.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 65.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 65.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <7> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 72.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <7> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 72.
+
+LaTeX Warning: Citation `tarou1' on page 1 undefined on input line 72.
+
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 77.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 77.
+[1
+
+
+
+] (./2014m2templateA4.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 387 strings out of 494004
+ 4256 string characters out of 6147767
+ 61532 words of memory out of 5000000
+ 3904 multiletter control sequences out of 15000+600000
+ 16095 words of font info for 63 fonts, out of 8000000 for 9000
+ 745 hyphenation exceptions out of 8191
+ 22i,5n,24p,145b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on 2014m2templateA4.dvi (1 page, 5588 bytes).
