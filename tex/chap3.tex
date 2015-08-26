@@ -18,26 +18,30 @@
 \end{comment}
 抽出されるスペリング誤りの文字としてyが2文字抽出され，入力すべき文字はtとする．
 
-  \begin{table*}[h]
-  \small
-%  \begin{center}
+{\tabcolsep = 0.6mm
+  \begin{table*}[!t]
+  \footnotesize
+  \begin{center}
    \caption{ユーザが入力した文字列と文字列に対応した英単語の比較とスペリング誤りの抽出例}
    \begin{tabular}{|c|c|c|c|c|c|} \hline
        	入力した文字列 & 対応した英単語 & スペリング誤り & 1つ前の文字 & 入力すべき文字 & 1つ後の文字\\ \hline
 	    bel\underline{e}ief & belief & e & l & i & e\\ \hline
    \end{tabular}
-%  \end{center}
+  \end{center}
  \end{table*}
+}
 
- \begin{table*}[h]
+{\tabcolsep = 0.6mm
+ \begin{table*}[!t]
   \small
   \begin{center}
    \caption{スペリング誤りと判定される文字列，されない文字列と複数のスペリング誤りが抽出される文字列の例}
    \begin{tabular}{|c|c|c|c|} \hline
-       	ユーザが入力した文字列 & 文字列に対応した英単語 & スペリング誤りの文字 & スペリング誤りの文字列\\ \hline
+       	ユーザが入力した文字列 & 文字列に対応した英単語 & 誤りの文字 & 誤りの文字列\\ \hline
 		in\underline{g}cre\underline{s}ase & increase & gとs & \\ \hline
 		\underline{inly}only & only & i & \\ \hline
 	    bi\underline{yy}t & bit & yとy & yy\\ \hline
    \end{tabular}
   \end{center}
  \end{table*}
+}

@@ -1,0 +1,4037 @@
+%%
+%% このスタイルファイルは，人工知能学会発行の人工知能学会誌のためのスタイルフ
+%% ァイルです．
+%%
+%% jsai.bstは電力中央研究所の松井正一氏が製作したjalpha.bst をもとに，その他
+%% のスタイルファイルは（株）ウルスの佐藤基昭氏が製作したバージョン1.1をもと
+%% に（株）Zoo.COMと人工知能学会が改変したものです．松井氏並びに佐藤氏には
+%% 本スタイルファイルの使用により生じた問題に対する責任は一切ありません．
+%%
+%% このスタイルファイルの著作権は，jsai.bst を除き，人工知能学会にあります．
+%% jsai.bst の著作権は，オリジナル部分については松井氏に，改変部分については
+%% 人工知能学会に，それぞれあります．
+%%
+%%% 以下は元となったバージョン1.1の（株）ウルスの佐藤基昭氏による表示です
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%% jsai.sty (ASCII Japanese TeX and NTT JTeX based on LaTeX 2.09)
+%%  for the Journal of Japanese Society for Artificial Intelligence
+%%   by Motoaki Sato (ULS, former name SATO KOBO)
+%%
+%% \typeout{jsai.sty ver.1.0 prerelease-a [July 18 1996]}
+%% \typeout{jsai.sty ver.1.0 [September 28 1996]}
+%% \typeout{jsai.sty ver.1.1 [November 3 1997]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ASCII版TeX
+%% This is PTeX, C Version 2.99 j1.7e p1.0.9F
+%% LaTeX Version 2.09 <24 May 1989>
+%% NTT版TeX
+%% This is JTeX, Version 1.52, based on TeX C Version 3.141
+%% JLaTeX ver.1.3
+%%
+%% \typeout{jsai.sty A4 version [September 17 1999]}
+%% see README.changes for newer version info.
+%%1999.08.15 %add
+%%
+%% NEW ADD 2000.11.20
+%%
+\typeout{Style Option: `jsai' A4 version}
+%%1999.08.15 %add
+%%
+\newif\if@NTT
+\@ifundefined{kanjiskip}{\@NTTtrue
+ \let\kanjiskip\jintercharskip
+ \let\xkanjiskip\jasciikanjiskip
+ \def\bf{\protect\pdg\protect\pbf}%
+ }{\@NTTfalse\let\jmathkanjiskip\xkanjiskip}
+
+\@ifundefined{burasage}{}{\burasage`，=1\burasage`．=1}
+\@ifundefined{inhibitglue}{\let\inhibitglue\relax}{}
+
+%%%1999.08.15
+%%\newif\if@AmSTexFont
+%%\@ifundefined{shape}{\@AmSTexFontfalse}{\@AmSTexFonttrue}
+%%\if@AmSTexFont
+%% \def\@ptscale#1{ scaled #100}
+%% \def\@magscale#1{ scaled \magstep #1}
+%% \def\@halfmag{ scaled \magstephalf}
+%% \font\sixrm=cmr6
+%% \font\sevrm=cmr7
+%%\fi
+%%%1999.08.15
+
+\newif\if@cameraready
+%  \@camerareadytrue
+%  \@camerareadyfalse
+\newif\ifProof
+%  \Prooftrue\overfullrule 5pt
+%  \Prooffalse
+
+\newread\@cameraready
+ \openin\@cameraready jsai-cameraready.sty
+\ifeof\@cameraready
+  \@camerareadyfalse
+  \Prooffalse
+\else\closein\@cameraready
+  \@camerareadytrue
+\fi
+
+% \newif\if@TP \@TPtrue
+\newif\if@english \@englishfalse
+\newif\if@RN \@RNfalse
+\newif\if@TR \@TRfalse
+\newif\if@SI \@SIfalse
+\newif\if@SSI \@SSIfalse
+\newif\if@IR \@IRfalse
+\newif\if@AI \@AIfalse
+\newif\if@SV \@SVfalse
+\newif\if@SP \@SPfalse
+\newif\if@review\@reviewtrue
+%%1999.08.15 %add
+\newif\if@Commentator \@Commentatorfalse
+%%1999.08.15 %add
+\newif\if@ShowCommentator \@ShowCommentatorfalse %%% 2002.10.14 by kamisima
+%%2008.07.29 begin by morita
+\newif\if@OP \@OPfalse
+\newif\if@SHP \@SHPfalse
+%% 2010.08.30 remove AIFP by morita
+%%2008.07.29 end by morita
+%%2008.10.20 begin by morita
+\newif\if@ERP \@ERPfalse
+%%2008.10.20 end by morita
+%%2008.11.06 begin by morita
+\newif\if@IP \@IPfalse
+%%2008.11.06 end by morita
+
+\def\ds@technicalpaper{% \@TPtrue
+ \gdef\@type{TP}}% technicalpaper
+\def\ds@english{\@englishtrue
+ \gdef\@type{EP}}% english
+\def\ds@researchnote{\@RNtrue
+\gdef\@type{RN}}% researchnote
+\def\ds@technicalreport{\@TRtrue
+ \gdef\@type{TR}}% technicalreport
+\def\ds@Specialissue{\@SItrue\@reviewfalse
+ \gdef\@type{SI}}% Specialissue
+\def\ds@specialissue{\@SSItrue\@reviewfalse
+ \gdef\@type{SSI}}% (small)specialissue
+\def\ds@interimreport{\@IRtrue\@reviewfalse
+ \gdef\@type{IR}}% interimreport
+\def\ds@aimap{\@AItrue\@reviewfalse
+ \gdef\@type{AI}}% AImap
+\def\ds@surveypaper{\@SVtrue\@reviewfalse
+ \gdef\@type{SV}}% surveypaper
+\def\ds@specialpaper{\@SPtrue\@reviewfalse
+ \gdef\@type{SP}}% specialpaper
+%%2008.07.29-begin by morita
+\def\ds@originalpaper{\@OPtrue
+ \gdef\@type{OP}}% originalpaper
+%% 2010.08.30 remove AIFP by morita
+\def\ds@shortpaper{\@SHPtrue
+ \gdef\@type{SHP}}% shortpaper
+%%2008.07.29-end by morita
+%%2008.10.20-begin by morita
+\def\ds@exploratorypaper{\@ERPtrue
+ \gdef\@type{ERP}}% exploratorypaper
+%%2008.10.20-end by morita
+%%2008.11.06-begin by morita
+\def\ds@invitedpaper{\@IPtrue
+ \gdef\@type{IP}}% invitedpaper
+%%2008.11.06-end by morita
+
+
+\newif\if@samehead\@sameheadfalse
+%%1999.08.15 add ---> % \@Commentatortrue
+\def\ds@commentary{\gdef\np@type{COM}\Headheight{8}\@sameheadtrue}
+\def\ds@foreword{\gdef\np@type{FOR}\Headheight{10}\@sameheadtrue}
+\def\ds@essay{\gdef\np@type{ESS}\Headheight{11}}
+\def\ds@laboratoryreport{\gdef\np@type{NP}
+ \Headheight{5}\def\np@head{研究室紹介}\@sameheadtrue\@Commentatortrue}
+\def\ds@eventreport{\gdef\np@type{NP}
+ \Headheight{5}\def\np@head{イベントだより}\@sameheadtrue\@Commentatortrue}
+\def\ds@conferencereport{\gdef\np@type{NP}
+ \Headheight{5}\def\np@head{会議報告}\@sameheadtrue\@Commentatortrue}
+\def\ds@glossary{\gdef\np@type{NP}
+ \Headheight{5}\def\np@head{用語解説}\@sameheadtrue\@Commentatortrue}
+\def\ds@bookreview{\gdef\np@type{NP}
+ \Headheight{8}\def\np@head{書評}\@sameheadtrue\@Commentatortrue}
+\def\ds@paperview{\gdef\np@type{NP}
+ \Headheight{8}\def\np@head{文献紹介}\@sameheadtrue\@Commentatortrue}
+\def\ds@studentmail{\gdef\np@type{NP}\Headheight{5}
+ \def\np@head{学生メ\hskip\kanjiskip ー\hskip\kanjiskip ル}\@sameheadtrue}
+\def\ds@calendar{\gdef\np@type{NP}\gdef\@type{CAL}%
+ \Headheight{5}\def\np@head{カレンダ\hskip\kanjiskip ー}\@sameheadtrue\@Commentatortrue}
+\def\ds@societynews{\gdef\np@type{SN}\Headheight{7}\@sameheadtrue
+\@Commentatortrue
+ \input bezier.sty}% 学会だより
+\def\np@type{}
+
+\def\Headheight#1{\gdef\@Headheight{#1\baselineskip}}
+
+\newif\if@blind\@blindfalse
+\def\ds@blindreview{\@blindtrue}
+
+%% 2008.10.20-begin by morita
+\def\@type{TP}% default (technicalpaper)
+\let\default@type\@type
+%\def\@type{OP}% default (originalpaper)
+%\let\default@type\@type
+%% 2008.10.20-end by morita
+
+\def\@ptsize{0}
+\@namedef{ds@11pt}{\def\@ptsize{1}}
+\@namedef{ds@12pt}{\def\@ptsize{2}}
+\def\ds@twoside{\@twosidetrue \@mparswitchtrue}
+\def\ds@draft{\overfullrule 5pt}
+\@options
+
+\@twosidetrue
+\@mparswitchtrue
+
+\lineskip 2pt \normallineskip 2pt
+\def\baselinestretch{1}
+
+\newdimen\@JQ
+%%1999.08.15% \@JQ=0.7392507pt
+ \@JQ=.259817mm
+\newdimen\@Q
+%%1999.08.15% \@Q=0.71144pt
+ \@Q=.25mm
+\newdimen\@bs
+%%1999.08.15% \@bs=19\@Q
+ \@bs=14.25pt
+
+\def\typefont@all{\large\bf}
+
+%%% TP (technicalpaper)%%
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\def\jtitlefont@TP{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q
+ \if@NTT
+%%1999.08.15% \jfont\KFtempfont=dm10 at 28\@JQ
+  \jfont\KFtempfont=dm10 at 32\@JQ
+ \else
+%%1999.08.15% \font\KFtempfont=min10 at 28\@JQ
+  \font\KFtempfont=min10 at 32\@JQ
+ \fi
+%%1999.08.15% 
+%% \font\EFtempfont=cmbx10 \@magscale4 % 28Q
+%% \font\EFtempitfont=cmbxti10 \@magscale4 % 28Q
+%% \let\it\EFtempitfont\let\em\EFtempitfont
+%% \Huge\KFtempfont\EFtempfont
+%%1999.08.15%
+  \font\EFtempfont=cmbx10 \@magscale5 % 32Q
+  \font\EFtempitfont=cmbxti10 \@magscale5 % 32Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \HUGE\KFtempfont\EFtempfont
+}
+\def\jsubtitlefont@TP{%
+ \if@NTT
+  \jfont\KFtempfont=dm10 at 20\@JQ
+ \else
+  \font\KFtempfont=min10 at 20\@JQ
+ \fi
+ \font\EFtempfont=cmbx10 \@magscale2 % 20Q
+ \font\EFtempitfont=cmbxti10 \@magscale2 % 20Q
+ \let\it\EFtempitfont\let\em\EFtempitfont
+ \huge\KFtempfont\EFtempfont
+}
+%% NEW ADD 2000.11.20
+%%For \esubtitlefont@??
+\def\sLARGE{\@setsize\Large{21pt}\xiipt\@xiipt}
+%\def\etitlefont@TP{%
+%%%1999.08.15% \font\EFtempfont=cmbx10 \@halfmag % 16Q
+%%%1999.08.15% \font\EFtempitfont=cmbxti10 \@halfmag % 16Q
+% \font\EFtempfont=cmbx12 \@magscale1  % 20Q
+% \font\EFtempitfont=cmbxti10 \@magscale1 % 20Q
+% \let\it\EFtempitfont\let\em\EFtempitfont
+%%%1999.08.15% \Large\EFtempfont
+% \LARGE\EFtempfont
+%}
+%%%\let\esubtitlefont@TP\etitlefont@TP
+%\def\esubtitlefont@TP{%
+%  \font\EFtempfont=cmr10 \@halfmag % 16Q
+%  \font\EFtempitfont=cmti10 \@halfmag % 16Q
+%  \let\it\EFtempitfont\let\em\EFtempitfont
+%  \Large\EFtempfont
+% }
+\if@english
+ \def\etitlefont@TP{%
+  \font\EFtempfont=cmbx10 \@magscale5 % 32Q
+  \font\EFtempitfont=cmbxti10 \@magscale5 % 32Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \HUGE\EFtempfont
+ }
+ \def\esubtitlefont@TP{%
+  \font\EFtempfont=cmr10 \@magscale1 %\@halfmag % 16Q
+  \font\EFtempitfont=cmti10 \@magscale1 %\@halfmag % 16Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \sLARGE\EFtempfont
+ }
+\else
+\def\etitlefont@TP{%
+ \font\EFtempfont=cmbx12 \@magscale1  % 20Q
+ \font\EFtempitfont=cmbxti10 \@magscale1 % 20Q
+ \let\it\EFtempitfont\let\em\EFtempitfont
+ \LARGE\EFtempfont
+}
+\def\esubtitlefont@TP{%
+  \font\EFtempfont=cmr10 \@magscale1 %\@halfmag % 16Q
+  \font\EFtempitfont=cmti10 \@magscale1 %\@halfmag % 16Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \sLARGE\EFtempfont
+ }
+\fi
+%% NEW ADD 2000.11.20
+
+%%% EP (english)
+\if@english
+ \def\etitlefont@EP{%
+%%1999.08.15% 
+%% \font\EFtempfont=cmbx10 \@magscale4 % 28Q
+%% \font\EFtempitfont=cmbxti10 \@magscale4 % 28Q
+%% \let\it\EFtempitfont\let\em\EFtempitfont
+%% \Huge\EFtempfont
+%%1999.08.15%
+  \font\EFtempfont=cmbx10 \@magscale5 % 32Q
+  \font\EFtempitfont=cmbxti10 \@magscale5 % 32Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \HUGE\EFtempfont
+ }
+ \def\esubtitlefont@EP{%
+%%1999.08.15% 
+%%   \font\EFtempfont=cmbx10 \@magscale2 % 20Q
+%%   \font\EFtempitfont=cmbxti10 \@magscale2 % 20Q
+%%   \let\it\EFtempitfont\let\em\EFtempitfont
+%%   \huge\EFtempfont
+%%1999.08.15%
+%% NEW ADD 2000.11.20
+%  \font\EFtempfont=cmbx10 \@halfmag % 16Q
+%  \font\EFtempitfont=cmbxti10 \@halfmag % 16Q
+%  \let\it\EFtempitfont\let\em\EFtempitfont
+%  \Large\EFtempfont
+% }
+  \font\EFtempfont=cmr10 \@magscale1 %\@halfmag % 16Q
+  \font\EFtempitfont=cmti10 \@magscale1 %\@halfmag % 16Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \sLARGE\EFtempfont
+ }
+%% NEW ADD 2000.11.20
+\fi
+
+%%% 2002.10.14-begin by kamisima
+\if@IR
+ \@ShowCommentatorfalse
+\else
+ \if@SV
+  \@ShowCommentatorfalse
+ \else
+  \if@AI
+   \@ShowCommentatorfalse
+  \else
+   \@ShowCommentatortrue
+  \fi
+ \fi
+\fi
+%%% 2002.10.14-end by kamisima
+%%% TR (technicalreport)
+\if@TR
+ \let\jtitlefont@TR\jtitlefont@TP
+ \let\jsubtitlefont@TR\jsubtitlefont@TP
+ \let\etitlefont@TR\etitlefont@TP
+ \let\esubtitlefont@TR\etitlefont@TP
+\fi
+
+%%% RN (researchnote)
+%%1999.08.15%
+%%\if@RN
+%% \def\jtitlefont@RN{%
+%%  \if@NTT
+%%   \jfont\KFtempfont=dm10 at 18\@JQ
+%%  \else
+%%  \font\KFtempfont=min10 at 18\@JQ
+%%  \fi
+%%  \font\EFtempfont=cmbx12 % 18Q
+%%  \font\EFtempitfont=cmbxti10 at 12.0pt % 18Q
+%%  \let\it\EFtempitfont\let\em\EFtempitfont
+%%  \LARGE\KFtempfont\EFtempfont
+%% }
+%% \def\jsubtitlefont@RN{%
+%%  \if@NTT
+%%   \jfont\KFtempfont=dm10 at 16\@JQ
+%%  \else
+%%   \font\KFtempfont=min10 at 16\@JQ
+%%  \fi
+%%  \font\EFtempfont=cmbx10 \@halfmag % 16Q
+%%  \font\EFtempitfont=cmbxti10 \@halfmag % 16Q
+%%  \let\it\EFtempitfont\let\em\EFtempitfont
+%%  \Large\KFtempfont\EFtempfont
+%% }
+%% \def\etitlefont@RN{%
+%%  \font\EFtempfont=cmbx10 % 14Q
+%%  \font\EFtempitfont=cmbxti10 % 14Q
+%%  \let\it\EFtempitfont\let\em\EFtempitfont
+%%  \large\EFtempfont
+%% }
+%% \let\esubtitlefont@RN\etitlefont@RN
+%%\fi
+%%1999.08.15%
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\if@RN
+\def\jtitlefont@RN{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+ \if@NTT
+  \jfont\KFtempfont=dm10 at 32\@JQ
+ \else
+  \font\KFtempfont=min10 at 32\@JQ
+ \fi
+  \font\EFtempfont=cmbx10 \@magscale5 % 32Q
+  \font\EFtempitfont=cmbxti10 \@magscale5 % 32Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \HUGE\KFtempfont\EFtempfont
+}
+%% NEW ADD 2000.11.20
+%\def\etitlefont@RN{%
+% \font\EFtempfont=cmbx12 \@magscale1  % 20Q
+% \font\EFtempitfont=cmbxti10 \@magscale1 % 20Q
+% \let\it\EFtempitfont\let\em\EFtempitfont
+% \LARGE\EFtempfont
+%}
+%\let\esubtitlefont@RN\etitlefont@RN
+\if@english
+ \def\etitlefont@RN{%
+  \font\EFtempfont=cmbx10 \@magscale5 % 32Q
+  \font\EFtempitfont=cmbxti10 \@magscale5 % 32Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \HUGE\EFtempfont
+ }
+ \def\esubtitlefont@RN{%
+  \font\EFtempfont=cmr10 \@magscale1 %\@halfmag % 16Q
+  \font\EFtempitfont=cmti10 \@magscale1 %\@halfmag % 16Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \sLARGE\EFtempfont
+ }
+\else
+\def\etitlefont@RN{%
+ \font\EFtempfont=cmbx12 \@magscale1  % 20Q
+ \font\EFtempitfont=cmbxti10 \@magscale1 % 20Q
+ \let\it\EFtempitfont\let\em\EFtempitfont
+ \LARGE\EFtempfont
+}
+\def\esubtitlefont@RN{%
+  \font\EFtempfont=cmr10 \@magscale1 %\@halfmag % 16Q
+  \font\EFtempitfont=cmti10 \@magscale1 %\@halfmag % 16Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \sLARGE\EFtempfont
+ }
+\fi
+%% NEW ADD 2000.11.20
+\fi
+
+%%% EP (english)
+\if@english
+ \def\etitlefont@EP{%
+%%1999.08.15% 
+%% \font\EFtempfont=cmbx10 \@magscale4 % 28Q
+%% \font\EFtempitfont=cmbxti10 \@magscale4 % 28Q
+%% \let\it\EFtempitfont\let\em\EFtempitfont
+%% \Huge\EFtempfont
+%%1999.08.15%
+  \font\EFtempfont=cmbx10 \@magscale5 % 32Q
+  \font\EFtempitfont=cmbxti10 \@magscale5 % 32Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \HUGE\EFtempfont
+ }
+ \def\esubtitlefont@EP{%
+%%1999.08.15%
+%%   \font\EFtempfont=cmbx10 \@magscale2 % 20Q
+%%   \font\EFtempitfont=cmbxti10 \@magscale2 % 20Q
+%%   \let\it\EFtempitfont\let\em\EFtempitfont
+%%   \huge\EFtempfont
+%%1999.08.15%
+%% NEW ADD 2000.11.20
+%  \font\EFtempfont=cmbx10 \@halfmag % 16Q
+%  \font\EFtempitfont=cmbxti10 \@halfmag % 16Q
+%  \let\it\EFtempitfont\let\em\EFtempitfont
+%  \Large\EFtempfont
+% }
+  \font\EFtempfont=cmr10 \@magscale1 %\@halfmag % 16Q
+  \font\EFtempitfont=cmti10 \@magscale1 %\@halfmag % 16Q
+  \let\it\EFtempitfont\let\em\EFtempitfont
+  \sLARGE\EFtempfont
+ }
+%% NEW ADD 2000.11.20
+\fi
+
+%%% SI (Specialissue)
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\def\jtitlefont@SI{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+ \if@NTT
+  \jfont\KFtempfont=dg10 at 28\@JQ
+ \else
+  \font\KFtempfont=goth10 at 28\@JQ
+ \fi
+ \font\EFtempfont=cmbx10 \@magscale4 % 28Q
+ \font\EFtempitfont=cmbxti10 \@magscale4 % 28Q
+ \let\it\EFtempitfont\let\em\EFtempitfont
+ \Huge\KFtempfont\EFtempfont
+}
+\def\jsubtitlefont@SI{%
+ \if@NTT
+  \jfont\KFtempfont=dg10 at 20\@JQ
+ \else
+  \font\KFtempfont=goth10 at 20\@JQ
+ \fi
+ \font\EFtempfont=cmbx10 \@magscale2 % 20Q
+ \font\EFtempitfont=cmbxti10 \@magscale2 % 20Q
+ \let\it\EFtempitfont\let\em\EFtempitfont
+ \huge\KFtempfont\EFtempfont
+}
+\if@SI
+ \let\etitlefont@SI\etitlefont@TP
+ \let\esubtitlefont@SI\etitlefont@TP
+\fi
+
+%%% SSI ([small]specialissue)
+\if@SSI
+ \let\jtitlefont@SSI\jtitlefont@SI
+ \let\jsubtitlefont@SSI\jsubtitlefont@SI
+ \let\etitlefont@SSI\etitlefont@TP
+ \let\esubtitlefont@SSI\etitlefont@TP
+\fi
+
+%%% IR (interimreport)
+\if@IR
+ \let\jtitlefont@IR\jtitlefont@SI
+ \let\jsubtitlefont@IR\jsubtitlefont@SI
+ \let\etitlefont@IR\etitlefont@TP
+ \let\esubtitlefont@IR\etitlefont@TP
+\fi
+
+%%% AI (AImap)
+\if@AI
+ \let\jtitlefont@AI\jtitlefont@SI
+ \let\jsubtitlefont@AI\jsubtitlefont@SI
+ \let\etitlefont@AI\etitlefont@TP
+ \let\esubtitlefont@AI\etitlefont@TP
+\fi
+
+%%% SV (surveypaper)
+\if@SV
+ \let\jtitlefont@SV\jtitlefont@SI
+ \let\jsubtitlefont@SV\jsubtitlefont@SI
+ \let\etitlefont@SV\etitlefont@TP
+ \let\esubtitlefont@SV\etitlefont@TP
+\fi
+
+%%% SP (specialpaper)
+\if@SP
+ \let\jtitlefont@SP\jtitlefont@TP
+ \let\jsubtitlefont@SP\jsubtitlefont@TP
+ \let\etitlefont@SP\etitlefont@TP
+ \let\esubtitlefont@SP\etitlefont@TP
+\fi
+
+%%% 2008.07.29-begin by morita
+%%% OP (originalpaper)
+\if@OP
+ \let\jtitlefont@OP\jtitlefont@TP
+ \let\jsubtitlefont@OP\jsubtitlefont@TP
+ \let\etitlefont@OP\etitlefont@TP
+ \let\esubtitlefont@OP\etitlefont@TP
+\fi
+
+%% 2010.08.30 remove AIFP by morita
+
+%%% SHP (shortpaper)
+\if@SHP
+ \let\jtitlefont@SHP\jtitlefont@TP
+ \let\jsubtitlefont@SHP\jsubtitlefont@TP
+ \let\etitlefont@SHP\etitlefont@TP
+ \let\esubtitlefont@SHP\etitlefont@TP
+\fi
+%%% 2008.07.29-end by morita
+
+%%% 2008.10.20-begin by morita
+\if@ERP
+ \let\jtitlefont@ERP\jtitlefont@TP
+ \let\jsubtitlefont@ERP\jsubtitlefont@TP
+ \let\etitlefont@ERP\etitlefont@TP
+ \let\esubtitlefont@ERP\etitlefont@TP
+\fi
+%%% 2008.10.20-end by morita
+
+%%% 2008.11.06-begin by morita
+\if@IP
+ \let\jtitlefont@IP\jtitlefont@TP
+ \let\jsubtitlefont@IP\jsubtitlefont@TP
+ \let\etitlefont@IP\etitlefont@TP
+ \let\esubtitlefont@IP\etitlefont@TP
+\fi
+%%% 2008.11.06-end by morita
+
+\def\authorfont@all{%
+ \if@NTT
+  \jfont\KFtempfont=dm10 at 15\@JQ
+ \else
+  \font\KFtempfont=min10 at 15\@JQ
+ \fi
+ \font\EFtempfont=cmr10 \@halfmag % 15Q
+ \Large\KFtempfont\EFtempfont
+}
+\let\EFsubauthorfont\sevrm
+
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\def\jtitlefont@COM{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+ \if@NTT
+  \jfont\KFtempfont=dm10 at 24\@JQ
+ \else
+  \font\KFtempfont=min10 at 24\@JQ
+ \fi
+ \font\EFtempfont=cmbx10 \@magscale3 % 24Q
+ \font\EFtempitfont=cmbxti10 \@magscale3 % 24Q
+ \let\it\EFtempitfont\let\em\EFtempitfont
+ \xviipt\KFtempfont\EFtempfont\baselineskip28\@Q
+}
+\let\jsubtitlefont@COM\jsubtitlefont@TP
+
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\def\jtitlefont@FOR{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+ \if@NTT
+  \jfont\KFtempfont=dg10 at 24\@JQ
+ \else
+  \font\KFtempfont=goth10 at 24\@JQ
+ \fi
+ \font\EFtempfont=cmbx10 \@magscale3 % 24Q
+ \font\EFtempitfont=cmbxti10 \@magscale3 % 24Q
+ \let\it\EFtempitfont\let\em\EFtempitfont
+ \xviipt\KFtempfont\EFtempfont\baselineskip28\@Q
+}
+\let\jsubtitlefont@FOR\jsubtitlefont@SI
+
+\let\jtitlefont@ESS\jtitlefont@FOR
+\let\jsubtitlefont@ESS\jsubtitlefont@FOR
+
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\def\jtitlefont@NP{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+ \if@NTT
+  \jfont\KFtempfont=dg10 at 15\@JQ
+ \else
+  \font\KFtempfont=goth10 at 15\@JQ
+ \fi
+ \KFtempfont
+}
+
+%%1999.08.15 %add %%%\np@head{xxxx}用書体
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\def\Jtitlefont@NP{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+ \if@NTT
+  \jfont\KFtempfont=dg10 at 18\@JQ
+ \else
+  \font\KFtempfont=goth10 at 18\@JQ
+ \fi
+ \KFtempfont
+}
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\def\Jtitlefont@SN{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+ \if@NTT
+  \jfont\KFtempfont=dg10 at 18\@JQ
+ \else
+  \font\KFtempfont=goth10 at 18\@JQ
+ \fi
+ \KFtempfont
+}
+%%1999.08.15% add ---> %\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+\def\jtitlefont@SN{\kanjiskip=-1\@Q plus 1\@Q minus 1\@Q%
+ \if@NTT
+  \jfont\KFtempfont=dg10 at 15\@JQ
+ \else
+  \font\KFtempfont=goth10 at 15\@JQ
+ \fi
+ \KFtempfont
+}
+%%1999.08.15 %add
+
+\font\EFheadnomble=cmr9
+\font\EFfootnomble=cmssi9
+\font\EFfoot=cmti9
+\font\EFetype=cmssi10 \@halfmag
+\font\EFcapnum=cmssbx10 at 7pt
+\def\@capnumfont{\protect\bf\EFcapnum}
+%%1999.09.29%\def\@secreffont{\protect\bf}
+\def\@secreffont{\protect\rm}
+
+%%1999.08.15%\font\EFsectionnum=cmss10
+\font\EFsectionnum=cmbx12
+%%1999.08.15%\font\EFesectionnum=cmbx10
+\font\EFesectionnum=cmbx12
+%%1999.08.15%\font\EFsubsectionnum=cmss9
+\font\EFsubsectionnum=cmbx10
+%%1999.08.15%\font\EFesubsectionnum=cmbxti10 at 9pt
+\font\EFesubsectionnum=cmbxti10 at 10pt
+\let\EFsubsubsectionnum\EFsubsectionnum
+\let\EFesubsubsectionnum\EFsubsectionnum
+
+\let\EFparagraphnum\bf
+\let\EFeparagraphnum\bf
+\let\EFsubparagraphnum\bf
+\let\EFesubparagraphnum\bf
+
+\font\sixit=cmti10 at 6pt
+
+\def\@mbiix{cmmib10 at 9pt}
+\def\@mbiviii{cmmib10 at 8pt}
+\def\@mbivii{cmmib10 at 7pt}
+\def\@mbsyix{cmbsy10 at 9pt}
+\def\@mbsyviii{cmbsy10 at 8pt}
+\def\@mbsyvii{cmbsy10 at 7pt}
+
+\font\sixmib = cmmib10 at 6pt % bold math italic
+\font\sixsyb = cmbsy10 at 6pt % bold math symbols
+\font\sixlyb = lasyb10 \@ptscale6 % LaTeX symbols
+
+\font\fivmib = cmmib10 at 5pt % bold math italic
+\font\fivsyb = cmbsy10 at 5pt % bold math symbols
+\font\fivlyb = lasyb10 \@ptscale5 % LaTeX symbols
+
+%%1999.09.15 %do not add
+%%\def\@mbiix{cmmib9}
+%%\def\@mbiviii{cmmib8}
+%%\def\@mbivii{cmmib7}
+%%\def\@mbivi{cmmib6}
+%%\def\@mbiv{cmmib5}
+%%\def\@mbsyix{cmbsy9}
+%%\def\@mbsyviii{cmbsy8}
+%%\def\@mbsyvii{cmbsy7}
+%%\def\@mbsyvi{cmbsy6}
+%%\def\@mbsyv{cmbsy5}
+%
+%%\font\fivmib = cmmib5 % bold math italic
+%%\font\fivsyb = cmbsy5 % bold math symbols
+%%\font\fivlyb = lasyb10 \@ptscale5 % LaTeX symbols
+%
+%%\font\sixmib = cmmib6 % bold math italic
+%%\font\sixsyb = cmbsy6 % bold math symbols
+%%\font\sixlyb = lasyb10 \@ptscale6 % LaTeX symbols
+%
+%%\font\sevmib = cmmib7 % bold math italic
+%%\font\sevsyb = cmbsy7 % bold math symbols
+%%\font\sevlyb = lasyb10 \@ptscale7 % LaTeX symbols
+%
+%%\font\egtmib = cmmib8 % bold math italic
+%%\font\egtsyb = cmbsy8 % bold math symbols
+%%\font\egtlyb = lasyb10 \@ptscale8 % LaTeX symbols
+%
+%%\font\ninmib = cmmib9 % bold math italic
+%%\font\ninsyb = cmbsy9 % bold math symbols
+%%\font\ninlyb = lasyb10 \@ptscale9 % LaTeX symbols
+%%\font\ninsc  = cmcsc10 \@ptscale9 % small caps
+%%%\font\tensc  = cmcsc10  % small caps
+%%1999.08.15 %do not add
+
+\if@NTT
+% \def\vipt{\old@vipt\sixdm\let\pdg\sixdg\let\pdm\sixdm\jfsize=6\relax}
+% some case causes "!Font ... not loaded: Not enough room left."
+ \def\vipt{\old@vipt\sevendm\let\pdg\sevendg\let\pdm\sevendm\jfsize=7\relax
+  \def\pit{\fam\itfam\sixit}\textfont\itfam\sixit 
+   \scriptfont\itfam\sixit \scriptscriptfont\itfam\sixit 
+ }
+
+ \def\viipt{\old@viipt\sevendm\let\pdg\sevendg\let\pdm\sevendm\jfsize=7\relax
+ % \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+ %         \textfont\@ne\sevmi 
+ %         \textfont\tw@\sevsy \textfont\lyfam\sevly
+ %         \@boldfalse}\@boldfalse
+ % \def\boldmath{\@ifundefined{sevmib}{\global\font\sevmib\@mbivii 
+ %  \global\font\sevsyb\@mbsyvii
+ %  \global\font\sevlyb\@lasyb\@ptscale7\relax\@addfontinfo\@viipt
+ %  {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+ %       \textfont\@ne\sevmib 
+ %       \textfont\tw@\sevsyb 
+ %       \textfont\lyfam\sevlyb \@prtct\@boldtrue}}}{}\@viipt\boldmath}
+  \def\ptt{\@getfont\ptt\ttfam\@viipt{cmtt10 \@ptscale7}\@nohyphens
+   \ptt\@viipt}%
+ }
+
+% \def\viiipt{\old@viiipt\eightdm\let\pdg\eightdg\let\pdm\eightdm
+%   \jfsize=8\relax
+%  \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+%          \textfont\@ne\egtmi 
+%          \textfont\tw@\egtsy \textfont\lyfam\egtly
+%          \@boldfalse}\@boldfalse
+%  \def\boldmath{\@ifundefined{egtmib}{\global\font\egtmib\@mbiviii 
+%   \global\font\egtsyb\@mbsyviii 
+%   \global\font\egtlyb\@lasyb\@ptscale8\relax\@addfontinfo\@viiipt
+%   {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+%        \textfont\@ne\egtmib 
+%        \textfont\tw@\egtsyb 
+%        \textfont\lyfam\egtlyb \@prtct\@boldtrue}}}{}\@viiipt\boldmath}%
+%  \def\ptt{\@getfont\ptt\ttfam\@viiipt{cmtt8}\@nohyphens\ptt\@viiipt}%
+% }
+
+ \def\ixpt{\old@ixpt\ninedm\let\pdg\ninedg\let\pdm\ninedm\jfsize=9\relax
+  \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+          \textfont\@ne\ninmi 
+          \textfont\tw@\ninsy \textfont\lyfam\ninly
+          \@boldfalse}\@boldfalse
+  \def\boldmath{\@ifundefined{ninmib}{\global\font\ninmib\@mbiix
+   \global\font\ninsyb\@mbsyix 
+   \global\font\ninlyb\@lasyb\@ptscale9\relax\@addfontinfo\@ixpt
+   {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+        \textfont\@ne\ninmib 
+        \textfont\tw@\ninsyb 
+        \textfont\lyfam\ninlyb \@prtct\@boldtrue}}}{}\@ixpt\boldmath}%
+ }
+
+%   \jfont\sixdm=dm6 scaled 1155
+%   \jfont\sixdg=dg6 scaled 1155
+ \jfont\sevendm=dm7 scaled 1094
+ \jfont\sevendg=dg7 scaled 1094
+ \jfont\eightdm=dm8 scaled 1083
+ \jfont\eightdg=dg8 scaled 1083
+ \jfont\ninedm=dm9 scaled 1042
+ \jfont\ninedg=dg9 scaled 1042
+%%1999.08.15%  \jfont\tendm=dm10 scaled 1088
+%%1999.08.15%  \jfont\tendg=dg10 scaled 1088
+ \jfont\tendm=dm10 scaled 1000%%1999.08.15
+ \jfont\tendg=dg10 scaled 1000%%1999.08.15
+ \jfont\elevendm=dm10 scaled 1200%%1999.08.15
+ \jfont\elevendg=dg10 scaled 1200%%1999.08.15
+%% \jfont\twelvedm=dm12 scaled 1155 
+%% \jfont\twelvedg=dg12 scaled 1155 
+%   \jfont\fourteendm=dm10 scaled 1554
+%   \jfont\fourteendg=dg10 scaled 1554
+%%% \jfont\seventeendm=dm10 scaled \magstep3
+%%% \jfont\seventeendg=dg10 scaled \magstep3
+%   \jfont\twentydm=dm10 scaled 2180
+%   \jfont\twentydg=dg10 scaled 2180
+%%% \jfont\twentyfivedm=dm10 scaled \magstep5
+%%% \jfont\twentyfivedg=dg10 scaled \magstep5
+%%%%%%%%%%%%%%%%%%%%%%%%
+\else
+ \let\original@vipt=\vipt
+ \def\vipt{\original@vipt
+  \def\pit{\fam\itfam\sixit}\textfont\itfam\sixit 
+   \scriptfont\itfam\sixit \scriptscriptfont\itfam\sixit 
+  \def\pgt{\@getfont\pgt\gtfam\@vipt{goth10 at 9\@JQ}}%
+ }
+
+ \let\original@viipt=\viipt
+ \def\viipt{\original@viipt
+ % \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+ %         \textfont\@ne\sevmi 
+ %         \textfont\tw@\sevsy \textfont\lyfam\sevly
+ %         \@boldfalse}\@boldfalse
+ % \def\boldmath{\@ifundefined{sevmib}{\global\font\sevmib\@mbivii 
+ %  \global\font\sevsyb\@mbsyvii
+ %  \global\font\sevlyb\@lasyb\@ptscale7\relax\@addfontinfo\@viipt
+ %  {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+ %       \textfont\@ne\sevmib 
+ %       \textfont\tw@\sevsyb 
+ %       \textfont\lyfam\sevlyb \@prtct\@boldtrue}}}{}\@viipt\boldmath}%
+  \def\ptt{\@getfont\ptt\ttfam\@viipt{cmtt10 \@ptscale7}\@nohyphens
+   \ptt\@viipt}%
+  \def\pgt{\@getfont\pgt\gtfam\@viipt{goth10 at 10\@JQ}}%
+ }
+
+% \let\original@viiipt=\viiipt
+% \def\viiipt{\original@viiipt
+%  \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+%          \textfont\@ne\egtmi 
+%          \textfont\tw@\egtsy \textfont\lyfam\egtly
+%          \@boldfalse}\@boldfalse
+%  \def\boldmath{\@ifundefined{egtmib}{\global\font\egtmib\@mbiviii 
+%   \global\font\egtsyb\@mbsyviii 
+%   \global\font\egtlyb\@lasyb\@ptscale8\relax\@addfontinfo\@viiipt
+%   {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+%        \textfont\@ne\egtmib 
+%        \textfont\tw@\egtsyb 
+%        \textfont\lyfam\egtlyb \@prtct\@boldtrue}}}{}\@viiipt\boldmath}%
+%  \def\ptt{\@getfont\ptt\ttfam\@viiipt{cmtt8}\@nohyphens\ptt\@viiipt}%
+%  \def\pgt{\@getfont\pgt\gtfam\@viiipt{goth10 at 11\@JQ}}%
+% }
+
+ \let\original@ixpt=\ixpt
+ \def\ixpt{\original@ixpt
+  \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+          \textfont\@ne\ninmi 
+          \textfont\tw@\ninsy \textfont\lyfam\ninly
+          \@boldfalse}\@boldfalse
+  \def\boldmath{\@ifundefined{ninmib}{\global\font\ninmib\@mbiix
+   \global\font\ninsyb\@mbsyix 
+   \global\font\ninlyb\@lasyb\@ptscale9\relax\@addfontinfo\@ixpt
+   {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+        \textfont\@ne\ninmib 
+        \textfont\tw@\ninsyb 
+        \textfont\lyfam\ninlyb \@prtct\@boldtrue}}}{}\@ixpt\boldmath}%
+%%%1999.08.15 %add
+\def\pit{\fam\itfam\ninit}\textfont\itfam\ninit 
+   \scriptfont\itfam\sevit \scriptscriptfont\itfam\sevit 
+\def\psl{\@getfont\psl\slfam\@ixpt{cmsl9}}%
+\def\pbf{\fam\bffam\ninbf}\textfont\bffam\ninbf 
+   \scriptfont\bffam\ninbf \scriptscriptfont\bffam\ninbf 
+\def\ptt{\fam\ttfam\nintt}\textfont\ttfam\nintt
+   \scriptfont\ttfam\nintt \scriptscriptfont\ttfam\nintt 
+\def\psf{\@getfont\psf\sffam\@ixpt{cmss9}}%
+\def\psc{\@getfont\psc\scfam\@ixpt{\@mcsc\@ptscale9}}%
+\def\ly{\fam\lyfam\ninly}\textfont\lyfam\ninly%
+   \scriptfont\lyfam\sixly \scriptscriptfont\lyfam\fivly%
+}
+%%%1999.08.15 %add
+
+%%%1999.08.15 %add
+ \let\original@xpt=\xpt
+ \def\xpt{\original@xpt
+\def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+          \textfont\@ne\tenmi 
+          \textfont\tw@\tensy \textfont\lyfam\tenly
+          \@boldfalse}\@boldfalse
+\def\boldmath{\@ifundefined{tenmib}{\global\font\tenmib\@mbi 
+   \global\font\tensyb\@mbsy 
+   \global\font\tenlyb\@lasyb\relax\@addfontinfo\@xpt
+   {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+        \textfont\@ne\tenmib \textfont\tw@\tensyb 
+        \textfont\lyfam\tenlyb \@prtct\@boldtrue}}}{}\@xpt\boldmath}%
+\def\prm{\fam\z@\tenrm}%
+\def\pit{\fam\itfam\tenit}\textfont\itfam\tenit \scriptfont\itfam\sevit
+    \scriptscriptfont\itfam\sevit
+\def\psl{\fam\slfam\tensl}\textfont\slfam\tensl 
+     \scriptfont\slfam\tensl \scriptscriptfont\slfam\tensl
+\def\pbf{\fam\bffam\tenbf}\textfont\bffam\tenbf 
+    \scriptfont\bffam\tenbf \scriptscriptfont\bffam\tenbf 
+\def\ptt{\fam\ttfam\tentt}\textfont\ttfam\tentt
+    \scriptfont\ttfam\tentt \scriptscriptfont\ttfam\tentt
+\def\psf{\fam\sffam\tensf}\textfont\sffam\tensf
+    \scriptfont\sffam\tensf \scriptscriptfont\sffam\tensf
+\def\psc{\@getfont\psc\scfam\@xpt{\@mcsc}}%
+\let\sc\psc
+\def\ly{\fam\lyfam\tenly}\textfont\lyfam\tenly%
+   \scriptfont\lyfam\sevly \scriptscriptfont\lyfam\fivly%
+}
+%%%1999.08.15 %add
+
+
+ \let\dg\gt
+ \let\dm\mc
+ \let\pdg\pgt
+ \let\pdm\pmc
+ \font\fivmin = min10 at 7\@JQ
+ \font\sixmin = min10 at 9\@JQ
+ \font\svnmin = min10 at 10\@JQ
+ \font\egtmin = min10 at 11\@JQ
+ \font\ninmin = min10 at 12\@JQ
+ \font\tenmin = min10 at 13\@JQ
+ \font\tenhmin = min10 at 14\@JQ
+ \font\elvmin = min10 at 16\@JQ
+ \font\twlmin = min10 at 18\@JQ
+ \font\frtnmin = min10 at 20\@JQ
+ \font\svtnmin = min10 at 24\@JQ
+ \font\twtymin = min10 at 28\@JQ
+ \font\twfvmin = min10 at 32\@JQ
+%%
+ \font\fivgt = goth10 at 7\@JQ
+ \font\sixgt = goth10 at 9\@JQ
+ \font\svngt = goth10 at 10\@JQ
+ \font\egtgt = goth10 at 11\@JQ
+ \font\ningt = goth10 at 12\@JQ
+ \font\tengt = goth10 at 13\@JQ
+ \font\tenhgt = goth10 at 14\@JQ
+ \font\elvgt = goth10 at 16\@JQ
+ \font\twlgt = goth10 at 18\@JQ
+ \font\frtngt = goth10 at 20\@JQ
+ \font\svtngt = goth10 at 24\@JQ
+ \font\twtygt = goth10 at 28\@JQ
+ \font\twfvgt = goth10 at 32\@JQ
+%%1999.08.15% 
+%% \font\fivmin = min10 at 7\@JQ
+%% \font\sixmin = min10 at 9\@JQ
+%% \font\sevmin = min10 at 10\@JQ
+%% \font\egtmin = min10 at 11\@JQ
+%% \font\ninmin = min10 at 12\@JQ
+%% \font\tenmin = min10 at 14\@JQ
+%% \font\elvmin = min10 at 16\@JQ
+%% \font\twlmin = min10 at 18\@JQ
+%% \font\frtmin = min10 at 18\@JQ
+%% \font\frtnmin = min10 at 20\@JQ
+%% \font\twtymin = min10 at 28\@JQ
+%% \font\fivgt = goth10 at 7\@JQ
+%% \font\sixgt = goth10 at 9\@JQ
+%% \font\sevgt = goth10 at 10\@JQ
+%% \font\egtgt = goth10 at 11\@JQ
+%% \font\ningt = goth10 at 12\@JQ
+%% \font\tengt = goth10 at 14\@JQ
+%% \font\elvgt = goth10 at 16\@JQ
+%% \font\twlgt = goth10 at 18\@JQ
+%% \font\frtngt = goth10 at 20\@JQ
+%% \font\twtygt = goth10 at 28\@JQ
+%%1999.08.15% 
+ \if@cameraready
+  \input jsai-cameraready.sty
+ \fi
+\fi
+
+%%% normalsize -->9pt 12Q 19H
+%%1999.08.15% %%\def\@normalsize{\@setsize\normalsize{19\@Q}\ixpt\@ixpt
+%%% normalsize -->9pt 13Q 14.25pt
+\def\@normalsize{\@setsize\normalsize{14.25pt}\xpt\@xpt
+ \abovedisplayskip 8.5pt plus 3pt minus 4pt
+ \belowdisplayskip \abovedisplayskip
+ \abovedisplayshortskip \z@ plus 2pt
+ \belowdisplayshortskip 4pt plus2pt minus 2pt
+ \let\@listi\@listI}
+
+%%% small-->8pt 11Q 14H  (section in appendix)
+%%1999.08.15%\def\small{\@setsize\small{14\@Q}\viiipt\@viiipt
+\def\small{\@setsize\small{17\@Q}\ixpt\@ixpt
+ \abovedisplayskip 6pt plus 2pt minus 4pt
+ \belowdisplayskip \abovedisplayskip
+ \abovedisplayshortskip \z@ plus 1pt
+ \belowdisplayshortskip 3pt plus 1pt minus 2pt
+ \def\@listi{\leftmargin\leftmargini
+  \topsep 3pt plus 1pt minus 1pt
+  \parsep 2pt plus 1pt minus 1pt
+  \itemsep\parsep}%
+%%1999.08.15 %add
+\def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+   \textfont\@ne\egtmi 
+   \textfont\tw@\egtsy \textfont\lyfam\egtly
+   \@boldfalse} %%% 2000.04.20 kamisima
+\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+   \textfont\@ne\egtmib \scriptfont\@ne\sixmib \scriptscriptfont\@ne\fivmib 
+   \textfont\tw@\egtsyb \scriptfont\tw@\sixsyb \scriptscriptfont\tw@\fivsyb 
+   \textfont\lyfam\egtlyb \@prtct\@boldtrue}%
+%%1999.08.15 %add
+}
+
+%%% footnotesize-->7pt 10Q 13H (footnote, bibliography, caption, appendix)
+%%1999.08.15% \def\footnotesize{\@setsize\footnotesize{13\@Q}\viipt\@viipt
+\def\footnotesize{\@setsize\footnotesize{14\@Q}\viiipt\@viiipt
+ \abovedisplayskip 5pt plus 1.5pt minus 3pt
+ \belowdisplayskip \abovedisplayskip
+ \abovedisplayshortskip \z@ plus 1pt
+ \belowdisplayshortskip 2.5pt plus 1pt minus 2pt
+ \def\@listi{\leftmargin\leftmargini
+  \topsep 2pt plus 1pt minus 1pt
+  \parsep 1.5pt plus 1pt minus 1pt
+  \itemsep\parsep}%
+}
+
+\def\scriptsize{\@setsize\scriptsize{12\@Q}\vipt\@vipt}
+\def\tiny{\@setsize\tiny{6pt}\vpt\@vpt}
+%%% large --> 10pt 14Q 17H
+\def\large{\@setsize\large{17pt}\xpt\@xpt}
+%%1999.08.15% \def\large{\@setsize\large{17\@Q}\xpt\@xpt}
+%%1999.08.15% add
+\def\slarge{\@setsize\large{17pt}\xipt\@xipt}
+%%1999.08.15% add
+%%% Large --> 11pt 16Q 19H
+\def\Large{\@setsize\Large{21pt}\xiipt\@xiipt}
+%%1999.08.15% \def\Large{\@setsize\Large{19\@Q}\xipt\@xipt}
+%%% LARGE --> 12pt 18Q 23H
+\def\LARGE{\@setsize\LARGE{17pt}\xivpt\@xivpt}
+%%1999.08.15% \def\LARGE{\@setsize\LARGE{23\@Q}\xiipt\@xiipt}
+%%% huge  --> 14pt 20Q 22H
+\def\huge{\@setsize\huge{28pt}\xviipt\@xviipt}
+%%1999.08.15% \def\huge{\@setsize\huge{22\@Q}\xivpt\@xivpt}
+%%% Huge  --> 20pt 28Q 31H
+\def\Huge{\@setsize\Huge{30pt}\xxpt\@xxpt}
+\def\HUGE{\@setsize\Huge{30pt}\xxvpt\@xxvpt}%%1999.08.15% add
+\normalsize 
+
+
+%%1999.08.15% \oddsidemargin \z@
+\oddsidemargin -7.4mm%% -8.15mm%%1999.09.15%
+%%1999.08.15% \evensidemargin \z@
+\evensidemargin -3.9mm%% -5.4mm%%1999.09.15%
+%%1999.08.15% \topmargin \z@
+\topmargin -9.4mm
+%%1999.08.15% 150mm % (24w x 2 + 2w) x 12Q
+\textwidth 170.5mm
+%%1999.08.15% \textheight 45\@bs
+\textheight 50\@bs
+%%\advance \textheight by \topskip%%1999.08.15% 
+\headheight 3mm
+%%1999.08.15% \headsep 3.5mm
+\headsep 8mm
+\footskip 9mm
+\footheight 3.25mm
+\unitlength 1mm
+%%1999.08.15% \baselineskip 4.75mm
+\baselineskip 14.25pt
+%%1999.08.15% \parindent 3mm
+\parindent 1zw
+%%1999.08.15% \columnsep 6mm % 24H
+\columnsep 8mm
+\fboxrule .1mm
+\fboxsep .5zw
+
+\marginparwidth 20mm
+\marginparsep 5mm
+
+\footnotesep 2.275mm % 13H x 0.7
+\skip\footins .75\@bs plus 4.75mm minus 2mm
+\@maxsep 20pt
+\@dblmaxsep 20pt 
+\@fptop 0pt plus 1fil \@fpsep 8pt plus 2fil \@fpbot 0pt plus 1fil 
+\@dblfptop 0pt plus 1fil \@dblfpsep 8pt plus 2fil \@dblfpbot 0pt plus 1fil
+\marginparpush 5pt
+
+\def\topfraction{1}
+\def\bottomfraction{1}
+\def\textfraction{0}
+\def\floatpagefraction{0}
+\def\dbltopfraction{1}
+\def\dblfloatpagefraction{0}
+\setcounter{topnumber}{5}
+\setcounter{dbltopnumber}{5}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{8}
+
+\intextsep 1\@bs plus 2mm minus 1mm
+\floatsep 1\@bs plus 2mm minus 1mm
+\dblfloatsep 1\@bs plus 2mm minus 1mm
+\textfloatsep 1.5\@bs plus 3mm minus 2mm
+\dbltextfloatsep 1.5\@bs plus 3mm minus 2mm
+
+\partopsep\z@
+\@lowpenalty 51 \@medpenalty 151 \@highpenalty 301 
+\@beginparpenalty-\@lowpenalty
+\@endparpenalty-\@lowpenalty
+\@itempenalty-\@lowpenalty
+
+\def\@afterheading{%
+ \global\@nobreaktrue
+ \everypar{%
+  \if@nobreak
+   \global\@nobreakfalse
+   \clubpenalty \z@
+    \if@afterindent
+    \else
+     {\setbox0=\lastbox}%
+    \fi
+  \else
+   \clubpenalty
+   \@clubpenalty
+   \everypar{}%
+  \fi}%
+}
+
+%%% \@startsection {NAME}{LEVEL}{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE} ==
+%%% redefinition of "\@startsection" is based on ipsjpaper.sty
+\def\@startsection#1#2#3#4#5#6{\if@noskipsec \leavevmode \fi
+   \par \@tempskipa #4\relax
+\@afterindenttrue
+\ifdim \@tempskipa <\z@ \@tempskipa -\@tempskipa \@afterindentfalse\fi
+%%1999.09.15% \@afterindentfalse
+%%1999.09.15% \ifdim \@tempskipa <\z@ \@tempskipa -\@tempskipa \@afterindenttrue\fi
+   \if@nobreak
+%%1999.08.15 %add
+\ifnum#2=2\relax
+    \vspace{-\Tosubsection}
+  \else
+  \ifnum#2=3\relax
+    \vspace{-\Tosubsubsection}
+  \fi
+\fi
+%%1999.08.15 %add
+ \everypar{}\else
+     \addpenalty{\@secpenalty}\addvspace{\@tempskipa}\fi \@ifstar
+     {\@ssect{#3}{#4}{#5}{#6}}{\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
+%%1999.08.15%
+%% \if@nobreak \everypar{}\else
+%% \addpenalty{\@secpenalty}%
+%%    \vskip-\prevdepth \prevdepth\z@ \vskip\baselineskip
+%%    \advance\@tempskipa-\baselineskip \vspace*{\@tempskipa}%
+%% \fi \@ifstar
+%% {\@ssect{#3}{#4}{#5}{#6}}
+%% {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
+%%1999.08.15%
+
+%\def\@Hangfrom#1{\setbox\@tempboxa\hbox{\hbox{#1}}%
+%      \hangindent \wd\@tempboxa\noindent\box\@tempboxa}
+
+%%% \@sect{NAME}{LEVEL}{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE}[ARG1]{ARG2} ==
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+ \ifnum #2>\c@secnumdepth
+  \def\@svsec{}%
+ \else
+  \refstepcounter{#1}%
+  \edef\@svsec{\csname the#1\endcsname\csname dotafter@#1\endcsname\hskip 1zw}%
+ \fi
+  \@tempskipa #5\relax
+  \ifdim \@tempskipa<\z@
+   \def\@svsechd{#6\hskip #3
+    {\csname EF\if@english e\fi#1num\endcsname\@svsec}\@secjidori{#4}{#8}}%
+  \else
+   \begingroup #6\relax
+    \@kdotwd.5zw%%1999.08.15% 1zw
+    \@hangfrom{\hskip #3\relax
+     {\csname EF\if@english e\fi#1num\endcsname\@svsec}}%
+      {\interlinepenalty \@M \@secjidori{#4}{#8}\par}%
+   \endgroup
+  \fi
+   \@xsect{#5}}
+
+\def\dotafter@section{.}
+
+\def\@secjidori#1#2{%
+ \if@english #2\else
+  \def\@tempfn{}\def\@tempfncnt{}%
+  \@tempskipb #1\relax
+  \bgroup
+   \def\footnote{\@ifnextchar[{\@ignorefn}{\@ignorefn[]}}% ]
+   \long\def\@ignorefn[##1]##2{\gdef\@tempfncnt{##1}\gdef\@tempfn{##2}}%
+   \def\footnotemark{\@ifnextchar[{\@ignorefnmark}{\@ignorefnmark[]}}% ]
+   \def\@ignorefnmark[##1]{}%
+   \global\setbox\@tempboxb\hbox{#2}%
+  \egroup
+  \ifdim \@tempskipb>\z@
+   \ifdim \wd\@tempboxb>6.5zw 
+    \inhibitglue #2%
+   \else
+    \def\@makefnmark{\hbox to \z@{$^{*\@thefnmark}$\hss}}%
+    \kanjiskip\z@ plus 1fill minus 1fill \xkanjiskip\kanjiskip
+     \jmathkanjiskip\kanjiskip
+    \ifdim \wd\@tempboxb>2.5zw
+     \hbox to 7zw{\let\@footnotetext\@gobble\inhibitglue #2\hfil}%
+    \else
+     \hbox to 5zw{\let\@footnotetext\@gobble\inhibitglue #2\hfil}%
+    \fi
+     \xkanjiskip.25zw plus .15zw minus .1zw
+     \kanjiskip0pt plus .4pt minus .5pt
+     \ifx\@tempfn\empty\else
+      \ifx\@tempfncnt\empty\footnotetext{\@tempfn}\else
+       \footnotetext[\@tempfncnt]{\@tempfn}%
+      \fi\fi
+   \fi
+  \else
+   \ifdim \wd\@tempboxb>2.5zw
+    \inhibitglue #2%
+   \else
+    \def\@makefnmark{\hbox to \z@{$^{*\@thefnmark}$\hss}}%
+    \kanjiskip\z@ plus 1fill minus 1fill \xkanjiskip\kanjiskip
+     \jmathkanjiskip\kanjiskip
+    \hbox to 3zw{\let\@footnotetext\@gobble\inhibitglue #2\hfil}%
+     \xkanjiskip.25zw plus .15zw minus .1zw
+     \kanjiskip0pt plus .4pt minus .5pt
+     \ifx\@tempfn\empty\else
+      \ifx\@tempfncnt\empty\footnotetext{\@tempfn}\else
+       \footnotetext[\@tempfncnt]{\@tempfn}%
+      \fi\fi
+   \fi
+  \fi
+  \gdef\@tempfn{}\gdef\@tempfncnt{}%
+ \fi
+}
+
+\def\@xsect#1{\@tempskipa #1\relax
+ \ifdim \@tempskipa<\z@
+  \global\@nobreakfalse\global\@noskipsectrue
+   \everypar{\if@noskipsec \global\@noskipsecfalse
+     \clubpenalty\@M \hskip -\parindent
+     \begingroup \@svsechd \endgroup \unskip
+     \hskip -#1\else
+    \clubpenalty \@clubpenalty\everypar{}\fi
+   }%
+ \else
+  \par   \nobreak
+  \vskip \@tempskipa
+  \@afterheading
+ \fi
+  \ignorespaces}
+
+%%% \@ssect{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE}{ARG} ==
+\def\@ssect#1#2#3#4#5{%
+ \@tempskipa #3\relax
+  \ifdim \@tempskipa<\z@
+   \def\@svsechd{#4\hskip #1\relax \@secjidori{#2}{#5}}%
+  \else
+   \begingroup #4
+    \@hangfrom{\hskip #1}{\interlinepenalty \@M \@secjidori{#2}{#5}\par}%
+   \endgroup
+  \fi
+   \@xsect{#3}}
+
+\newcounter{section}
+\newcounter{subsection}[section]
+\newcounter{subsubsection}[subsection]
+\newcounter{paragraph}[subsubsection]
+\newcounter{subparagraph}[paragraph]
+
+\ifx\np@type\empty
+ \def\Tosubsection{1.25mm}%%1999.08.15
+ \def\section{\@startsection{section}{1}{0zw}%%1999.08.15% {1zw}
+%%1999.08.15%   {4.75mm plus .25mm minus .25mm}{4.75mm plus .25mm minus .25mm}
+   {15pt plus 1pt minus 1pt}{13pt plus 1pt minus 1pt}%
+%%1999.08.15% {\Large\baselineskip4.75mm\bf}}
+   {\slarge\bf}}
+ \def\Tosubsubsection{0mm}%%1999.08.15
+ \def\subsection{\@startsection{subsection}{2}{0zw}%%1999.08.15% {1zw}
+%%1999.08.15%   {4.75mm plus .25mm minus .25mm}{\z@}
+   {15pt plus 1pt minus 1pt}{.5pt plus .5pt minus .5pt}%
+%%1999.08.15%   {\normalsize\if@english\EFesubsectionnum\else\bf\fi}}
+  {\large\if@english\EFesubsectionnum\else\bf\fi}}
+ \def\subsubsection{\@startsection{subsubsection}{3}{0zw}%%1999.08.15% {1zw}
+  {\z@}{\z@}{\normalsize\bf}}
+ \def\paragraph{\@startsection{paragraph}{4}{\z@}
+  {\z@}{\z@}{\normalsize\rm}}
+ \def\subparagraph{\@startsection{subparagraph}{5}{\z@}
+  {\z@}{\z@}{\normalsize\rm}}
+ \setcounter{secnumdepth}{5}
+
+ \def\thesection{\arabic{section}}
+%%1999.08.15%
+\if@NTT
+ \def\thesubsection{\thesection
+  \hbox to \@kdotwd{\hss {・}\hss}\arabic{subsection}}%%1999.09.15%
+%%1999.09.29-begin by kamisima
+ \def\thelblsubsubsection{\thesubsection
+  \hbox to \@kdotwd{\hss {・}\hss}\arabic{subsubsection}}%%1999.09.15%
+%%1999.09.29-end
+\else
+ \def\thesubsection{\thesection
+  \hbox to \@kdotwd{\hss {・}\hss}\arabic{subsection}} %%% 2000.04.20 kamisima
+%%1999.09.29-begin by kamisima
+ \def\thelblsubsubsection{\thesubsection
+  \hbox to \@kdotwd{\hss {・}\hss}\arabic{subsubsection}}%%1999.09.15%
+%%1999.09.29-end
+\fi
+%%1999.08.15%
+%%\def\thesubsubsection{\kern-.5zw 〔\,\arabic{subsubsection}\,〕\kern-.5zw}
+% \def\thesubsubsection{\S\,\arabic{subsubsection}} %%1999.08.15% 
+ \def\thesubsubsection%
+   {\mathhexbox278\,\arabic{subsubsection}} %%2000.04.20 kamsima
+ \def\theparagraph{\roman{paragraph}.}
+ \def\thesubparagraph{\arabic{subparagraph})}
+\else
+ \def\Tosubsection{0mm}%%1999.08.15
+ \def\section{\@startsection{section}{1}{0zw}%%1999.08.15% {1zw}
+%%1999.08.15%  {.0001\@bs plus .25mm minus .25mm}
+  {1\@bs plus .25mm minus .25mm}
+  {\z@ plus .25mm minus .25mm}
+%%1999.08.15%  {\large\baselineskip4.75mm\bf}}
+  {\large\baselineskip4.025mm\bf}}
+ \def\Tosubsubsection{0mm}%%1999.08.15
+ \def\subsection{\@startsection{subsection}{2}{0zw}%%1999.08.15% {1zw}
+%%1999.08.15%  {.0001\@bs plus .25mm minus .25mm}
+  {1\@bs plus .25mm minus .25mm}
+  {\z@}
+  {\normalsize\bf}}
+ \def\subsubsection{\@startsection{subsubsection}{3}{0zw}%%1999.08.15% {1zw}
+  {\z@}{\z@}{\normalsize\bf}}
+ \def\paragraph{\@startsection{paragraph}{4}{\z@}
+  {\z@}{\z@}{\normalsize\rm}}
+ \def\subparagraph{\@startsection{subparagraph}{5}{\z@}
+  {\z@}{\z@}{\normalsize\rm}}
+ \setcounter{secnumdepth}{2}
+
+ \def\thesection{\arabic{section}}
+ \def\thesubsection{\hskip-.5zw （\,\arabic{subsection}\,）\hskip-.5zw}
+ \def\thesubsubsection{\arabic{subsubsection}}
+ \def\theparagraph{\roman{paragraph}}
+ \def\thesubparagraph{\arabic{subparagraph}}
+\fi
+
+\newdimen\@kdotwd
+ \@kdotwd .5zw%%1999.08.15% 1zw
+
+\def\Diamondsuit{\raisebox{.25ex}{$\diamondsuit$}}%%1999.08.15
+\newif\if@appendix
+\def\appendix{\par
+ \footnotesize\baselineskip15\@Q
+ \if@english
+%%1999.08.15% \section*{\centering\normalsize\bf ◇ Appendix ◇}
+%% NEW ADD 2000.11.20 %%左右中央に表示
+%%  \section*{\centering\normalsize\bf %
+%%  \Diamondsuit\kern.5zw Appendix\kern.25zw \Diamondsuit}
+\section*{\hbox to\columnwidth{\hss 
+  {\normalsize\bf \Diamondsuit\kern.5zw Appendix\kern.5zw \Diamondsuit}
+\hss}}
+%% NEW ADD 2000.11.20
+ \else
+%%1999.08.15% \section*{\centering\normalsize\bf ◇\ 付\hskip3zw 録\ ◇}
+%% NEW ADD 2000.11.20 %%左右中央に表示
+%%  \section*{\centering\normalsize\bf %%
+%%  \Diamondsuit\kern.5zw 付\hskip3zw 録\kern.25zw \Diamondsuit}
+\section*{\hbox to\columnwidth{\hss 
+  {\normalsize\bf \Diamondsuit\kern.5zw 付\hskip3zw 録\kern.5zw \Diamondsuit}
+\hss}}
+%% NEW ADD 2000.11.20
+ \fi
+  \setcounter{section}{0}
+  \setcounter{subsection}{0}
+  \setcounter{equation}{0}
+  \setcounter{figure}{0}
+  \setcounter{table}{0}
+  \def\section{\@startsection{section}{1}{0zw}%%1999.08.15%{1zw}
+   {.5\baselineskip}{.5\baselineskip}{\small\bf}}
+  \def\subsection{\@startsection{subsection}{2}{0zw}%%1999.08.15%{1zw}
+   {0.001pt}{\z@}{\footnotesize\bf}}
+  \let\EFsectionnum\relax
+  \let\EFesectionnum\relax
+  \let\EFsubsectionnum\relax
+  \let\EFesubsectionnum\relax
+  \def\thesection{\Alph{section}}
+%%1999.08.15
+%%  \def\thesubsection{\thesection\hbox to 1zw{\hss ・\hss}\arabic{subsection}}
+  \def\thesubsection{\thesection\hbox to .5zw{\hss ・\hss}\arabic{subsection}}
+%%1999.09.29 by kamisima
+%%\def\theequation{\ifnum\c@section=\z@ A\else\thesection\fi.\arabic{equation}}
+  \def\theequation%
+   {(\ifnum\c@section=\z@ A\else\thesection\fi.\arabic{equation})} 
+  \def\thefigure{\ifnum\c@section=\z@ A\else\thesection\fi.\@arabic\c@figure}
+  \def\thetable{\ifnum\c@section=\z@ A\else\thesection\fi.\@arabic\c@table}
+  \@appendixtrue
+}
+
+\leftmargini 2zw
+%%1999.08.15 %\leftmarginii 2zw 
+\leftmarginii 1zw 
+\leftmarginiii 2zw 
+\leftmarginiv 2zw 
+\leftmarginv 2zw
+\leftmarginvi 2zw
+\leftmargin\leftmargini
+\labelsep 1zw
+
+\labelwidth\leftmargini\advance\labelwidth-\labelsep
+\def\@listI{%
+ \leftmargin\leftmargini
+ \topsep  4pt plus 2pt minus 1pt
+ \parsep  2pt plus 1pt minus 1pt
+ \itemsep 2pt plus 1pt minus 1pt
+}
+\let\@listi\@listI
+\@listi 
+\def\@listii{\leftmargin\leftmarginii
+ \labelwidth\leftmarginii\advance\labelwidth-\labelsep
+ \topsep 4pt plus 2pt minus 1pt
+ \parsep 2pt plus 1pt minus 1pt
+ \itemsep\parsep}
+\def\@listiii{\leftmargin\leftmarginiii
+ \labelwidth\leftmarginiii\advance\labelwidth-\labelsep
+ \topsep 2pt plus 1pt minus 1pt 
+ \parsep \z@
+ \partopsep 1pt plus 0pt minus 1pt
+ \itemsep\topsep}
+\def\@listiv{\leftmargin\leftmarginiv
+ \labelwidth\leftmarginiv\advance\labelwidth-\labelsep}
+\def\@listv{\leftmargin\leftmarginv
+ \labelwidth\leftmarginv\advance\labelwidth-\labelsep}
+\def\@listvi{\leftmargin\leftmarginvi
+ \labelwidth\leftmarginvi\advance\labelwidth-\labelsep}
+
+\def\itemize{%
+ \ifnum \@itemdepth >3 \@toodeep\else
+  \advance\@itemdepth \@ne
+  \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+   \list{\csname\@itemitem\endcsname}
+    {\def\makelabel##1{\makebox[1zw][c]{##1}}
+    \labelwidth 1zw
+    \listparindent 1zw
+    \labelsep \z@
+%   \leftmargin2zw
+    \topsep\z@\parsep\z@\itemsep\z@\partopsep\z@
+    \clubpenalty-200}
+ \fi}
+% \let\enditemize\endlist
+
+\def\labelitemi{$\bullet$}
+\def\labelitemii{$\circ$}% \bf --
+\def\labelitemiii{$\star$}
+\def\labelitemiv{$\ast$}
+
+\def\enumerate{%
+ \ifnum \@enumdepth >3 \@toodeep\else
+  \advance\@enumdepth \@ne 
+  \edef\@enumctr{enum\romannumeral\the\@enumdepth}
+   \list{\csname label\@enumctr\endcsname}
+    {\usecounter{\@enumctr}
+    \def\makelabel##1{\hss\llap{##1}}
+%   \labelwidth1.5zw % 1.5zw
+    \labelsep 1zw
+    \itemindent 1.5zw
+    \listparindent 1zw
+    \leftmargin 2zw
+    \topsep\z@\parsep\z@\itemsep\z@\partopsep\z@
+    \clubpenalty-200}
+ \fi}
+% \let\endenumerate\endlist
+
+\def\labelenumi{(\theenumi)}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumii{(\theenumii)}
+\def\theenumii{\alph{enumii}}
+\def\p@enumii{\theenumi}
+\def\labelenumiii{\theenumiii.}
+\def\theenumiii{\roman{enumiii}}
+\def\p@enumiii{\theenumi(\theenumii)}
+\def\labelenumiv{\theenumiv.}
+\def\theenumiv{\Alph{enumiv}} 
+\def\p@enumiv{\p@enumiii\theenumiii}
+
+\def\descriptionlabel#1{%
+  \setbox0=\hbox{\bf #1}%
+  \dimen0=\wd0  \dimen1=1zw
+  \divide \dimen0 by \dimen1
+  \multiply \dimen0 by \dimen1
+  \ifdim \dimen0<\wd0 \advance \dimen0 by \dimen1 \fi
+  \hbox to \dimen0{\box0 \hfil}\hfil}
+
+\def\description{\list{}{%
+  \labelwidth\leftmargin
+  \labelsep 1zw
+  \listparindent 1zw
+  \advance \labelwidth by -\labelsep
+  \let\makelabel\descriptionlabel
+% \leftmargin 1zw
+  \topsep\z@\parsep\z@\itemsep\z@\partopsep\z@
+}}
+\let\enddescription\endlist
+
+\newskip\@halfskip
+ \@halfskip .5\baselineskip plus .5mm minus .5mm
+
+\def\verse{\let\\=\@centercr 
+ \list{}{%
+  \topsep\@halfskip
+  \parsep\z@\itemsep\z@\partopsep\z@
+  \itemindent -1zw
+  \listparindent \itemindent 
+  \rightmargin\leftmargin\advance\leftmargin 1zw
+ }
+  \item[]}
+\let\endverse\endlist
+
+\def\quotation{\list{}{%
+ \topsep\@halfskip
+ \parsep\z@\itemsep\z@\partopsep\z@
+ \listparindent 1zw
+ \itemindent\listparindent
+% \rightmargin\leftmargin
+ }%
+ \item[]}
+\let\endquotation\endlist
+
+\def\quote{\list{}{%
+ \topsep\@halfskip
+ \parsep\z@\itemsep\z@\partopsep\z@
+ \rightmargin\leftmargin}%
+ \item[]}
+\let\endquote\endlist
+
+\def\tabbing{\lineskip \z@\let\>\@rtab\let\<\@ltab\let\=\@settab
+     \let\+\@tabplus\let\-\@tabminus\let\`\@tabrj\let\'\@tablab
+     \let\\=\@tabcr
+     \global\@hightab\@firsttab
+     \global\@nxttabmar\@firsttab
+     \dimen\@firsttab\@totalleftmargin
+     \global\@tabpush0 \global\@rjfieldfalse
+     \topsep\@halfskip
+     \parsep\z@\itemsep\z@\partopsep\z@
+     \trivlist 
+     \item[]\if@minipage\else\vskip\parskip\fi
+     \setbox\@tabfbox\hbox{\rlap{\indent\hskip\@totalleftmargin
+       \the\everypar}}\def\@itemfudge{\box\@tabfbox}\@startline\ignorespaces}
+
+\newdimen\verbatimleftmargin
+  \verbatimleftmargin\z@
+\newdimen\verbatimbaselineskip
+ \verbatimbaselineskip\baselineskip
+\def\verbatimsize{\normalsize}
+
+\def\@verbatim{%
+ \topsep\z@\parsep\z@\itemsep\z@\partopsep\z@
+ \trivlist \item[]%
+  \if@minipage \else
+   \vskip\baselineskip
+   \vskip-\verbatimbaselineskip
+   \vskip\parskip
+  \fi
+  \leftskip\@totalleftmargin
+  \if@minipage \else
+   \advance \leftskip by \verbatimleftmargin
+  \fi
+   \rightskip\z@
+   \parindent\z@
+   \parfillskip\@flushglue
+   \parskip\z@
+   \@tempswafalse
+    \def\par{\if@tempswa\hbox{}\fi\@tempswatrue\@@par}%
+     \obeylines
+     \verbatimsize \baselineskip\verbatimbaselineskip \tt
+     \catcode``=13 \@noligs \let\do\@makeother \dospecials}
+
+\arraycolsep 5pt
+\tabcolsep .5zw
+\arrayrulewidth .1mm
+\doublerulesep \z@
+\tabbingsep \labelsep 
+\skip\@mpfootins = \skip\footins
+
+\def\thebibliography#1{%
+ \if@english
+  \section*{\centering 
+%%1999.08.15% ◇\hskip.5zw References\hskip.5zw ◇}%
+\Diamondsuit\kern.5zw References\kern.5zw \Diamondsuit}%
+ \else
+  \section*{\centering 
+%%1999.08.15% 
+%% ◇\hskip.5zw 参\hskip1zw 考\hskip1zw 文\hskip1zw 献\hskip.5zw ◇}%
+%% NEW ADD 2000.11.20
+%%\Diamondsuit\kern.5zw 参\hskip1zw 考\hskip1zw 文\hskip1zw 献\kern.25zw 
+%%\Diamondsuit
+\Diamondsuit\hbox to 8zw{\hss%
+  参\hskip1zw 考\hskip1zw 文\hskip1zw 献\hss}\Diamondsuit
+%% NEW ADD 2000.11.20
+}%
+ \fi
+ \footnotesize
+ \global\raggedbottom
+% \list{[\arabic{enumi}]}
+  \list{}
+  {% \settowidth\labelwidth{[#1]}
+   \leftmargin 1.5zw
+   \labelsep 1zw
+   \itemindent 1zw
+   \listparindent 1zw
+   \topsep\z@\parsep\z@\itemsep\z@\partopsep\z@
+   \usecounter{enumi}
+  }
+  \def\newblock{\hskip .11em plus .33em minus .07em}
+  \sloppy\clubpenalty-100\widowpenalty-100
+  \sfcode`\.=1000\relax}
+
+%%1999.08.15 %add
+\def\received#1#2#3{%
+ \if@english
+  \xdef\@received{Received 
+   \ifcase#2 MM\or January\or February\or March\or April\or 
+    May\or June\or July\or August\or September\or October\or 
+    November\or December\fi\ #3, #1.}%
+ \else
+  \gdef\@received{#1年#2月#3日\hskip1zw 受理}%
+ \fi
+}
+\def\@received{}
+
+\if@english
+ \received{19YY}{0}{DD}
+\else
+ \received{19YY}{MM}{DD}
+\fi
+%%1999.08.15 %add
+
+\def\endthebibliography{\endlist\par
+ \if@ShowCommentator  %%% 2002.10.14 by kamisima
+ \if@review
+  \if@cameraready\else
+   \ifx\@reviewer\empty
+    \ifx\@stuffincharge\empty
+%%1999.08.15 %     \stuffincharge{×× ○○}\reviewer{○○ ××}%
+     \stuffincharge{×× ○○}%\reviewer{○○ ××}%
+    \fi
+   \fi
+  \fi
+%%1999.08.15% {\normalsize \@review\par}
+ \fi
+ \vskip\baselineskip%%1999.08.15
+ {\noindent\normalsize \@review\par}%%1999.08.15
+ \vskip\baselineskip%%1999.08.15
+ {\noindent\normalsize \@received}%%1999.08.15
+ \vskip2\baselineskip%%1999.08.15
+ \fi  %%% 2002.10.14 by kamisima
+}
+
+\def\stuffincharge#1{%
+ \ifx\@stuffincharge\empty
+  \setbox\z@\hbox{#1}%
+  \ifdim\wd\z@>4zw
+   \gdef\@stuffincharge{\hbox{\spaceskip\z@ plus 0.4pt minus 0.5pt #1}}%
+  \else
+   \gdef\@stuffincharge{\hbox to 4zw{\spaceskip\z@ plus 1fill #1}}%
+  \fi   
+ \else
+  \setbox\z@\hbox{#1}%
+  \ifdim\wd\z@>4zw
+   \xdef\@stuffincharge{\@stuffincharge ，\penalty100
+    \hbox{\spaceskip\z@ plus 0.4pt minus 0.5pt #1}}%
+  \else
+   \xdef\@stuffincharge{\@stuffincharge ，\penalty100
+    \hbox to 4zw{\spaceskip\z@ plus 1fill #1}}%
+  \fi   
+ \fi
+}
+\def\@stuffincharge{}
+
+\def\reviewer#1{%
+ \ifx\@reviewer\empty
+  \setbox\z@\hbox{#1}%
+  \ifdim\wd\z@>4zw
+   \gdef\@reviewer{\hbox{\spaceskip\z@ plus 0.4pt minus 0.5pt #1}}%
+  \else
+   \gdef\@reviewer{\hbox to 4zw{\spaceskip\z@ plus 1fill #1}}%
+  \fi   
+ \else
+  \setbox\z@\hbox{#1}%
+  \ifdim\wd\z@>4zw
+   \xdef\@reviewer{\@reviewer ，
+    \hbox{\spaceskip\z@ plus 0.4pt minus 0.5pt #1}}%
+  \else
+   \xdef\@reviewer{\@reviewer ，
+    \hbox to 4zw{\spaceskip\z@ plus 1fill #1}}%
+  \fi   
+ \fi
+}
+\def\@reviewer{}
+
+\def\@review{%
+ \noindent
+%%1999.08.15 \hfill
+%%1999.08.15 \raggedleft
+ \ifx\@reviewer\empty
+  \ifx\@stuffincharge\empty
+  \else
+   〔担当委員：{\@stuffincharge}〕\hskip.5zw\mbox{}%
+  \fi
+ \else
+  \ifx\@stuffincharge\empty
+   〔査読者：{\@reviewer}〕\hskip.5zw\mbox{}%
+  \else
+   \ifx \@stuffincharge\@reviewer
+    〔担当委員・査読者：%
+     {\@reviewer}〕\hskip.5zw\mbox{}%
+   \else
+    〔担当委員：{\@stuffincharge}，\penalty\z@
+     \hbox{査読者\hbox to 1zw{\hss ：\hss}}{\@reviewer}〕\hskip.5zw\mbox{}%
+   \fi
+  \fi
+ \fi
+}
+
+\newif\if@restonecol
+
+\def\footnoterule{\kern-3\p@ 
+ \hrule width 39mm
+ \kern 2.6\p@}
+
+% \@addtoreset{footnote}{page}
+
+\long\def\@makefntext#1{\parindent1zw\leftskip2zw%%1999.08.15 %\leftskip3zw
+%%1999.08.15 % \noindent\hbox to \z@{\hss{\tt *}\,\@thefnmark}\hskip1zw #1}
+ \noindent\hbox to \z@{\hss{$\ast$}\@thefnmark}\hskip1zw #1}
+
+\def\@makefnmark{\hbox{$^{*\@thefnmark}$}}
+\def\thefootnote{\arabic{footnote}}
+
+
+%%% Center env. without additional vertical glue
+\def\Center{\topsep\z@\parsep\z@\itemsep\z@\partopsep\z@
+ \trivlist\centering\item[]}
+\let\endCenter\endtrivlist
+
+\newdimen\capwidth
+\newdimen\@abovecapskip
+\newdimen\@belowcapskip
+
+\long\def\@caption#1[#2]#3{\par
+\begingroup
+ \@parboxrestore
+ \footnotesize
+ \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+\endgroup}
+
+\long\def\@makecaption#1#2{%
+ \vskip\@abovecapskip
+ \setbox\@tempboxa\hbox{{\@capnumfont #1}\hskip1zw\shortstack[l]{#2}}%
+ \@tempdima=\ht\@tempboxa\advance \@tempdima \dp\@tempboxa
+ \setbox\@tempboxb\hbox{\@capnumfont #1\hskip1zw}%
+ \ifdim \@tempdima > \baselineskip
+  \hfil\parbox[t]{\wd\@tempboxa}{\hangindent\wd\@tempboxb 
+   {\@capnumfont #1}\hskip1zw #2}%
+ \else
+  \ifdim \wd\@tempboxa > \capwidth
+   \hfil\parbox[t]{\capwidth}{\hangindent\wd\@tempboxb 
+    {\@capnumfont #1}\hskip1zw #2}%
+  \else
+   \hbox to\hsize{\hss\box\@tempboxa\hss}
+  \fi
+ \fi
+\vspace{\@belowcapskip}
+}
+
+\def\@floatenv{\def\@setstrut{\setbox\strutbox=%
+ \hbox{\vrule \@height .75\baselineskip \@depth .25\baselineskip \@width\z@}}%
+ \protect\footnotesize
+ \let\center\Center}
+
+\if@english
+ \def\fnum@figure{Fig.\,\thefigure}
+ \def\fnum@table{Table~\thetable}
+\else
+ \def\fnum@figure{図\thefigure}
+ \def\fnum@table{表\thetable}
+\fi
+
+\newcounter{figure}
+\def\thefigure{\@arabic\c@figure}
+\def\fps@figure{tbp}
+\def\ftype@figure{1}
+% \def\ext@figure{lof}
+\def\figure{\bgroup\@floatenv\capwidth\hsize
+ \@abovecapskip10pt\@belowcapskip\z@\@float{figure}}
+\def\endfigure{\end@float\egroup}
+\@namedef{figure*}{\bgroup\@floatenv\capwidth.8\textwidth
+ \@abovecapskip10pt\@belowcapskip\z@\@dblfloat{figure}}
+\@namedef{endfigure*}{\end@dblfloat\egroup}
+
+\newcounter{table}
+\def\thetable{\@arabic\c@table}
+\def\fps@table{tbp}
+\def\ftype@table{2}
+% \def\ext@table{lot}
+\def\table{\bgroup\@floatenv\capwidth\hsize
+ \@abovecapskip\z@\@belowcapskip3pt\@float{table}}
+\def\endtable{\end@float\egroup}
+\@namedef{table*}{\bgroup\@floatenv\capwidth.8\textwidth
+ \@abovecapskip\z@\@belowcapskip3pt\@dblfloat{table}}
+\@namedef{endtable*}{\end@dblfloat\egroup}
+
+\def\jtitle{\@ifnextchar[{\d@jtitle}{\s@jtitle}}
+\def\d@jtitle[#1]#2{%
+ \setbox\@tempboxb\hbox{#1}%
+ \ifdim\wd\@tempboxb < 9zw
+  \gdef\@foottitle{\hbox to 9zw{\kanjiskip\z@ plus 1fill minus 1fill
+   \xkanjiskip\kanjiskip #1}}\else
+  \gdef\@foottitle{#1}\@foottitlelength\fi
+ \gdef\@jtitle{\@titlejidori{#2}\@titlenotemark}}
+\def\s@jtitle#1{%
+ \if@samehead
+  \gdef\@jtitle{\@titlejidori{#1}}%
+ \else
+  \setbox\@tempboxb\hbox{\def\\{\unskip\ignorespaces}#1}%
+  \ifdim\wd\@tempboxb < 9zw
+   \gdef\@foottitle{%
+    \hbox to 9zw{\kanjiskip\z@ plus 1fill minus 1fill
+     \xkanjiskip\kanjiskip #1}}\else
+   \gdef\@foottitle{\def\\{\unskip\ignorespaces}#1}\@foottitlelength\fi
+  \gdef\@jtitle{\@titlejidori{#1}\@titlenotemark}%
+ \fi
+}
+\def\@jtitle{}
+
+\def\jsubtitle#1{\gdef\@jsubtitle{#1}}
+\def\@jsubtitle{}
+
+\def\@titlejidori#1{%
+ \setbox\@tempboxa\hbox{\def\\{\unskip\ignorespaces}#1}%
+ \ifdim \wd\@tempboxa>6.5zw 
+  #1%
+ \else
+  \kanjiskip\z@ plus 1fill minus 1fill \xkanjiskip\kanjiskip
+   \jmathkanjiskip\kanjiskip
+  \ifdim \wd\@tempboxa>2.5zw
+   \leavevmode\hbox to 7zw{#1\hfil}%
+  \else
+   \leavevmode\hbox to 5zw{#1\hfil}%
+  \fi
+ \fi
+}
+
+\def\etitle{\@ifnextchar[{\d@etitle}{\s@etitle}}
+\def\d@etitle[#1]#2{%
+ \if@english\gdef\@foottitle{#1}%
+  \@foottitlelength\fi
+ \gdef\@etitle{#2\if@english\@titlenotemark\fi}}
+\def\s@etitle#1{%
+ \if@english\gdef\@foottitle{\def\\{\ \ignorespaces}#1}%
+  \@foottitlelength\fi
+ \gdef\@etitle{#1\if@english\@titlenotemark\fi}}
+\def\@etitle{}
+
+\def\esubtitle#1{\gdef\@esubtitle{#1}}
+\def\@esubtitle{}
+
+\def\@foottitlelength{%
+ \setbox\@tempboxa\hbox{\EFfootnomble\hskip3mm \@Month\ \@Year}%
+ \setbox\@tempboxb\hbox{\if@english\EFfoot\fi\@foottitle}%
+   \@tempdima .5\textwidth
+   \advance \@tempdima -\wd\@tempboxa
+   \advance \@tempdima -.5\wd\@tempboxb
+    \ifdim \@tempdima < 1.5mm % tolerance
+     \typeout{Style jsai Warning: Title for footer is too wide. 
+              make it shorter.}
+    \fi
+}
+\def\@foottitle{}
+
+\newtoks\@authorlist
+\newcount\@authorcnt
+\newcount\@totalnumber
+\newcount\@alcnt
+\newcount\chk@alcnt
+\newcount\@ntcnt
+\newcount\chk@ntcnt
+\newbox\@tempboxb
+\newbox\@tempboxc
+
+\newif\if@titlenote
+ \@titlenotefalse
+
+\def\titlenote#1{\global\@titlenotetrue
+ \global\advance \@ntcnt \@ne
+ \global\advance \chk@ntcnt \@ne
+ \gdef\@titlenote{#1}}
+\def\@titlenote{}
+
+\def\@titlenotemark{%
+ \if@titlenote
+  \nolinebreak
+%%1999.08.15   \smash{\if@RN\raise1mm\else\raise2.25mm\fi
+   \smash{\if@RN\raise2.25mm\else\raise2.25mm\fi
+    \hbox{{\Large$^{\,\dagger\ifnum\@ntcnt=\@ne\else 1\fi}$}}}%
+ \fi
+}
+
+\def\title@notation{%
+ \if@titlenote
+  \footnotetext[1]{\@titlenote}%
+ \fi
+}
+
+\def\authorlist#1{%
+ \@authorlist={#1}\the\@authorlist
+}
+\if@english
+ \def\authorentry#1#2{\@ifnextchar[% ]
+  {\E@aeP{#1}{#2}}%
+  {\E@ae{#1}{#2}}}
+\else
+ \def\authorentry#1#2#3{\@ifnextchar[% ]
+  {\J@aeP{#1}{#2}{#3}}%
+  {\J@ae{#1}{#2}{#3}}}
+\fi
+
+\def\blindsw@jn#1{\if@blind □□ □□\else #1\fi}
+\def\blindsw@en#1{%
+ \if@blind
+  \setbox0\hbox{#1}%
+  \hbox to \wd0{\vrule height\ht0 depth\dp0 width\z@\hss}%
+ \else #1\fi
+}
+
+\def\J@ae#1#2#3{%
+ \advance \@authorcnt \@ne
+   \ifnum\@authorcnt=\@ne
+    \global\advance \@alcnt \@ne
+    \expandafter\xdef\csname @al#3\endcsname{\the\@alcnt}%
+   \else
+    \@ifundefined{@al#3}%
+     {\global\advance \@alcnt \@ne
+       \expandafter\xdef\csname @al#3\endcsname{\the\@alcnt}}%
+     {\relax}%
+   \fi
+    \ifnum\@alcnt=\@ne
+     \gdef\@alone{#3}%
+    \fi
+   \@checkword{#1}%
+   \setbox\@tempboxc\hbox{\@Getword}%
+   \ifdim \wd\@tempboxc=1zw
+    \setbox\@tempboxc\hbox{\spaceskip=100mm #1}%
+    \ifdim \wd\@tempboxc < 100mm
+     \typeout{Style jsai Warning: Author's name "#1" doesn't have a space.}%
+    \else
+     \setbox\@tempboxc\hbox{#1}%
+     \def\temp@type{COM}%
+     \ifx\np@type\temp@type
+      \ifdim \wd\@tempboxc > 5zw
+       \expandafter\def\csname @authorname\number\@authorcnt\endcsname{%
+        \leavevmode
+         \vtop{\hbox{{\spaceskip=1zw #1}%
+              $^{*\mbox{\sixrm \csname @al#3\endcsname}}$}%
+               \nointerlineskip\vskip1mm
+               \hbox{\EFsubauthorfont #2}}%
+       }%
+      \else
+       \expandafter\def\csname @authorname\number\@authorcnt\endcsname{%
+        \leavevmode
+         \vtop{\hbox{\hbox to 6zw{\kanjiskip.5zw
+          \spaceskip1zw plus 1fill minus 1fill #1}%
+                $^{*\mbox{\sixrm \csname @al#3\endcsname}}$}%
+               \nointerlineskip\vskip1mm
+               \hbox{\EFsubauthorfont #2}}%
+       }%
+      \fi
+     \else
+      \def\temp@type{FOR}%
+      \ifdim \wd\@tempboxc > 4.5zw
+       \expandafter\def\csname @authorname\number\@authorcnt\endcsname{%
+        \leavevmode
+         \vtop{\hbox{{\spaceskip=1zw \blindsw@jn{#1}}%
+               $^{*\mbox{\sixrm \csname @al#3\endcsname}}$}%
+               \ifx\np@type\temp@type\else
+                \nointerlineskip\vskip1mm
+                \hbox{\EFsubauthorfont \blindsw@en{#2}}%
+               \fi
+         }%
+       }%
+      \else
+       \expandafter\def\csname @authorname\number\@authorcnt\endcsname{%
+        \leavevmode
+         \vtop{\hbox{\hbox to 5zw{\spaceskip\z@ plus 1fill minus 1fill 
+           \blindsw@jn{#1}}%
+               $^{*\mbox{\sixrm \csname @al#3\endcsname}}$}%
+               \ifx\np@type\temp@type\else
+                \nointerlineskip\vskip1mm
+                \hbox{\EFsubauthorfont \blindsw@en{#2}}%
+               \fi
+         }%
+       }%
+      \fi
+     \fi
+    \fi
+   \else
+    \expandafter\def\csname @authorname\number\@authorcnt\endcsname{%
+     \leavevmode
+      \vtop{\hbox{\blindsw@en{#1}$^{*\mbox{\sixrm \csname @al#3\endcsname}}$}}%
+    }%
+   \fi
+    \global\@totalnumber\@authorcnt
+}
+
+\def\@ntone{}
+
+\def\J@aeP#1#2#3[#4]{%
+ \advance \@authorcnt \@ne
+   \ifnum\@authorcnt=\@ne
+    \global\advance \@alcnt \@ne
+    \expandafter\xdef\csname @al#3\endcsname{\the\@alcnt}%
+    \global\advance \@ntcnt \@ne
+    \expandafter\xdef\csname @nl#4\endcsname{\the\@ntcnt}%
+   \else
+    \@ifundefined{@al#3}%
+     {\global\advance \@alcnt \@ne
+       \expandafter\xdef\csname @al#3\endcsname{\the\@alcnt}}%
+     {\relax}%
+    \@ifundefined{@nl#4}%
+     {\global\advance \@ntcnt \@ne%
+      \expandafter\xdef\csname @nl#4\endcsname{\the\@ntcnt}}%
+     {\relax}%
+   \fi
+   \ifnum\@alcnt=\@ne
+    \gdef\@alone{#3}%
+   \fi
+   \if@titlenote
+   \else
+    \ifnum\@ntcnt=\@ne
+     \gdef\@ntone{#4}%
+    \fi
+   \fi
+   \@checkword{#1}%
+   \setbox\@tempboxc\hbox{\@Getword}%
+   \ifdim \wd\@tempboxc=1zw
+    \setbox\@tempboxc\hbox{\spaceskip=100mm #1}%
+    \ifdim \wd\@tempboxc < 100mm
+     \typeout{Style jsai Warning: Author's name "#1" doesn't have a space.}%
+    \else
+     \setbox\@tempboxc\hbox{#1}%
+     \ifdim \wd\@tempboxc > 4.5zw
+      \expandafter\def\csname @authorname\number\@authorcnt\endcsname{%
+       \leavevmode
+        \vtop{\hbox{{\spaceskip=1zw \blindsw@jn{#1}}%
+               $^{*\mbox{\sixrm \csname @al#3\endcsname},%
+                {\scriptscriptstyle\dagger}%
+                \mbox{\sixrm \csname @nl#4\endcsname}}$}%
+              \nointerlineskip\vskip1mm
+              \hbox{\EFsubauthorfont \blindsw@en{#2}}}%
+      }%
+     \else
+      \expandafter\def\csname @authorname\number\@authorcnt\endcsname{%
+       \leavevmode
+        \vtop{\hbox{\hbox to 5zw{\spaceskip\z@ plus 1fill minus 1fill
+          \blindsw@jn{#1}}%
+               $^{*\mbox{\sixrm \csname @al#3\endcsname,}%
+                {\scriptscriptstyle\dagger}%
+                \mbox{\sixrm \csname @nl#4\endcsname}}$}%
+              \nointerlineskip\vskip1mm
+              \hbox{\EFsubauthorfont \blindsw@en{#2}}}%
+      }%
+     \fi
+    \fi
+   \else
+    \expandafter\def\csname @authorname\number\@authorcnt\endcsname{%
+     \leavevmode
+      \vtop{\hbox{\blindsw@en{#1}$^{*\mbox{\sixrm \csname @al#3\endcsname,}%
+            {\scriptscriptstyle\dagger}%
+            \mbox{\sixrm \csname @nl#4\endcsname}}$}}%
+    }%
+   \fi
+    \global\@totalnumber\@authorcnt
+}
+
+%%1999.08.15 %add
+\def\Scriptsize{\@setsize\scriptsize{6pt}\vipt\@vipt}
+%%
+\if@english
+\newlength\AuthItemHsizeSmall  \AuthItemHsizeSmall=12pt
+\newlength\AuthItemHsizeLarge  \AuthItemHsizeLarge=24pt
+\else
+\newlength\AuthItemHsizeSmall  \AuthItemHsizeSmall=18pt
+\newlength\AuthItemHsizeLarge  \AuthItemHsizeLarge=30pt
+\fi
+\def\manyauthor{
+\if@english
+\AuthItemHsizeSmall=10pt \AuthItemHsizeLarge=16pt
+\else
+\AuthItemHsizeSmall=16pt \AuthItemHsizeLarge=22pt
+\fi}
+%%% comment out by T.Kamishima 1999.10.10
+%\newif\if@Affiliate %%\@Affiliatefalse \@Affiliatetrue
+%%%
+%\if@Affiliate
+%\def\Hsize{18pt}
+%\else
+%\def\Hsize{30pt}
+%\fi
+%%% begin: modified by T.Kamishima 1999.10.10
+\if@english
+\def\name#1#2{%
+ \kern-.5zw%
+ \leavevmode
+ \raise1zh\hbox to 128pt{%
+ \lower\AuthItemHsizeSmall\vbox to \AuthItemHsizeSmall{%
+ \hbox{{\slarge \if@blind xxxx\else #1\fi
+ \hskip.5em \if@blind xxxx \else #2\fi}\hfil}
+ \vss}\hss}
+}
+\def\longname#1#2{%
+ \kern-.5zw%
+ \leavevmode
+ \raise1zh\hbox to 128pt{%
+ \lower\AuthItemHsizeSmall\vbox to \AuthItemHsizeSmall{%
+ \hbox{{\normalsize \if@blind xxxxxxxx\else #1\fi}\hfil}
+ \nointerlineskip
+ \hbox{{\normalsize\quad\if@blind xxxxxxxx\else #2\fi}\hfil}
+ \vss}\hss}
+}
+\else
+\def\name#1#2#3{\kern-.5zw%
+ \leavevmode
+ \raise1zh\hbox to 78pt{\lower\AuthItemHsizeSmall\vbox to \AuthItemHsizeSmall{%
+ \hbox{{\slarge \if@blind □□\else #1\fi
+ \hskip.5zw \if@blind □□ \else #2\fi}\hfil}
+ \nointerlineskip
+ \vskip1pt
+ \hbox{\scriptsize \if@blind XXXXX XXXXX\else #3\fi\hfil}%
+ \vss}\hss}
+}
+\def\longname#1#2#3{\kern-.5zw%
+ \leavevmode
+ \raise1zh\hbox to 78pt{\lower\AuthItemHsizeLarge\vbox to \AuthItemHsizeLarge{%
+ \hbox{{\small \if@blind □□□□□□\else #1\fi}\hfil}
+ \nointerlineskip
+ \hbox{{\small\hspace{0.5zw}\if@blind □□□□□□\else #2\fi}\hfil}
+ \nointerlineskip
+ \vskip1pt
+ \hbox{\scriptsize \if@blind XXXXX XXXXX\else #3\fi\hfil}%
+ \vss}\hss}
+}
+\fi
+%%% end: modified by T.Kamishima 1999.10.10
+%%% begin: modified by T.Kamishima 1999.10.10
+\if@english
+\def\affiliation#1#2{%
+ \leavevmode
+ \raise1zh\hbox{\lower\AuthItemHsizeLarge\vbox to \AuthItemHsizeLarge{%
+   \hbox{{\small \if@blind XXXXXXXXXXXXXXXX\else 
+   \parbox[t]{342pt}{\small\baselineskip11pt #1}\fi}\hfil}
+   \nointerlineskip
+   \vskip2pt
+   \hbox{{\footnotesize\tt \if@blind XXXXXXXXXX \else
+    {\catcode`~=\active\def~{\~{}}#2}\fi}\hfil}
+ \vss}\hss}
+}
+\def\sameaffiliation#1{%
+ \leavevmode
+ \raise1zh\hbox{\lower\AuthItemHsizeLarge\vbox to \AuthItemHsizeLarge{%
+   \hbox{{\small(affiliation as previous author)}\hfil}
+   \nointerlineskip
+   \vskip2pt
+   \hbox{{\footnotesize\tt \if@blind XXXXXXXXXX \else
+    {\catcode`~=\active\def~{\~{}}#1}\fi}\hfil}
+ \vss}\hss}
+}
+\else
+\def\affiliation#1#2#3{%
+ \leavevmode
+ \raise1zh\hbox{\lower\AuthItemHsizeLarge\vbox to \AuthItemHsizeLarge{%
+    \hbox{{\normalsize \if@blind □□□□□\else #1\fi}\hfill}
+ \nointerlineskip
+ \vskip3pt
+ \hbox{\scriptsize \if@blind XXXXXXXXXXXXXXXX\else 
+   \parbox[t]{392pt}{\scriptsize #2}\fi\hfil}%%%395pt
+ \nointerlineskip
+ \vskip2pt
+ \hbox{{\footnotesize\tt \if@blind XXXXXXXXXX \else
+     {\catcode`~=\active\def~{\~{}}#3}\fi}\hfil}
+ \vss}\hss}
+}
+\def\sameaffiliation#1{%
+ \leavevmode
+ \raise1zh\hbox{\lower\AuthItemHsizeSmall\vbox to \AuthItemHsizeSmall{%
+    \hbox{{\normalsize （同\qquad 上）}\hfill} %%% 2000.04.20 kamisima
+ \nointerlineskip
+ \vskip2pt
+ \hbox{{\footnotesize\tt \if@blind XXXXXXXXXX \else
+     {\catcode`~=\active\def~{\~{}}#1}\fi}\hfil}
+ \vss}\hss}
+}
+\fi
+%%% end: modified by T.Kamishima 1999.10.10
+%%
+\if@Commentator
+\def\commentator#1#2{%
+\hfill
+\hbox to 5zw{〔\normalsize \kanjiskip\z@ \spaceskip1zw plus 1fill
+minus 1fill #1}{\normalsize （#2）}\kern-.5zw〕
+\par
+}
+\else
+\def\commentator#1#2{%
+\begin{tabular}{c}
+\hbox to 9zw{\Large \kanjiskip.5zw\spaceskip1zw plus 1fill minus 1fill #1}\\
+{\normalsize （#2）}\\
+\end{tabular}
+}
+\fi
+%%
+\def\author#1{\gdef\@author{#1}}
+\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
+%%
+\def\and{%                  % \begin{tabular}
+  \end{tabular}%
+  \vskip.5\baselineskip%\par%
+  \noindent
+  \begin{tabular}[t]{l}}%   % \end{tabular}
+%%
+\def\thanks#1{%
+\footnotemark
+  \begingroup
+    \def\protect{\noexpand\protect\noexpand}%
+    \xdef\@thanks{%
+      \@thanks
+      \protect\specialfootnotetext[\the\c@footnote]{\noindent #1}}%
+  \endgroup}
+\let\@thanks\@empty
+
+\def\specialfootnotetext{%
+  \@ifnextchar[%]
+    {\@specialxfootnotenext}%
+    {\xdef\@thefnmark{\thempfn}\@specialfootnotetext}}
+
+\def\@specialxfootnotenext[#1]{%
+  \begingroup 
+    \csname c@\@mpfn\endcsname #1\relax
+    \xdef\@thefnmark{\thempfn}%
+  \endgroup 
+  \@specialfootnotetext}
+
+\def\@mpfn{footnote}
+\def\thempfn{\thefootnote}
+
+\long\def\@specialfootnotetext#1{%
+  \insert\footins{\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox 
+    \floatingpenalty \@MM
+    \hsize\columnwidth 
+    \@parboxrestore
+    \leftskip=2zw
+    \hangindent=0zw 
+    \hangafter\@ne
+    \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}%
+    \@specialmakefntext{%
+      \rule{\z@}{\footnotesep}%
+      \ignorespaces#1\strut}}}
+%%\long\def\@specialmakefntext#1{\noindent\llap{$\@thefnmark$ }#1}
+ \long\def\@specialmakefntext#1{\parindent1zw\leftskip2zw
+   \noindent\hbox to \z@{\hss{\dag}\@thefnmark}\hskip1zw #1}%
+%%1999.08.15 %add
+
+\def\@checkword#1{\@tempcnta\z@\@getword #1\end}
+\def\@getword#1{\ifx#1\end \let\next\relax \else
+ \global\advance\@tempcnta \@ne
+ \ifnum\@tempcnta=\@ne \gdef\@Getword{#1}\else \fi
+ \let\next\@getword\fi \next}
+\def\@Getword{}
+
+\def\E@ae#1#2{%
+ \advance \@authorcnt \@ne
+   \ifnum\@authorcnt=\@ne
+    \global\advance \@alcnt \@ne
+    \expandafter\xdef\csname @al#2\endcsname{\the\@alcnt}%
+   \else
+    \@ifundefined{@al#2}%
+     {\global\advance \@alcnt \@ne
+      \expandafter\xdef\csname @al#2\endcsname{\the\@alcnt}}%
+     {\relax}%
+   \fi
+    \ifnum\@alcnt=\@ne
+     \gdef\@alone{#2}%
+    \fi
+    \expandafter\def\csname @Eauthorname\number\@authorcnt\endcsname{%
+     \mbox{\blindsw@en{#1}$^{*\mbox{\sixrm \csname @al#2\endcsname}}$}}%
+    \global\@totalnumber\@authorcnt
+}
+
+\def\E@aeP#1#2[#3]{%
+ \advance \@authorcnt \@ne
+   \ifnum\@authorcnt=\@ne
+    \global\advance \@alcnt \@ne
+    \expandafter\xdef\csname @al#2\endcsname{\the\@alcnt}%
+    \global\advance \@ntcnt \@ne
+    \expandafter\xdef\csname @nl#3\endcsname{\the\@ntcnt}%
+   \else
+    \@ifundefined{@al#2}%
+     {\global\advance \@alcnt \@ne
+       \expandafter\xdef\csname @al#2\endcsname{\the\@alcnt}}%
+     {\relax}%
+    \@ifundefined{@nl#3}%
+     {\global\advance \@ntcnt \@ne%
+      \expandafter\xdef\csname @nl#3\endcsname{\the\@ntcnt}}%
+     {\relax}%
+   \fi
+   \ifnum\@alcnt=\@ne
+    \gdef\@alone{#2}%
+   \fi
+   \if@titlenote
+   \else
+    \ifnum\@ntcnt=\@ne
+     \gdef\@ntone{#3}%
+    \fi
+   \fi
+    \expandafter\def\csname @Eauthorname\number\@authorcnt\endcsname{%
+     \mbox{\blindsw@en{#1}$^{*\mbox{\sixrm \csname @al#2\endcsname,}%
+      {\scriptscriptstyle\dagger}%
+      \mbox{\sixrm \csname @nl#3\endcsname}}$}}%
+    \global\@totalnumber\@authorcnt
+}
+
+\newcount\@forcebreak
+\if@RN
+ \@forcebreak=3\relax % default
+  \advance\@forcebreak\m@ne
+\else
+ \@forcebreak=5\relax % default
+%\@forcebreak=6\relax
+  \advance\@forcebreak\m@ne
+\fi
+
+\def\@outputauthorlist{%
+ \ifnum\@totalnumber>\@forcebreak
+  \ifodd\@totalnumber
+   \ifnum\@totalnumber=3\relax \Ebreakauthorline{2}\else
+    \ifnum\@totalnumber=5\relax \Ebreakauthorline{3}\else
+     \ifnum\@totalnumber=7\relax \Ebreakauthorline{4}\else
+      \ifnum\@totalnumber=9\relax \Ebreakauthorline{5}\else
+       \ifnum\@totalnumber=11\relax \Ebreakauthorline{4,8}\else
+        \ifnum\@totalnumber=13\relax \Ebreakauthorline{5,10}\else
+   \fi\fi\fi\fi\fi\fi
+  \else
+   \ifnum\@totalnumber=4\relax \breakauthorline{2}\else
+    \ifnum\@totalnumber=6\relax \breakauthorline{3}\else
+     \ifnum\@totalnumber=8\relax \breakauthorline{4}\else
+      \ifnum\@totalnumber=10\relax \breakauthorline{5}\else
+       \ifnum\@totalnumber=12\relax \breakauthorline{4,8}\else
+        \ifnum\@totalnumber=14\relax \breakauthorline{5,10}\else
+   \fi\fi\fi\fi\fi\fi
+  \fi
+ \fi
+ \@authorcnt\z@
+ \loop\ifnum\@authorcnt<\@totalnumber
+  \advance \@authorcnt \@ne
+   \ifnum\@alcnt=\@ne
+    \expandafter\let\csname @al\@alone\endcsname\relax
+   \fi
+   \if@titlenote
+   \else
+    \ifnum\@ntcnt=\@ne
+     \global\expandafter\let\csname @nl\@ntone\endcsname\relax
+    \fi
+   \fi
+   \ifnum\@totalnumber>\@forcebreak
+    \ifodd \@totalnumber
+     \csname @authorname\number\@authorcnt\endcsname\hskip1.5zw
+      \csname @breakauthorline\number\@authorcnt\endcsname
+    \else
+     \xdef\@tempx{\@tempx
+      \csname @authorname\number\@authorcnt\endcsname
+       \csname @breakauthorline\number\@authorcnt\endcsname}%
+    \fi
+   \else
+    \csname @authorname\number\@authorcnt\endcsname\hskip1.5zw
+     \csname @breakauthorline\number\@authorcnt\endcsname
+   \fi
+ \repeat
+ \ifodd \@totalnumber\else
+  \@tempx\fi
+}
+\def\@tempx{\relax}
+
+\def\@outputEauthorlist{%
+ \@authorcnt\z@
+ \loop\ifnum\@authorcnt<\@totalnumber
+  \advance \@authorcnt \@ne 
+   \ifnum\@alcnt=\@ne
+    \expandafter\let\csname @al\@alone\endcsname\relax
+   \fi
+   \if@titlenote
+   \else
+    \ifnum\@ntcnt=\@ne
+     \global
+      \expandafter\let\csname @nl\@ntone\endcsname\relax
+    \fi
+   \fi
+    \csname @Eauthorname\number\@authorcnt\endcsname\hskip1.5zw
+     \csname @breakauthorline\number\@authorcnt\endcsname
+ \repeat
+}
+
+\def\@outputRauthorlist{%
+ \ifnum\@totalnumber<5\relax \breakauthorline{2}\else
+  \ifnum\@totalnumber<7\relax \breakauthorline{2,4}\else
+   \ifnum\@totalnumber<9\relax \breakauthorline{2,4,6}\else
+    \ifnum\@totalnumber<11\relax \breakauthorline{2,4,6,8}\else
+     \ifnum\@totalnumber<13\relax \breakauthorline{2,4,6,8,10}\else
+      \ifnum\@totalnumber<15\relax \breakauthorline{2,4,6,8,10,12}\else
+ \fi\fi\fi\fi\fi\fi
+ \@authorcnt\z@
+ \loop\ifnum\@authorcnt<\@totalnumber
+  \advance \@authorcnt \@ne
+   \ifnum\@alcnt=\@ne
+    \global\expandafter\let\csname @al\@alone\endcsname\relax
+   \fi
+   \if@titlenote
+   \else
+    \ifnum\@ntcnt=\@ne
+     \global\expandafter\let\csname @nl\@ntone\endcsname\relax
+    \fi
+   \fi
+    \ifodd\@totalnumber
+     \xdef\@tempx{\@tempx
+      \ifnum\@authorcnt=\@totalnumber
+      \else
+       \csname @authorname\number\@authorcnt\endcsname
+        \csname @breakauthorline\number\@authorcnt\endcsname
+      \fi}%
+    \else
+     \xdef\@tempx{\@tempx
+       \csname @authorname\number\@authorcnt\endcsname
+        \csname @breakauthorline\number\@authorcnt\endcsname}%
+    \fi
+ \repeat
+  \@tempx
+}
+
+\def\Ebreakauthorline#1{%
+ \@for\@breakauthor:=#1\do{%
+  \expandafter\gdef\csname @breakauthorline\@breakauthor\endcsname{\\}%
+ }%
+ \@authorcnt\z@
+ \loop\ifnum\@authorcnt<\@totalnumber
+  \advance \@authorcnt \@ne
+   \@ifundefined{@breakauthorline\number\@authorcnt}%
+    {\expandafter\gdef\csname @breakauthorline\number\@authorcnt\endcsname
+     {\relax}}{\relax}%
+ \repeat
+  \expandafter\gdef\csname
+   @breakauthorline\number\@totalnumber\endcsname{\relax}%
+}
+
+\def\breakauthorline#1{%
+ \@for\@breakauthor:=#1\do{%
+  \expandafter\gdef\csname @breakauthorline\@breakauthor\endcsname{\cr}%
+ }%
+ \@authorcnt\z@
+ \loop\ifnum\@authorcnt<\@totalnumber
+  \advance \@authorcnt \@ne
+   \@ifundefined{@breakauthorline\number\@authorcnt}
+    {\expandafter\gdef\csname @breakauthorline\number\@authorcnt\endcsname
+     {&}}{\relax}%
+ \repeat
+  \expandafter\gdef\csname
+   @breakauthorline\number\@totalnumber\endcsname{\relax}%
+}
+
+\if@english
+ \let\breakauthorline\Ebreakauthorline
+\fi
+
+\ifx\np@type\empty
+ \if@english
+ \def\affiliate[#1]#2{%
+  \advance \chk@alcnt \@ne
+  \begingroup
+   \@ifundefined{@al#1}%
+    {\expandafter\def\csname @al#1\endcsname{1}%
+     \typeout{Style jsai Warning: Label "#1" does not correspond to any labels 
+       ^^J\space\space in \string\authorentry.}}%
+    {\ifnum\@alcnt=\@ne
+      \xdef\@affiliate{%
+       \@hangfrom{$\ast$\hskip1zw}#2\par}%
+     \else
+      \xdef\@affiliate{\@affiliate
+       \@hangfrom{$\ast$\ \csname @al#1\endcsname\hskip1zw}#2\par}%
+     \fi
+    }%
+  \endgroup
+ }
+ \else
+ \def\affiliate[#1]#2#3{%
+  \advance \chk@alcnt \@ne
+  \begingroup
+   \def\protect{\noexpand\protect\noexpand}%
+   \@ifundefined{@al#1}%
+    {\expandafter\def\csname @al#1\endcsname{1}%
+     \typeout{Style jsai Warning: Label "#1" does not correspond to any labels 
+       ^^J\space\space in \string\authorentry.}}%
+    {\ifnum\@alcnt=\@ne
+      \xdef\@affiliate{\baselineskip=10\@Q
+       \@hangfrom{$\ast$\hskip1zw}#2\hfil\break{\protect\footnotesize #3}\par}%
+     \else
+      \xdef\@affiliate{\baselineskip=10\@Q
+       \@affiliate
+       \@hangfrom{$\ast$\ \csname @al#1\endcsname\hskip1zw}%
+        #2\hfil\break{\protect\footnotesize #3}\par}%
+     \fi
+    }%
+  \endgroup
+ }
+ \fi
+\else
+ \def\affiliate[#1]#2{%
+  \advance \chk@alcnt \@ne
+  \begingroup
+   \def\protect{\noexpand\protect\noexpand}%
+   \@ifundefined{@al#1}%
+    {\expandafter\def\csname @al#1\endcsname{1}%
+     \typeout{Style jsai Warning: Label "#1"  does not correspond to any labels
+      ^^J\space\space in \string\authorentry.}}%
+    {\xdef\@affiliate{\@affiliate
+       \protect\footnotetext[\csname @al#1\endcsname]{#2}}%
+    }%
+  \endgroup
+ }
+\fi
+\def\@affiliate{}
+
+\def\naffiliate[#1]#2{%
+ \global\advance \chk@ntcnt \@ne
+ \begingroup
+  \def\protect{\noexpand\protect\noexpand}%
+  \@ifundefined{@nl#1}%
+   {\expandafter\def\csname @nl#1\endcsname{1}%
+    \typeout{Style jsai Warning: Label "#1" does not correspond to any labels 
+      ^^J\space\space in \string\authorentry.}}%
+   {\if@blind
+     \sevrm\if@NTT\sevendm\else\sevmin\fi\baselineskip13\@Q
+     \setbox\@tempboxa\hbox{\parbox{\hsize}{%
+      \baselineskip13\@Q\leftskip2zw
+      \ifnum\@ntcnt>\@ne\parindent1zw\else\parindent.5zw\fi
+      #2%
+     }}%
+     \@tempdima\ht\@tempboxa \advance \@tempdima \dp\@tempboxa
+     \divide \@tempdima \baselineskip
+     \@tempcnta\@tempdima
+     \@tempcntb\z@
+     \def\blindsw@nt{\mbox{}}%
+     \loop
+      \ifnum\@tempcntb<\@tempcnta
+      \advance \@tempcntb \@ne
+      \edef\blindsw@nt{\blindsw@nt\hfil\break\mbox{}}%
+     \repeat
+     \xdef\auth@notation{\auth@notation
+      \protect\footnotetext[\csname @nl#1\endcsname]{\blindsw@nt}}%
+    \else
+     \xdef\auth@notation{\auth@notation
+      \protect\footnotetext[\csname @nl#1\endcsname]{#2}}%
+    \fi
+   }%
+ \endgroup
+}
+\def\auth@notation{}
+
+%%moved 1999.08.15
+%%\def\received#1#2#3{%
+%% \if@english
+%%  \xdef\@received{Received 
+%%   \ifcase#2 MM\or January\or February\or March\or April\or 
+%%    May\or June\or July\or August\or September\or October\or 
+%%    November\or December\fi\ #3, #1.}%
+%% \else
+%%  \gdef\@received{#1年#2月#3日\hskip1zw 受理}%
+%% \fi
+%%}
+%%\def\@received{}
+
+%%\if@english
+%% \received{19YY}{0}{DD}
+%%\else
+%% \received{19YY}{MM}{DD}
+%%\fi
+%%moved 1999.08.15
+
+\newbox\@summarybox
+\long\def\summary{%
+%%1999.08.15 % \if@RN\hsize\columnwidth\else\hsize\textwidth\fi
+ \if@RN\hsize\textwidth\else\hsize\textwidth\fi
+  \global\setbox\@summarybox\hbox\bgroup%
+   \begin{minipage}[t]{\hsize}%
+   \noindent
+   \hbox to \hsize{{\bf Summary\,}%
+%%1999.08.15 %   \leaders\hrule height 1.2mm depth -.9mm\hfil}\par
+    \leaders\hrule height 1.3mm depth -0.9mm\hfil}\par
+   \nointerlineskip
+   \vskip10\@Q
+   \parindent3zw
+   \leftskip1zw
+   \rightskip1zw
+   \baselineskip15\@Q
+   \ignorespaces}
+\def\endsummary{\par
+ \hbox to \hsize{\leaders\hrule height .6mm depth -.5mm\hfil}%
+ \end{minipage}\egroup\ignorespaces}
+
+\newbox\@keywordbox
+\long\def\keyword{%
+%%1999.08.15 % \if@RN\hsize\columnwidth\else\hsize\textwidth\fi
+ \if@RN\hsize\textwidth\else\hsize\textwidth\fi
+  \global\setbox\@keywordbox\hbox\bgroup%
+   \begin{minipage}[t]{\hsize}%
+    \baselineskip15\@Q
+    \@hangfrom{\bf Keywords:\ }\ignorespaces}
+\def\endkeyword{\end{minipage}\egroup\ignorespaces}
+
+\def\ADJ#1{\gdef\@ADJ{#1}}
+\def\@ADJ{}
+\ADJ{0mm}
+
+%%1999.08.15 add
+\def\Fbox#1{\setlength{\unitlength}{1mm}
+    \begin{picture}(16,4)%
+    \put(8,2){\oval(16,3.5)}%
+    \put(0,0){\makebox(16,4){\hss{\bf #1}\hss}}%
+    \end{picture}%
+}
+\def\DFbox#1{\setlength{\unitlength}{1mm}
+    \begin{picture}(20,4)%
+    \put(10,2){\oval(20,3.5)}%
+    \put(0,0){\makebox(20,4){\hss{\bf #1}\hss}}%
+    \end{picture}%
+}
+\def\WDFbox#1{\setlength{\unitlength}{1mm}
+    \begin{picture}(32,4)%
+    \put(16,2){\oval(32,3.5)}%
+    \put(0,0){\makebox(32,4){\hss{\bf #1}\hss}}%
+    \end{picture}%
+}
+
+%% 2008.07.29-begin by morita
+\def\WWDFbox#1{\setlength{\unitlength}{1mm}
+    \begin{picture}(40,4)%
+    \put(20,2){\oval(40,3.5)}%
+    \put(0,0){\makebox(40,4){\hss{\bf #1}\hss}}%
+    \end{picture}%
+}
+%% 2008.07.29-end by morita
+
+\def\GIbox#1{\fbox{\rule[-.5mm]{0mm}{5mm}{\hbox to 5mm{%
+\kern.4ex
+\hss {\LARGE\bf #1}\hss }}}}
+
+%%1999.08.15 add
+
+\ifx\@type\default@type
+\else
+\expandafter\def\csname type@\@type\endcsname{%
+ \if@RN
+ \fboxsep=.5mm
+%%1999.08.15% \fbox{ショートノート}\hfill
+ \WDFbox{ショートノート}\hfill
+  \vtop{\hbox to 31.5mm{\hss{\EFetype Research Notes}\hss}%
+   \nointerlineskip\vskip1mm
+   \hbox to 31.5mm{\leaders\hrule height.1mm\hfil}}%
+  \unitlength=.3mm
+  \begin{picture}(5.5,12.5)
+   \put(0,-3){\line(2,5){6}}%
+  \end{picture}\par
+ \nointerlineskip\vskip5mm
+\else
+%%1999.08.15%
+%% \vbox to 11mm{%
+%% \fbox{技}\hskip1mm\fbox{術}\hskip1mm\fbox{資}\hskip1mm\fbox{料}%
+%%   \hskip3mm\@issueon
+%%  \vss}%
+%%1999.08.15%
+%%1999.08.15 %add
+  \if@TR
+  \GIbox{技}\hskip1mm\GIbox{術}\hskip1mm\GIbox{資}\hskip1mm\GIbox{料}%
+  \hfill
+  \vtop{\hbox to 33.5mm{\hss\smash{\EFetype Technical Reports}\hss}%
+   \nointerlineskip\vskip1mm
+   \hbox to 33.5mm{\leaders\hrule height.1mm\hfil}}%
+  \unitlength=.3mm
+  \begin{picture}(5.5,12.5)
+   \put(0,-3){\line(2,5){6}}%
+  \end{picture}\par
+  \nointerlineskip\vskip5mm
+  \else
+%%1999.08.15 %add
+%%1999.08.15%
+%%   \vbox to 12mm{%
+%%   \if@SI \fbox{特\hskip1zw 集}\else
+%%    \if@SSI \fbox{小\hskip1zw 特\hskip1zw 集}\else
+%%     \if@SP \fbox{特集論文}\else
+%%      \if@IR \fbox{報\hskip1zw 告}\else
+%%       \if@SV \fbox{解\hskip1zw 説}\else
+%%        \if@AI \fbox{AIマップ}\else
+%%1999.08.15%
+   \vbox to 12mm{%
+    \if@SI \Fbox{特\hskip1zw 集}\else
+     \if@SSI \DFbox{小\hskip1zw 特\hskip1zw 集}\else
+      \if@SP \DFbox{特集論文}\else
+       \if@IR \Fbox{報\hskip1zw 告}\else
+        \if@SV \Fbox{解\hskip1zw 説}\else
+         \if@AI \makebox{{\Huge\sl A\kern-.25ex I}マップ}\else
+    \fi\fi\fi\fi\fi\fi
+    \hskip3mm\@issueon
+   \vss}%
+  \fi
+  \nointerlineskip
+ \fi
+}
+\fi
+
+\def\issueon#1{\gdef\@issueon{#1}}
+\def\@issueon{}
+
+\def\type@TP{%
+%%1999.08.15  \fbox{原著論文} modified by morita
+  \Fbox{原著論文}
+  \hfill
+  \vtop{\hbox to 33.5mm{\hss\smash{\EFetype Original Paper}\hss}%
+   \nointerlineskip\vskip1mm
+   \hbox to 33.5mm{\leaders\hrule height.1mm\hfil}}%
+  \unitlength=.3mm
+  \begin{picture}(5.5,12.5)
+   \put(0,-3){\line(2,5){6}}%
+  \end{picture}\par
+  \nointerlineskip\vskip5mm
+}
+
+%% 2008.07.29-begin by morita
+\def\type@OP{%
+  \Fbox{原著論文}
+  \hfill
+  \vtop{\hbox to 33.5mm{\hss\smash{\EFetype Original Paper}\hss}%
+   \nointerlineskip\vskip1mm
+   \hbox to 33.5mm{\leaders\hrule height.1mm\hfil}}%
+  \unitlength=.3mm
+  \begin{picture}(5.5,12.5)
+   \put(0,-3){\line(2,5){6}}%
+  \end{picture}\par
+  \nointerlineskip\vskip5mm
+}
+
+%% 2010.08.30 remove AIFP by morita
+
+\def\type@SHP{%
+  \Fbox{速報論文}
+  \hfill
+  \vtop{\hbox to 33.5mm{\hss\smash{\EFetype Short Paper}\hss}%
+   \nointerlineskip\vskip1mm
+   \hbox to 33.5mm{\leaders\hrule height.1mm\hfil}}%
+  \unitlength=.3mm
+  \begin{picture}(5.5,12.5)
+   \put(0,-3){\line(2,5){6}}%
+  \end{picture}\par
+  \nointerlineskip\vskip5mm
+}
+%% 2008.07.29-end by morita
+
+%% 2008.10.20-begin by morita
+\def\type@ERP{%
+  \Fbox{萌芽論文}
+  \hfill
+  \vtop{\hbox to 57.0mm{\hss\smash{\EFetype Exploratory Research Paper}\hss}%
+   \nointerlineskip\vskip1mm
+   \hbox to 57.0mm{\leaders\hrule height.1mm\hfil}}%
+  \unitlength=.3mm
+  \begin{picture}(5.5,12.5)
+   \put(0,-3){\line(2,5){6}}%
+  \end{picture}\par
+  \nointerlineskip\vskip5mm
+}
+%% 2008.10.20-end by morita
+
+%% 2008.11.06-begin by morita
+\def\type@IP{%
+  \Fbox{招待論文}
+  \hfill
+  \vtop{\hbox to 33.5mm{\hss\smash{\EFetype Invited Paper}\hss}%
+   \nointerlineskip\vskip1mm
+   \hbox to 33.5mm{\leaders\hrule height.1mm\hfil}}%
+  \unitlength=.3mm
+  \begin{picture}(5.5,12.5)
+   \put(0,-3){\line(2,5){6}}%
+  \end{picture}\par
+  \nointerlineskip\vskip5mm
+}
+%% 2008.11.06-end by morita
+
+\if@english
+ \let\type@EP\type@TP
+\fi
+
+\def\maketitle{\par
+ \ifnum\chk@alcnt < \@alcnt
+  \typeout{Style jsai Warning: Information of \string\affiliate\space is 
+           not assigned.}%
+ \fi
+ \ifnum\chk@ntcnt < \@ntcnt
+  \typeout{Style jsai Warning: Information of \string\naffiliate\space is 
+           not assigned.}%
+ \fi
+ \begingroup
+%%1999.08.15 %add
+ \def\thefootnote{\arabic{footnote}}%
+%%% 2002.10.15-begin by kamisima
+%\def\@makefnmark{{\scriptsize \hbox to\z@{$\m@th^{\dagger\@thefnmark}$\hss}}}%
+ \def\@makefnmark{{\scriptsize \hbox to\z@{$\m@th^{\ast\@thefnmark}$\hss}}}%
+%%% 2002.10.15-end by kamisima
+ \long\def\@makefntext##1{\parindent1zw\leftskip2zw
+   \noindent\hbox to \z@{\hss{\dag}\@thefnmark}\hskip1zw ##1}%
+\ifx\np@type\empty
+\if@RN
+    \twocolumn[{\typefont@all \csname type@\@type\endcsname}
+\@maketitle]
+%%1999.08.15 %add
+%%1999.08.15%
+%% \parindent\z@
+%% \twocolumn[{\typefont@all \csname type@\@type\endcsname}]
+%% \@maketitle
+%% \mbox{}
+%% \vskip-1\baselineskip
+%%1999.08.15%
+\else
+    \twocolumn[\@maketitle]
+    \fi
+%%1999.08.15%
+%%   \ifnum\@ntcnt=\@ne
+%%    \long\def\@makefntext##1{\parindent1zw\leftskip2zw
+%%     \noindent\hbox to \z@{\hss\dag\hskip.5zw}\hskip.5zw ##1}%
+%%   \else
+%%    \def\thefootnote{\arabic{footnote}}%
+%%    \long\def\@makefntext##1{\parindent1zw\leftskip2zw
+%%     \noindent\hbox to \z@{\hss{\dag}\@thefnmark}\hskip1zw ##1}%
+%%   \fi
+%%1999.08.15%
+   \title@notation
+   \auth@notation
+  \else
+   \parindent\z@
+   \csname @make\np@type title\endcsname
+%%1999.08.15 
+%%   \ifnum\@alcnt=\@ne
+%%    \long\def\@makefntext##1{\parindent1zw\leftskip2zw
+%%     \noindent\hbox to \z@{\hss $\ast$}\hskip1zw ##1}%
+%%   \else
+%%    \def\thefootnote{\arabic{footnote}}%
+%%    \long\def\@makefntext##1{\parindent1zw\leftskip2zw
+%%     \noindent\hbox to \z@{\hss $\ast$\@thefnmark}\hskip1zw ##1}%
+%%   \fi
+%%1999.08.15 
+  \def\temp@type{NP}%
+  \ifx\np@type\temp@type\else
+    \def\temp@type{SN}%
+    \ifx\np@type\temp@type\else
+%%1999.08.15 %    \@affiliate
+    \fi
+   \fi
+  \fi
+%%1999.08.15 %add
+%% \thispagestyle{myheadings}\@thanks
+ \thispagestyle{TOPheadings}\@thanks
+%%1999.08.15 %add
+ \endgroup
+  \setcounter{footnote}{0}%
+%%1999.08.15 %add
+ \setcounter{mpfootnote}{0}%
+%%1999.08.15 %add
+  \let\maketitle\relax
+  \let\@maketitle\relax
+  \expandafter\let\csname @make\np@type title\endcsname\relax
+  \let\jtitle\relax\let\jsubtitle\relax
+  \let\etitle\relax\let\esubtitle\relax
+%%1999.08.15  \let\received\relax
+%%1999.08.15  \let\@received\relax
+  \let\title@notation\relax
+  \gdef\auth@notation{}
+  \gdef\@titlenote{}
+%%1999.08.15 %add
+  \global\let\author\relax
+  \gdef\@author{}
+  \global\let\and\relax
+  \gdef\@thanks{}
+  \let\thanks\relax
+%%1999.08.15 %add
+  \let\titlenote\relax\let\@titlenotemark\relax
+  \let\affiliate\relax\let\@affiliate\relax
+  \let\naffiliate\relax
+  \let\@outputauthorlist\relax
+  \let\@outputEauthorlist\relax
+  \let\@outputRauthorlist\relax
+  \let\J@aeP\relax\let\J@ae\relax
+  \let\E@aeP\relax\let\E@ae\relax
+  \let\breakauthorline\relax
+  \let\Ebreakauthorline\relax
+  \expandafter\let\csname type@\@type\endcsname\relax
+%%1999.08.15 
+%%  \@authorcnt\z@
+%%  \loop\ifnum\@authorcnt<\@totalnumber
+%%   \advance \@authorcnt \@ne
+%%    \if@english
+%%     \expandafter\let\csname @Eauthorname\number\@authorcnt\endcsname\relax
+%%    \else
+%%     \expandafter\let\csname @authorname\number\@authorcnt\endcsname\relax
+%%    \fi
+%%  \repeat
+%%1999.08.15 
+}
+
+\def\@maketitle{% \newpage\null
+\if@RN\else
+{\typefont@all
+  \fboxsep=.5mm
+  \csname type@\@type\endcsname\par
+  }
+  \fi
+  \if@english
+  \if@RN
+   {\csname jtitlefont@\@type\endcsname
+   \@etitle\par
+   }
+  \else
+   \if@TR
+    {\csname jtitlefont@\@type\endcsname
+     \@etitle\par
+    }
+   \else
+    {\csname etitlefont@\@type\endcsname
+     \@etitle\par
+    }
+   \fi
+  \fi
+ \else
+  {\csname jtitlefont@\@type\endcsname
+   \@jtitle\par
+  }
+  \ifx\@jsubtitle\empty\else
+   \nointerlineskip
+   \vskip3mm
+   {\csname jsubtitlefont@\@type\endcsname
+    \@jsubtitle\par
+   }
+  \fi
+  \nointerlineskip
+%% NEW ADD 2000.11.20
+%%  \vskip3mm % <-- 10H
+  \vskip4mm % <-- 10H
+%% NEW ADD 2000.11.20
+  {\csname etitlefont@\@type\endcsname
+   \@etitle\par
+  }
+ \fi
+ \ifx\@esubtitle\empty
+ \else
+%% NEW ADD 2000.11.20
+%%  \vskip.5mm % <-- \z@
+  \vskip-1mm % <-- \z@
+%% NEW ADD 2000.11.20
+  {\csname esubtitlefont@\@type\endcsname
+   \@esubtitle\par
+  }
+ \fi
+%%1999.08.18 \nointerlineskip
+ \vskip20\@Q
+%%1999.08.15 %add
+%\@ifundefined{@author}{}{\@author}
+\@ifundefined{@author}{}{%
+      \noindent
+      \begin{tabular}[t]{l}%
+      \@author
+      \end{tabular}\par}
+%%1999.08.15 %add
+%%1999.08.18
+%% {\authorfont@all
+%%  \if@english
+%%   \centering
+%%   \@outputEauthorlist\par
+%%  \else
+%%   \def\arraystretch{1.45}%
+%%   \tabcolsep=.75zw
+%%   \baselineskip=34\@Q
+%%   \if@RN
+%%    \ifodd \@totalnumber
+%%     \centering
+%%     \begin{tabular}{@{}ll@{}}
+%%      \ifnum\@totalnumber=\@ne
+%%       \multicolumn{2}{c}{%
+%%        \expandafter\let\csname @al\@alone\endcsname\relax
+%%        \ifnum\@ntcnt=\@ne
+%%         \expandafter\let\csname @nl\@ntone\endcsname\relax\fi
+%%         \csname @authorname\number\@totalnumber\endcsname}
+%%      \else
+%%       \@outputRauthorlist
+%%       \multicolumn{2}{c}{%
+%%        \csname @authorname\number\@totalnumber\endcsname}
+%%      \fi
+%%     \end{tabular}\par
+%%    \else
+%%     \centering
+%%     \begin{tabular}{@{}ll@{}}
+%%      \@outputRauthorlist
+%%     \end{tabular}\par
+%%    \fi
+%%   \else
+%%    \ifnum\@totalnumber>\@forcebreak
+%%     \ifodd\@totalnumber
+%%      \centering
+%%      \@outputauthorlist\par
+%%     \else
+%%      \centering
+%%      \begin{tabular}{@{}lllll@{}}
+%%       \@outputauthorlist
+%%      \end{tabular}\par
+%%     \fi
+%%    \else
+%%     \centering
+%%     \@outputauthorlist\par
+%%    \fi
+%%   \fi
+%%  \fi
+%% }
+%% \nointerlineskip
+ \vskip20\@Q
+%%1999.08.15 \vskip22\@Q
+ {\baselineskip=14\@Q
+  \blindsw@aff{\@affiliate}\par
+ }
+%%1999.08.15 \nointerlineskip
+%%1999.08.15 \vskip22\@Q
+%%1999.08.15 \@received\par
+ \ifvoid\@keywordbox
+ \else
+  \nointerlineskip
+%%1999.08.15  \vskip22\@Q
+  \leavevmode\box\@keywordbox\par
+ \fi
+ \ifvoid\@summarybox
+ \else
+  \onelineskip
+  \leavevmode\box\@summarybox\par
+ \fi
+  \nointerlineskip
+  \vskip12mm
+  \vspace{\@ADJ}
+}
+
+\def\blindsw@aff#1{%
+ \if@blind
+  \setbox\@tempboxa\hbox{\parbox{\hsize}{\baselineskip=14\@Q #1}}%
+  \@tempdima\ht\@tempboxa \advance \@tempdima \dp\@tempboxa
+  \vbox to \@tempdima{\vss}%
+ \else
+  #1%
+ \fi
+}
+
+\def\@makeCOMtitle{%
+ \onecolumn\null
+ \global\@topnum\z@
+ \boxmaxdepth\z@
+ \lineskiplimit\z@
+ \lineskip\z@
+ \vbox to \@Headheight{%
+  \leavevmode
+  \smash{\rlap{%
+   \begin{picture}(60,30)(0,27)
+    \put(0,0){\line(0,1){30}}
+    \put(0,30){\line(1,0){60}}
+    \put(0,0){\line(2,1){60}}
+    \put(6,18){{\Large\bf 巻\hskip1zw 頭\hskip1zw 言}}
+   \end{picture}
+  }}%
+  \vss\vss
+  {\csname jtitlefont@\np@type\endcsname
+   \begin{Center}
+    \@jtitle
+   \end{Center}
+  }%
+  \ifx\@jsubtitle\empty\else
+   \nointerlineskip
+   \vskip2mm
+   {\csname jsubtitlefont@\np@type\endcsname
+    \begin{Center}
+     \@jsubtitle\par
+    \end{Center}
+   }%
+  \fi
+\vss\vss
+%%1999.08.15%
+%%  {\authorfont@all
+%%    \centering
+%%    \@outputauthorlist\par
+%%  }%
+%%1999.08.15%
+%%1999.08.15 %add
+\@ifundefined{@author}{}{%
+\begin{center}
+    \@author
+\end{center}
+\par}
+%%1999.08.15 %add
+  \vss
+ }%
+}
+
+\def\@makeFORtitle{%
+ \twocolumn[%
+ \boxmaxdepth\z@
+ \lineskiplimit\z@
+ \lineskip\z@
+ \vbox to \@Headheight{%
+  \vss
+  {\csname jtitlefont@\np@type\endcsname
+   \begin{Center}
+    \@jtitle
+   \end{Center}
+  }%
+  \ifx\@jsubtitle\empty\else
+   \nointerlineskip
+   \vskip2mm
+   {\csname jsubtitlefont@\np@type\endcsname
+    \begin{Center}
+     \@jsubtitle\par
+    \end{Center}
+   }%
+  \fi
+  \vss\vss
+%%1999.08.15%
+%%  {\authorfont@all
+%%    \centering
+%%    \@outputauthorlist\par
+%%  }%
+%%1999.08.15%
+%%1999.08.15 %add
+\@ifundefined{@author}{}{%
+\begin{center}
+    \@author
+\end{center}
+\par}
+%%1999.08.15 %add
+  \vskip23\@Q
+ }]%
+}
+
+\def\@makeESStitle{%
+ \onecolumn\null
+ \global\@topnum\z@
+ \boxmaxdepth\z@
+ \lineskiplimit\z@
+ \lineskip\z@
+ \vbox to \@Headheight{\hsize=170.5mm%125mm%%1999.08.15
+  \vskip.5\baselineskip
+  \leavevmode
+  \hbox to \hsize{%
+   {\Large 
+    \hbox to 1zw{\leaders\hbox to .5mm{\vrule height 1mm width .1mm\hss}\hfil}%
+    \ 随\ 
+    \hbox to 1zw{\leaders\hbox to .5mm{\vrule height 1mm width .1mm\hss}\hfil}%
+    \ 想}\ 
+   \leaders\hbox to .5mm{\vrule height 1mm width .1mm\hss}\hfil
+  }%
+  \vss\vss
+  {\csname jtitlefont@\np@type\endcsname
+   \begin{Center}
+    \@jtitle
+   \end{Center}
+  }%
+  \ifx\@jsubtitle\empty\else
+   \nointerlineskip
+   \vskip2mm
+   {\csname jsubtitlefont@\np@type\endcsname
+    \begin{Center}
+     \@jsubtitle\par
+    \end{Center}
+   }%
+  \fi
+  \vss\vss
+%%1999.08.15%
+%%  {\authorfont@all
+%%    \centering
+%%    \@outputauthorlist\par
+%%  }%
+%%1999.08.15%
+%%1999.08.15 %add
+\@ifundefined{@author}{}{%
+\begin{center}
+    \@author
+\end{center}
+\par}
+%%1999.08.15 %add
+  \vss
+ }%
+}
+
+\def\bookinfo#1{\gdef\@bookinfo{#1}}
+\def\@bookinfo{}
+\def\bookinfoheight#1{\gdef\@bookinfoheight{#1\baselineskip}}
+\bookinfoheight{5}
+%%1999.08.15 %\def\FromTo#1#2{\gdef\@FromTo{#1〜#2}}
+\def\FromTo#1#2{\gdef\@FromTo{#1$\sim$#2}}
+\def\@FromTo{}
+
+\def\Calendar#1{\par
+ \parindent\z@
+ \sloppy
+ {\bf #1}\par
+}
+%%1999.08.15 %\def\endCalendar{\par}
+\def\endCalendar{\par\vskip\baselineskip}
+
+\def\Date#1{\@hangfrom{\hskip1zw Date:\ }#1\par}
+\def\Location#1{\@hangfrom{\hskip1zw Location:\ }#1\par}
+\def\Contact#1{\@hangfrom{\hskip1zw Contact:\ }#1\par}
+\def\Note#1{\@hangfrom{\hskip1zw Note:\ }#1\par}
+
+\def\@makeNPtitle{%
+ \def\temp@type{CAL}%
+ \ifx\@type\temp@type
+  \global\baselineskip16\@Q
+  \global\raggedbottom
+ \fi
+ \twocolumn[%
+ \boxmaxdepth\z@
+ \lineskiplimit\z@
+ \lineskip\z@
+ \vbox to \@Headheight{%
+  \vss
+%%1999.08.15 %  {\csname jtitlefont@\np@type\endcsname
+  {\csname Jtitlefont@\np@type\endcsname
+   \hskip15mm\@titlejidori{\np@head}\par
+%%1999.09.15 %add and %% NEW ADD 2000.11.20
+%%\gdef\@foottitle{{\rm \@KINTO{9zw}{\protect 人工知能学会誌}}\hskip1zw \Volume}
+\gdef\@foottitle{{\rm \journalname}\hskip1zw \Volume}
+\@foottitlelength
+%%1999.09.15 %add and %% NEW ADD 2000.11.20
+  }%
+   \nointerlineskip
+   \vskip.25mm
+   \hskip15mm\hbox to 140.5mm%%129mm %%1999.08.15%
+     {\leaders\hrule height .1mm\hfil}\par
+   \ifx\@FromTo\empty\else
+    \nointerlineskip
+    \vskip.25mm
+    \hskip15mm\hbox to 140.5mm%%129mm %%1999.08.15%
+     {\hss\hbox{\@FromTo}}\par
+   \fi 
+  \vss
+  \ifx\@bookinfo\empty\else
+   \vbox to \@bookinfoheight{%
+    \vss
+%%1999.08.15%     \hfill\parbox{147mm}{\large\bf\@bookinfo}%
+     \hfill\parbox{170.5mm}{\slarge\bf\@bookinfo}%
+    \vss
+   }%
+  \fi
+ }]%
+  {\csname jtitlefont@\np@type\endcsname
+%%1999.08.15% add
+    \raggedright
+    \@jtitle
+\vskip\baselineskip
+%%1999.08.15% add
+  }%
+}
+
+\def\societynewssize#1#2{\gdef\@societynewssize{#1\baselineskip#2}}
+\societynewssize{\small}{17\@Q}% depend on an issue
+
+\def\@makeSNtitle{%
+%%1999.08.15% add
+% \def\temp@type{CAL}%
+% \ifx\@type\temp@type
+  \global\baselineskip17\@Q
+  \global\raggedbottom
+% \fi
+%%1999.08.15% add
+ \@societynewssize
+ \twocolumn[%
+ \boxmaxdepth\z@
+ \lineskiplimit\z@
+ \lineskip\z@
+ \vbox to \@Headheight{%
+  \vss\vss\vss
+  {\if@NTT\twelvedg\else\twlgt\fi
+   \hskip15mm
+   \unitlength1mm
+   \@wholewidth.2mm
+   \@halfwidth.2mm
+   \@tfor\@getwd:=学会だより\do{%
+    \begin{picture}(9.75,8)
+     \put(1.5,2){\@getwd}
+     \bezier{200}(0.5,6)(-1.25,2)(2,0)
+     \bezier{200}(0.5,6)(3.4,9.7)(7,6.4)
+     \thicklines
+     \put(2,0){\line(4,1){4}}
+    \end{picture}%
+   }
+%%1999.09.15 %add and %% NEW ADD 2000.11.20
+%%\gdef\@foottitle{{\rm \@KINTO{9zw}{\protect 人工知能学会誌}}\hskip1zw \Volume}
+\gdef\@foottitle{{\rm \journalname}\hskip1zw \Volume}
+\@foottitlelength
+%%1999.09.15 %add and %% NEW ADD 2000.11.20
+  }\par
+   \nointerlineskip
+   \vskip2.5mm
+   \hbox to \hsize{%
+    \leaders\hbox to .5mm{\vrule height 1.5mm width .2mm\hss}\hfil
+   }
+  \vss\vss
+ }]%
+%%1999.08.15% add
+  {\csname jtitlefont@\np@type\endcsname
+   \noindent   
+    \@jtitle
+\vskip\baselineskip
+}
+%%1999.08.15% add
+}
+
+\mark{{}{}}
+\def\@Rtop{\rlap{\smash{\raisebox{-\headsep}%
+ {\rule{0.1mm}{10mm}\rule{10mm}{0.1mm}}}}}
+\def\@Ltop{\llap{\smash{\raisebox{-\headsep}%
+ {\rule{10mm}{0.1mm}\rule{0.1mm}{10mm}}}}}
+\def\@Rbot{\rlap{\smash{\raisebox{\footskip}%
+ {\rule[-10mm]{0.1mm}{10mm}\rule{10mm}{0.1mm}}}}}
+\def\@Lbot{\llap{\smash{\raisebox{\footskip}%
+ {\rule{10mm}{0.1mm}\rule[-10mm]{0.1mm}{10mm}}}}}
+
+\def\ps@jsai{\let\@mkboth\@gobbletwo
+ \def\@evenfoot{\ifProof\@Lbot\fi
+  \rlap{\hskip3mm\EFfootnomble \thevolpage}\hfil
+  \hbox to 9zw{\kanjiskip\z@ plus 1fill 人工知能学会誌}\hfil
+  \llap{\EFfootnomble Vol.\@Vol\ No.\@No\hskip3mm}%
+  \ifProof\@Rbot\fi}%
+ \if@samehead
+  \let\@oddfoot\@evenfoot
+ \else
+  \def\@oddfoot{\ifProof\@Lbot\fi
+   \rlap{\EFfootnomble\hskip3mm \@Month\ \@Year}\hfil
+   {\if@english\EFfoot\fi\@foottitle}\hfil
+   \llap{\EFfootnomble \thevolpage\hskip3mm}%
+   \ifProof\@Rbot\fi}%
+ \fi
+ \def\@evenhead{\ifProof\@Ltop\fi
+  \hskip3mm{\EFheadnomble\thepage}\hfill
+  \ifProof\@Rtop\fi}%
+ \def\@oddhead{\ifProof\@Ltop\fi
+  \hfill{\EFheadnomble\thepage}\hskip3mm
+  \ifProof\@Rtop\fi}%
+}
+
+\newcounter{volpage}
+\newif\if@addvolpage\@addvolpagefalse
+\def\thevolpage{%
+ \if@addvolpage
+ \else
+  \ifnum\c@volpage=\z@\else
+   \advance\c@volpage\m@ne\fi
+  \global\@addvolpagetrue
+ \fi
+  \global\advance\c@volpage\@ne
+  \the\c@volpage
+}
+
+\def\Vol#1{\gdef\@Vol{#1}%
+ \ifx\@Vol\empty
+   \gdef\@Year{\number\year}%
+ \else
+  \@tempcnta=#1\advance\@tempcnta 1985\relax
+   \xdef\@Year{\the\@tempcnta}%
+ \fi
+}
+\def\@Vol{xx}
+\def\@Year{\number\year}
+
+\def\No#1{\gdef\@No{#1}%
+ \ifx\@No\empty
+  \xdef\@Month{xxx}\gdef\@No{x}%
+ \else
+%  \xdef\@Month{\ifcase#1\or
+%   Jan.\or March\or May\or July\or Sept.\or Nov.\else\fi}%
+  \xdef\@Month{\ifcase#1\or
+   1\or 3\or 5\or 7\or 9\or 11\else\fi}%
+ \fi
+}
+\def\@No{x}
+\def\@Month{xxx}
+
+\def\[{\relax\ifmmode\@badmath\else
+  \begin{trivlist}\item[]\leavevmode
+   \hbox to\linewidth\bgroup$ \displaystyle
+   \hskip\mathindent\bgroup\fi}
+\def\]{\relax\ifmmode \egroup $\hfil \egroup \end{trivlist}\else \@badmath \fi}
+
+\def\equation{\refstepcounter{equation}
+ \trivlist \item[]\leavevmode
+  \hbox to\linewidth\bgroup $ \displaystyle
+   \hskip\mathindent}
+\def\endequation{$\hfil \displaywidth\linewidth\@eqnnum\egroup \endtrivlist}
+
+\def\eqnarray{\stepcounter{equation}
+ \let\@currentlabel=\theequation
+ \global\@eqnswtrue
+ \global\@eqcnt\z@\tabskip\mathindent\let\\=\@eqncr
+ \abovedisplayskip\topsep\ifvmode\advance\abovedisplayskip\partopsep\fi
+ \belowdisplayskip\abovedisplayskip
+ \belowdisplayshortskip\abovedisplayskip
+ \abovedisplayshortskip\abovedisplayskip
+ $$\halign to
+ \linewidth\bgroup\@eqnsel\hskip\@centering$\displaystyle\tabskip\z@
+ {##}$&\global\@eqcnt\@ne \hskip .8\arraycolsep \hfil${##}$\hfil
+ &\global\@eqcnt\tw@ \hskip .8\arraycolsep $\displaystyle{##}$\hfil 
+ \tabskip\@centering&\llap{##}\tabskip\z@\cr}
+\def\endeqnarray{\@@eqncr\egroup
+ \global\advance\c@equation\m@ne$$\global\@ignoretrue }
+
+\newdimen\mathindent 
+\mathindent 3zw
+
+%%1999.08.15
+\if@english
+\def\thinspace{\kern .16667em }
+\def\negthinspace{\kern-.16667em }
+\def\enspace{\kern.5em }
+\else
+\def\thinspace{\kern .25zw }
+\def\negthinspace{\kern-.25zw }
+\def\enspace{\kern.5zw }
+\fi
+\thickmuskip=4.3mu%
+\medmuskip=3.15mu%
+\thinmuskip=2.15mu%
+\def\>{\mskip\medmuskip}
+%\def\;{\mskip\thickmuskip}
+%\def\!{\mskip-\thinmuskip}
+\def\,{\relax\ifmmode\mskip\thinmuskip\else\thinspace\fi}
+\def\;{\relax\ifmmode\mskip\thickmuskip\else\enspace\fi}
+\def\!{\relax\ifmmode\mskip-\thinmuskip\else\negthinspace\fi}
+%%1999.08.15
+
+%%1999.08.15 %\def\theequation{\arabic{equation}}
+%%1999.08.15 %\def\@eqnnum{{\rm (\theequation)}\hskip3mm}%
+\def\theequation{(\arabic{equation})}
+\def\@eqnnum{{\rm \theequation}\hskip3mm}%
+
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+ \def\@citea{}%
+ \@cite{\@for\@citeb:=#2\do
+  {\@citea\def\@citea{,\penalty\@m\ }%
+   \@ifundefined{b@\@citeb}{{\bf ?}\@warning
+    {Citation `\@citeb' on page \thepage \space undefined}}%
+    {\csname b@\@citeb\endcsname}}}%
+ {#1}}
+
+\if@english
+ \def\refstepcounter#1{\stepcounter{#1}\let\@tempa\protect
+  \def\protect{\noexpand\protect\noexpand}%
+  \def\@tempref{#1}%
+  \def\@tempsec{section}%
+  \def\@tempsubsec{subsection}%
+%% NEW ADD 2000.11.20 §1 §2 ... 表示のためのコメントアウト
+%% 2002.10.16復活
+  \def\@tempsubsubsec{subsubsection}%%1999.09.29 %modified by kamisima
+%% NEW ADD 2000.11.20 
+   \ifx\@tempref\@tempsec
+%%1999.09.29-begin by kamisima
+    \if@appendix
+     \edef\@currentlabel{{\protect\@secreffont \csname p@appendix\endcsname%
+      \csname the#1\endcsname}}\else
+     \edef\@currentlabel{{\protect\@secreffont \csname p@#1\endcsname
+      \csname the#1\endcsname}}\fi%
+%%1999.09.29-end by kamisima
+   \else
+    \ifx\@tempref\@tempsubsec
+%%1999.09.29-begin by kamisima
+     \if@appendix
+      \edef\@currentlabel{{\protect\@secreffont \csname p@appendix\endcsname%
+       \csname the#1\endcsname}}\else
+      \edef\@currentlabel{{\protect\@secreffont \csname p@#1\endcsname
+       \csname the#1\endcsname}}\fi%
+%%1999.09.29-end by kamisima
+%%1999.08.15 %add
+   \else
+    \ifx\@tempref\@tempsubsubsec
+%%1999.09.29-begin by kamisima
+     \if@appendix
+      \edef\@currentlabel{{\protect\@secreffont \csname p@appendix\endcsname%
+       \csname thelbl#1\endcsname}}\else
+      \edef\@currentlabel{{\protect\@secreffont \csname p@#1\endcsname
+       \csname thelbl#1\endcsname}}\fi%
+%%1999.09.29-end by kamisima
+%%1999.08.15 %add
+    \else
+     \edef\@currentlabel{\csname p@#1\endcsname\csname the#1\endcsname}%
+    \fi
+   \fi
+  \fi %%1999.08.15 %add
+  \let\protect\@tempa}
+\else
+ \def\refstepcounter#1{\stepcounter{#1}\let\@tempa\protect
+  \def\protect{\noexpand\protect\noexpand}%
+  \def\@tempref{#1}%
+  \def\@tempsec{section}%
+  \def\@tempsubsec{subsection}%
+%% NEW ADD 2000.11.20§1 §2 ... 表示のためのコメントアウト
+%% 2002.10.16復活
+  \def\@tempsubsubsec{subsubsection}%%1999.09.29 %modified by kamisima
+%% NEW ADD 2000.11.20
+   \ifx\@tempref\@tempsec
+%%1999.09.29-begin by kamisima
+    \if@appendix
+     \edef\@currentlabel{{\protect\@secreffont \csname p@appendix\endcsname%
+      \csname the#1\endcsname}}\else
+     \edef\@currentlabel{{\protect\@secreffont
+      \csname the#1\endcsname \csname p@#1\endcsname}}\fi%
+%%1999.09.29-end by kamisima
+   \else
+    \ifx\@tempref\@tempsubsec
+%%1999.09.29-begin by kamisima
+     \if@appendix
+      \edef\@currentlabel{{\protect\@secreffont \csname p@appendix\endcsname%
+       \csname the#1\endcsname}}\else
+      \edef\@currentlabel{{\protect\@secreffont
+       \csname the#1\endcsname \csname p@#1\endcsname}}\fi%
+%%1999.09.29-end by kamisima
+    \else
+%%1999.09.29-begin by kamisima
+     \ifx\@tempref\@tempsubsubsec
+      \if@appendix
+       \edef\@currentlabel{{\protect\@secreffont \csname p@appendix\endcsname%
+        \csname thelbl#1\endcsname}}\else
+       \edef\@currentlabel{{\protect\@secreffont
+        \csname thelbl#1\endcsname \csname p@#1\endcsname}}\fi%
+%%1999.09.29-end by kamisima
+     \else
+      \edef\@currentlabel{\csname p@#1\endcsname\csname the#1\endcsname}%
+     \fi
+    \fi
+   \fi
+  \let\protect\@tempa}
+\fi
+
+\if@english
+%%1999.08.15 \def\p@section{Chapter~}
+%%1999.08.15 \def\p@subsection{Sec.\,}
+%%1999.09.29-begin by kamisima
+ \def\p@section{Chapter~}
+ \def\p@subsection{Section~}
+%% NEW ADD 2000.11.20 §1 §2 ... 表示のためコメントアウト
+%% 2002.10.16復活
+ \def\p@subsubsection{Section~}
+%% NEW ADD 2000.11.20
+ \def\p@appendix{Appendix~}
+ \def\p@figure{Figure~}
+ \def\p@table{Table~}
+%%1999.09.29-end by kamisima
+\else
+%%1999.08.15 \def\p@section{章}
+%%1999.08.15 \def\p@subsection{節}
+%%1999.09.29-begin by kamisima
+ \def\p@section{章}
+ \def\p@subsection{節}
+%% NEW ADD 2000.11.20 §1 §2 ... 表示のためコメントアウト
+%% 2002.10.16復活
+ \def\p@subsubsection{節}
+%% NEW ADD 2000.11.20
+ \def\p@appendix{付録}
+ \def\p@figure{図}
+ \def\p@table{表}
+%%1999.09.29-end by kamisima
+\fi
+
+
+% \def\@thmcounter#1{\noexpand\arabic{#1}}
+%%1999.08.15 \def\@thmcountersep{\hbox to 1zw{\hss ・\hss}}
+%%1999.08.15%
+\if@NTT
+\def\@thmcountersep{\hbox to .5zw{\hss {・}\hss}}%%1999.09.15%
+\else
+\def\@thmcountersep{\hbox to .5zw{\hss {・}\hss}} %%2000.04.20 kamisima
+\fi
+\def\@begintheorem#1#2{%
+ \topsep\z@\parsep\z@\itemsep\z@\partopsep\z@
+ \trivlist
+ \def\@tempthm{#1}%
+ \ifx \@tempthm\thmnocnt\let\@thmthmcntsep\@gobble\else
+  \def\@thmthmcntsep{\ }\fi
+ \item[\hskip 2zw
+  {\bf \csname LP#1\endcsname #1\@thmthmcntsep{#2}\csname RP#1\endcsname}]}
+\def\@opargbegintheorem#1#2#3{%
+ \topsep\z@\parsep\z@\itemsep\z@\partopsep\z@
+ \trivlist
+ \def\@tempthm{#1}%
+ \ifx \@tempthm\thmnocnt\let\@thmthmcntsep\@gobble\else
+  \def\@thmthmcntsep{\ }\fi
+ \item[\hskip 2zw
+  {\bf \csname LP#1\endcsname #1\@thmthmcntsep{#2}\csname RP#1\endcsname
+   \if@english (\else （\fi #3\if@english )\else ）\kern-.5zw\fi}]}
+% \def\@endtheorem{\endtrivlist}
+
+\if@english
+ \def\thmnocnt{Proof}%
+\else
+ \def\thmnocnt{証明}%
+% \def\thmnocnt{定義}%
+\fi
+
+%%1999.08.15 %add
+ \def\Joinrel{\mathrel{\mkern-9mu}}
+ \def\LL{\langle\Joinrel\langle}
+ \def\GG{\rangle\Joinrel\rangle}
+%%1999.08.15 %add
+
+\if@english
+%%1999.08.15 %
+%%  \def\LPDefinition{\hskip-.5zw 【}%
+%%  \def\RPDefinition{】\hskip-.5zw}%
+%%  \def\LPTheorem{\hskip-.5zw ［}%
+%%  \def\RPTheorem{］\hskip-.5zw}%
+%%  \def\LPProof{\hskip-.5zw 《}%
+%%  \def\RPProof{》\hskip-.5zw}%
+%%  \def\LPLemma{\hskip-.5zw ［}%
+%%  \def\RPLemma{］\hskip-.5zw}%
+%%  \def\LPCorollary{\hskip-.5zw （}%
+%%  \def\RPCorollary{）\hskip-.5zw}%
+%%  \def\LPExample{\hskip-.5zw 〔}%
+%%  \def\RPExample{〕\hskip-.5zw}%
+%%  \def\LPProposition{\hskip-.5zw 〈}%
+%%  \def\RPProposition{〉\hskip-.5zw}%
+%%  \def\LPAssumption{\hskip-.5zw ［}%
+%%  \def\RPAssumption{］\hskip-.5zw}%
+%%\hskip-.5zw --> delete or \hbox{}
+%%1999.08.15 %
+ \def\LPDefinition{[}%
+ \def\RPDefinition{]}%
+ \def\LPTheorem{[}%
+ \def\RPTheorem{]}%
+ \def\LPProof{\hbox{$\LL$}}%
+ \def\RPProof{\kern.25ex \hbox{$\GG$}}%
+ \def\LPLemma{[}%
+ \def\RPLemma{]}%
+ \def\LPCorollary{(}%
+ \def\RPCorollary{)}%
+ \def\LPExample{[}%
+ \def\RPExample{]}%
+ \def\LPProposition{\hbox{$\langle$}}%
+ \def\RPProposition{\hbox{$\rangle$}}%
+ \def\LPAssumption{[}%
+ \def\RPAssumption{]}%
+\else %%\hskip-.5zw --> \hbox{}
+ \def\LP定義{\hbox{【}}%
+ \def\RP定義{\hbox{】}}%
+ \def\LP定理{\hbox{［}}%
+ \def\RP定理{\hbox{］}}%
+ \def\LP証明{\hbox{《}}%
+ \def\RP証明{\hbox{》}}%
+ \def\LP補題{\hbox{［}}%
+ \def\RP補題{\hbox{］}}%
+ \def\LP系{\hbox{（}}%
+ \def\RP系{\hbox{）}}%
+ \def\LP例{\hbox{〔}}%
+ \def\RP例{\hbox{〕}}%
+ \def\LP命題{\hbox{〈}}%
+ \def\RP命題{\hbox{〉}}%
+ \def\LP仮定{\hbox{［}}%
+ \def\RP仮定{\hbox{］}}%
+\fi
+
+\long\def\acknowledgment{%
+ \if@english
+  \subsection*{Acknowledgments}
+ \else
+  \subsection*{謝辞}
+ \fi
+ \if@blind
+  \setbox\@tempboxa\hbox\bgroup
+   \begin{minipage}{\hsize}
+   \parindent1zw
+ \fi
+}
+\def\endacknowledgment{%
+ \if@blind
+   \end{minipage}\egroup
+  \@tempdima\ht\@tempboxa \advance \@tempdima \dp\@tempboxa
+  \divide \@tempdima \baselineskip
+  \@tempcnta\@tempdima
+  \advance \@tempcnta \@ne
+  \@tempcntb\z@
+  \loop\ifnum\@tempcntb<\@tempcnta
+   \advance \@tempcntb \@ne
+   \mbox{}\endgraf
+  \repeat
+ \else
+  \par
+ \fi 
+}
+
+%%1999.08.15 %
+\def\biography{%
+ \raggedbottom
+%%1999.08.15 %
+\if@appendix
+\vskip3\baselineskip
+\else
+\vskip\baselineskip
+\fi
+%%1999.08.15 %
+%%1999.08.15 %\onelineskip
+ \parindent\z@
+ \leavevmode
+ \hbox to\hsize{\hbox to 12mm{\leaders\hrule height 1.2mm depth -.9mm\hfil}\,%
+  \if@english
+   {\normalsize\bf Author\ifnum\@totalnumber>\@ne s'\else 's\fi\ Profile}%
+  \else
+   {\normalsize\bf 著\hskip1zw 者\hskip1zw 紹\hskip1zw 介}%
+  \fi
+   \,\leaders\hrule height 1.4mm depth-1.1mm\hfil}\par
+ \nopagebreak\onelineskip\nopagebreak
+ \scriptsize\ignorespaces}
+\def\endbiography{\par}
+
+\def\profile{\@ifstar{\n@profile}{\@profile}}
+
+\long\def\@profilecheck#1#2{%
+ \def\@tempx{#1}%
+ \if@english
+  \if #1m \def\p@membership{ (Member)}\else
+   \if #1s \def\p@membership{ (Student Member)}\else
+    \if #1h \def\p@membership{ (Honorary Member)}\else
+     \if #1n \def\p@membership{}\else
+      \ifx \@tempx\empty
+       \def\p@membership{ (??)}%
+       \typeout{Style jsai Warning: Check the 1st argument 
+                of \string\profile.}\else
+        \def\p@membership{ (#1)}%
+  \fi\fi\fi\fi\fi
+ \else
+  \if #1m \def\p@membership{\kern-.5zw （正会員）\kern-.5zw}\else
+   \if #1s \def\p@membership{\kern-.5zw （学生会員）\kern-.5zw}\else
+    \if #1h \def\p@membership{\kern-.5zw （名誉会員）\kern-.5zw}\else
+     \if #1n \def\p@membership{}\else
+      \ifx \@tempx\empty
+       \def\p@membership{\kern-.5zw （??）\kern-.5zw}%
+       \typeout{Style jsai Warning: Check the 1st argument 
+                of \string\profile.}\else
+        \def\p@membership{\kern-.5zw （#1）\kern-.5zw}%
+  \fi\fi\fi\fi\fi
+ \fi
+ \def\@checkname{#2}%
+ \@checkword{#2}%
+ \setbox\@tempboxa\hbox{\@Getword}%
+  \ifdim \wd\@tempboxa<1zw
+   \let\@tempname\@checkname
+  \else
+   \setbox\@tempboxa\hbox{\spaceskip=100mm #2}%
+   \ifdim \wd\@tempboxa < 100mm
+    \typeout{Style jsai Warning: Profile's name "#2" doesn't have a space.}%
+    \let\@tempname\@checkname
+   \else
+    \setbox\@tempboxa\hbox{#2}%
+    \ifdim \wd\@tempboxa > 4.5zw
+     \def\@tempname{{\spaceskip=1zw #2}}%
+    \else
+     \def\@tempname{\hbox to 5zw{\spaceskip\z@ plus 1fill minus 1fill #2}}%
+    \fi
+   \fi
+  \fi
+}
+
+\def\m@address#1{%
+ \def\@tempx{#1}%
+ \ifx\@tempx\empty\else
+ {\unskip\nobreak\hfil\penalty50
+  \hskip1zw\hbox{}\nobreak\hfil \inhibitglue 〈#1〉\inhibitglue
+   \parfillskip\z@ \finalhyphendemerits\z@\par}\fi
+}
+
+\long\def\@profile#1#2#3{%%#4{% %1999.08.15
+ \@profilecheck{#1}{#2}%
+ \setbox\@tempboxa\hbox{\parbox[t]{\hsize}{\hangindent=22.5mm\hangafter=-9
+  {\footnotesize{\bf \leavevmode\@tempname}\p@membership}\rule[-2mm]{0mm}{2mm}%
+%%1999.08.15  \hfil\break #4\m@address{#3}}}
+   \hfil\break #3}}
+ \@tempdima\ht\@tempboxa \advance \@tempdima \dp\@tempboxa
+  \ifdim \@tempdima < 24mm
+   \vbox to 24mm{%
+    \leavevmode\smash{\rlap{%
+     \lower22mm
+     \vbox to 24mm{\hrule height .1mm
+      \hbox to 20mm{%
+       \vrule width .1mm height 23.8mm
+        \hss
+       \vrule width .1mm height 23.8mm}%
+     \hrule height .1mm}%
+     }}%
+    \if@blind
+     \mbox{　}
+    \else
+     \box\@tempboxa
+    \fi
+   \vss}\par
+  \else
+   \leavevmode\smash{\rlap{\hskip-22.5mm
+    \lower22mm
+    \vbox to 24mm{\hrule height .1mm
+     \hbox to 20mm{%
+      \vrule width .1mm height 23.8mm
+       \hss
+      \vrule width .1mm height 23.8mm}%
+    \hrule height .1mm}%
+    }}%
+    \if@blind
+     \divide \@tempdima \baselineskip
+     \@tempcnta\@tempdima
+     \@tempcntb\z@
+     \hangindent=22.5mm\hangafter=-9\relax
+     \loop\ifnum\@tempcntb<\@tempcnta
+      \advance \@tempcntb \@ne
+      \mbox{　}\hfil\break
+     \repeat
+      \mbox{　}\par
+    \else
+     \hangindent=22.5mm\hangafter=-9\relax
+      {\footnotesize{\bf \leavevmode\@tempname}\p@membership}%
+%%1999.08.15    \rule[-2mm]{0mm}{2mm}\hfil\break #4\m@address{#3}\par
+    \rule[-2mm]{0mm}{2mm}\hfil\break #3\par
+    \fi
+  \fi
+ \nointerlineskip
+ \vskip5mm
+}
+
+\long\def\n@profile#1#2#3{%
+ \@profilecheck{#1}{#2}%
+ \if@blind
+  \setbox\@tempboxa\hbox{%
+   \begin{minipage}{\hsize}
+    {\footnotesize{\bf \leavevmode\@tempname}\p@membership}%
+     \if@english\else は，\fi#3
+   \end{minipage}}%
+  \@tempdima\ht\@tempboxa \advance \@tempdima \dp\@tempboxa
+  \divide \@tempdima \baselineskip
+  \@tempcnta\@tempdima
+  \advance \@tempcnta \@ne
+  \@tempcntb\z@
+  \loop\ifnum\@tempcntb<\@tempcnta
+   \advance \@tempcntb \@ne
+   \mbox{　}\endgraf
+  \repeat
+ \else
+  {\footnotesize{\bf \leavevmode\@tempname}\p@membership}%
+   \if@english\else は，\fi#3\par
+ \fi
+ \nointerlineskip
+ \vskip3mm
+}
+
+%\@ifundefined{AmSLaTeX}
+%   {\def\AmSLaTeX{\leavevmode\hbox{$\cal A\kern-.2em\lower.376ex%
+%        \hbox{$\cal M$}\kern-.2em\cal S$-\LaTeX}}}{}
+%\@ifundefined{JTeX}
+%  {\def\JTeX{\leavevmode\lower.5ex\hbox{J}\kern-.17em\TeX}}{}
+%\def\LaTeX{{\rm L\kern-.36em\raise.3ex\hbox{$\scriptstyle {\rm A}$}\kern-.15em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\@ifundefined{AmSTeX}
+%   {\def\AmSTeX{\leavevmode\hbox{$\cal A\kern-.2em\lower.376ex%
+%        \hbox{$\cal M$}\kern-.2em\cal S$-\TeX}}}{}
+%\@ifundefined{BibTeX}
+%   {\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em%
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}}{}
+%\@ifundefined{SliTeX}
+%   {\def\SliTeX{{\rm S\kern-.06emL\kern-.18em\raise.32ex\hbox
+%                {\sc i}\kern -.03em\TeX}}}{}
+%\@ifundefined{JLaTeX}
+%  {\def\JLaTeX{\leavevmode\lower.5ex\hbox{\rm J}\kern-.17em\LaTeX}}{}
+%\@ifundefined{JBibTeX}
+%  {\def\JBibTeX{\leavevmode\lower.6ex\hbox{\rm J}\kern-.15em\BibTeX}}{}
+
+\def\onelineskip{\par\vspace{1\baselineskip}\par}
+\def\halflineskip{\par\vspace{.5\baselineskip}\par}
+%%1999.08.15 %\def\ddash{\hbox to 2zw{---\hss ---}}\let\doubledash\ddash
+\def\kintou#1#2{%
+ \makebox[#1]{\kanjiskip\z@ plus 1fill minus 1fill\xkanjiskip=\kanjiskip #2}%
+}
+
+%%1999.08.15
+\if@english
+%%\def\ddash{\protect\@ddash}
+%%\def@\ddash{\hbox to 2em{---\hss ---}}
+\def\quad{\hskip1em\relax}
+\def\qquad{\hskip2em\relax}
+\else
+\def\dash{\protect\@dash}
+\def\@dash{\raisebox{.3zw}[0pt]{\hbox to1zw{\hss\hskip.05zw
+  \rule{.9zw}{.04zw}\hskip.05zw\hss}}}
+\def\ddash{\protect\@ddash}
+\def\@ddash{\raisebox{.3zw}[0pt]{\hbox to2zw{\hss\hskip.1zw
+  \rule{1.8zw}{.04zw}\hskip.1zw\hss}}}
+\def\sdash{\protect\@sdash}
+\def\@sdash{\raisebox{.3zw}[0pt]{\hbox to.5zw{\hss\hskip.05zw
+  \rule{.4zw}{.04zw}\hskip.05zw\hss}}}
+\def\quad{\hskip1zw\relax}
+\def\qquad{\hskip2zw\relax}
+\fi
+\def\smallskip{\par\vspace{.25\baselineskip}\par}
+\def\medskip{\par\vspace{.5\baselineskip}\par}
+\def\bigskip{\par\vspace{\baselineskip}\par}
+%%1999.08.15
+
+\def\ruby#1#2{\leavevmode \setbox0=\hbox{#1}\setbox1=\hbox{\tiny#2}%
+ \ifdim\wd0>\wd1 \dimen0=\wd0 \else \dimen0=\wd1 \fi
+ \hbox{\kanjiskip=\fill
+  \vbox{\hbox to \dimen0{\tiny \hfil#2\hfil}%
+   \nointerlineskip \hbox to \dimen0{\hfil#1\hfil}}}}
+\def\MARU#1{\raisebox{0.1zh}%
+ {{\rm\ooalign{\hfil\lower.168ex\hbox{#1}\hfil\crcr\mathhexbox20D}}}}
+\def\QED{{\unskip\nobreak\hfil\penalty50
+%%1999.08.15 %\hskip1zw\hbox{}\nobreak\hfil \hbox{$\Box$\hskip1zw}
+ \hskip1zw\hbox{}\nobreak\hfil \hbox{$\Box$}
+ \parfillskip\z@ \finalhyphendemerits\z@\par}}
+
+\if@NTT\else
+ \postbreakpenalty`（=10000
+ \prebreakpenalty`）=10000
+ \postbreakpenalty`［=10000
+ \prebreakpenalty`］=10000
+ \postbreakpenalty`〈=10000
+ \prebreakpenalty`〉=10000
+ \prebreakpenalty`"=10000
+ \prebreakpenalty`℃=10000
+ \prebreakpenalty`　=10000
+ \prebreakpenalty`・=10000
+ \prebreakpenalty`〜=10000
+ \prebreakpenalty`ー=10000
+ \prebreakpenalty`？=10000
+ \prebreakpenalty`！=10000
+\fi
+
+\def\sloppy{\tolerance9999\hbadness9999\hfuzz.5\p@ \vfuzz.5\p@}
+
+\hbadness4000\vbadness10001
+\tolerance4000\pretolerance\m@ne
+\clubpenalty\z@\widowpenalty\z@\displaywidowpenalty\z@
+% \interdisplaylinepenalty\z@
+\predisplaypenalty\z@
+
+\if@cameraready
+ \input jsai-macros.sty
+ \input jsai-tombow.sty
+\fi
+
+\pagenumbering{arabic}
+\twocolumn
+\flushbottom
+%\raggedbottom
+
+%%1999.08.15
+%\pagestyle{jsai}
+
+%%1999.08.15 %add
+\def\@KINTO#1#2{%
+ \setbox0\hbox{#2}\dimen0=#1
+ \ifdim\wd0>\dimen0 \box0\else
+ \hbox to\dimen0{\kanjiskip 0pt plus 1fil minus 1fill \protect #2}
+ \fi
+}
+
+\font\VOLFONT=cmssi10 at 8pt
+
+%\def\Volume{{\VOLFONT Vol.~\@Vol \ No.~\@No}\hskip.5zw 
+%(\,{\VOLFONT \@Month \ \@Year}\,)}
+%% NEW ADD 2000.11.20
+%%\def\Volume{{\rm \@Vol~巻 \@No~号（\@Year~年\@Month~月）}}
+\newif\if@articlemode
+\@articlemodetrue
+%\@articlemodefalse
+%%
+\def\SubNo#1{\gdef\@SubNo{#1}%
+ \ifx\@SubNo\empty
+  \gdef\@SubNo{a}%
+ \else
+ \fi
+}
+\def\@SubNo{a}
+%%
+\if@articlemode
+\def\Volume{{\rm \@Vol~巻 \@No~号\@SubNo{}（\@Year~年）}}
+\else
+\def\Volume{{\rm \@Vol~巻 \@No~号（\@Year~年\@Month~月）}}
+\fi
+%% NEW ADD 2000.11.20
+
+%%%%page style define (myheadings)%%%%
+\mark{{}{}}
+\def\ps@myheadings{%
+\let\@mkboth=\markboth%\gobbletwo
+\def\@oddhead{{\small \@foottitle \hfill {\sl \thepage}}}%%\leftmark
+\def\@oddfoot{}
+\def\@evenhead{{\small {\sl \thepage} \hfill 
+%% NEW ADD 2000.11.20
+%%{\rm \@KINTO{9zw}{\protect 人工知能学会誌}}\hskip1zw \Volume}}
+{\rm \journalname}\hskip1zw \Volume}}
+%% NEW ADD 2000.11.20
+\def\@evenfoot{}
+\def\chaptermark##1{\markboth{##1}{}}
+\def\sectionmark##1{\markright{##1}{}}
+}
+
+\pagestyle{myheadings}
+
+\mark{{}{}}
+\def\ps@TOPheadings{%
+\let\@mkboth=\markboth%\gobbletwo
+\def\@oddhead{{\small \hfill {\sl \thepage}}}%%\leftmark
+\def\@oddfoot{}
+\def\@evenhead{{\small {\sl \thepage} \hfill 
+%% NEW ADD 2000.11.20
+%%{\rm \@KINTO{9zw}{\protect 人工知能学会誌}}\hskip1zw \Volume}}
+{\rm \journalname}\hskip1zw \Volume}}
+%% NEW ADD 2000.11.20
+\def\@evenfoot{}
+\def\chaptermark##1{\markboth{##1}{}}
+\def\sectionmark##1{\markright{##1}{}}
+}
+%
+%%1999.08.15 %add
+%% NEW ADD 2000.11.20
+%%\newcommand{\journalname}{\@KINTO{9zw}{\protect 人工知能学会誌}}
+\newcommand{\journalname}{人工知能学会論文誌}
+%% NEW ADD 2000.11.20
+%%
+%%
+%%\input j-amssym.sty%%1999.08.15% 
+
+

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # 文字単位のミスを抽出するスクリプトです。
-# インプットとしてcorrected_error_list.txtやun_corrected_error_list.txtを入力します。
+# sys.argv[1]をcorrected_error_list.txtやun_corrected_error_list.txt、sys.argv[2]をmore_than_3_additonal_analysis_un_corrected_error.txtとします。
 # アウトプットとしてadditonal_analysis_corrected_error.txtとadditonal_analysis_un_corrected_error.txtを出力し、9つの項目はそれぞれ
 # 編集前単語、編集後単語、編集距離、タイピング速度、ユーザ名、誤り分類、error_string、related_string、誤りの位置
 # を表している。

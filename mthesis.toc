@@ -3,17 +3,18 @@
 \contentsline {chapter}{\numberline {第2章}関連研究}{2}{chapter.2}
 \contentsline {chapter}{\numberline {第3章}タイピングゲームによるスペリング誤り抽出}{4}{chapter.3}
 \contentsline {chapter}{\numberline {第4章}タイピングゲームの設計と実装}{6}{chapter.4}
-\contentsline {subsection}{\numberline {4.0.1}タイピングゲームの設計}{6}{subsection.4.0.1}
-\contentsline {subsection}{\numberline {4.0.2}タイピングゲームの実装}{6}{subsection.4.0.2}
+\contentsline {section}{\numberline {4.1}タイピングゲームの設計}{6}{section.4.1}
+\contentsline {section}{\numberline {4.2}タイピングゲームの実装}{6}{section.4.2}
 \contentsline {chapter}{\numberline {第5章}スペリング誤りの結果と分析}{9}{chapter.5}
-\contentsline {subsection}{\numberline {5.0.3}誤りに関する定量的な分析}{9}{subsection.5.0.3}
-\contentsline {subsubsection}{キー配置によるスペリング誤り}{10}{section*.3}
-\contentsline {subsubsection}{音韻的混同}{10}{section*.4}
-\contentsline {subsubsection}{単語内のスペリング誤りの位置}{10}{section*.5}
-\contentsline {subsection}{\numberline {5.0.4}誤りに関する定性的な分析}{11}{subsection.5.0.4}
-\contentsline {subsubsection}{単語の見間違い}{11}{section*.6}
-\contentsline {subsubsection}{同じスペリング誤りが連続している場合}{11}{section*.7}
+\contentsline {section}{\numberline {5.1}誤りに関する定量的な分析}{9}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}キー配置によるスペリング誤り}{10}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}音韻的混同}{11}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}単語内のスペリング誤りの位置}{12}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}誤りに関する定性的な分析}{12}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}単語の見間違い}{13}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}同じスペリング誤りが連続している場合}{13}{subsection.5.2.2}
 \contentsline {chapter}{\numberline {第6章}おわりに}{15}{chapter.6}
-\contentsline {chapter}{謝辞}{16}{section*.8}
-\contentsline {chapter}{参考文献}{17}{section*.9}
-\contentsline {chapter}{発表リスト}{19}{section*.10}
+\contentsline {chapter}{謝辞}{16}{section*.3}
+\contentsline {chapter}{参考文献}{17}{section*.4}
+\contentsline {chapter}{発表リスト}{19}{section*.5}
+\contentsline {chapter}{\numberline {付録A}入力すべき文字とその文字の前後の文字の頻度}{20}{appendix.A}

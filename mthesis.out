@@ -3,17 +3,18 @@
 \BOOKMARK [0][-]{chapter.2}{第2章 関連研究}{}% 3
 \BOOKMARK [0][-]{chapter.3}{第3章 タイピングゲームによるスペリング誤り抽出}{}% 4
 \BOOKMARK [0][-]{chapter.4}{第4章 タイピングゲームの設計と実装}{}% 5
-\BOOKMARK [1][-]{subsection.4.0.1}{4.0.1 タイピングゲームの設計}{chapter.4}% 6
-\BOOKMARK [2][-]{subsection.4.0.2}{4.0.2 タイピングゲームの実装}{subsection.4.0.1}% 7
+\BOOKMARK [1][-]{section.4.1}{4.1 タイピングゲームの設計}{chapter.4}% 6
+\BOOKMARK [1][-]{section.4.2}{4.2 タイピングゲームの実装}{chapter.4}% 7
 \BOOKMARK [0][-]{chapter.5}{第5章 スペリング誤りの結果と分析}{}% 8
-\BOOKMARK [1][-]{subsection.5.0.3}{5.0.3 誤りに関する定量的な分析}{chapter.5}% 9
-\BOOKMARK [2][-]{section*.3}{キー配置によるスペリング誤り}{subsection.5.0.3}% 10
-\BOOKMARK [3][-]{section*.4}{音韻的混同}{section*.3}% 11
-\BOOKMARK [3][-]{section*.5}{単語内のスペリング誤りの位置}{section*.3}% 12
-\BOOKMARK [2][-]{subsection.5.0.4}{5.0.4 誤りに関する定性的な分析}{subsection.5.0.3}% 13
-\BOOKMARK [3][-]{section*.6}{単語の見間違い}{subsection.5.0.4}% 14
-\BOOKMARK [3][-]{section*.7}{同じスペリング誤りが連続している場合}{subsection.5.0.4}% 15
+\BOOKMARK [1][-]{section.5.1}{5.1 誤りに関する定量的な分析}{chapter.5}% 9
+\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 キー配置によるスペリング誤り}{section.5.1}% 10
+\BOOKMARK [2][-]{subsection.5.1.2}{5.1.2 音韻的混同}{section.5.1}% 11
+\BOOKMARK [2][-]{subsection.5.1.3}{5.1.3 単語内のスペリング誤りの位置}{section.5.1}% 12
+\BOOKMARK [1][-]{section.5.2}{5.2 誤りに関する定性的な分析}{chapter.5}% 13
+\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 単語の見間違い}{section.5.2}% 14
+\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 同じスペリング誤りが連続している場合}{section.5.2}% 15
 \BOOKMARK [0][-]{chapter.6}{第6章 おわりに}{}% 16
-\BOOKMARK [0][-]{section*.8}{謝辞}{}% 17
-\BOOKMARK [0][-]{section*.9}{参考文献}{}% 18
-\BOOKMARK [0][-]{section*.10}{発表リスト}{}% 19
+\BOOKMARK [0][-]{section*.3}{謝辞}{}% 17
+\BOOKMARK [0][-]{section*.4}{参考文献}{}% 18
+\BOOKMARK [0][-]{section*.5}{発表リスト}{}% 19
+\BOOKMARK [0][-]{appendix.A}{付録A 入力すべき文字とその文字の前後の文字の頻度}{}% 20

@@ -1,0 +1,49 @@
+This is pBibTeX, Version 0.99d-j0.33 (utf8.euc) (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: yokou.aux
+The style file: jsai.bst
+Database file #1: ai_gakkai.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 11 entries,
+            3266 wiz_defined-function locations,
+            761 strings with 7400 characters,
+and the built_in function-call counts, 6899 in all, are:
+= -- 668
+> -- 172
+< -- 12
++ -- 62
+- -- 60
+* -- 389
+:= -- 815
+add.period$ -- 0
+call.type$ -- 11
+change.case$ -- 63
+chr.to.int$ -- 11
+cite$ -- 11
+duplicate$ -- 385
+empty$ -- 630
+format.name$ -- 112
+if$ -- 1677
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 12
+newline$ -- 36
+num.names$ -- 22
+pop$ -- 147
+preamble$ -- 1
+purify$ -- 85
+quote$ -- 0
+skip$ -- 490
+stack$ -- 0
+substring$ -- 398
+swap$ -- 122
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 126
+warning$ -- 0
+while$ -- 51
+width$ -- 13
+write$ -- 123
+is.kanji.str$ -- 182
