@@ -1,0 +1,88 @@
+ce current 5 26290 sugar
+coun conscious 6 9381 matsu
+edidere different 5 2055 sugar
+aogaa public 6 616 さかいざわ
+ana nail 3 693 sugar
+nme meat 3 565 sugar
+fjkdsaljfsadf carriage 11 436 marujirou
+aofpdsaf ornament 8 304 marujirou
+dsa engine 6 40 marujirou
+f distribution 12 40 marujirou
+sda experience 10 79 marujirou
+f support 7 32 marujirou
+dsf development 10 104 marujirou
+efpoa process 7 182 marujirou
+peinan quiet 5 1291 marujirou
+a undefined 9 56 peinan
+t death 4 96 marujirou
+g high 3 2358 tomo
+proseccs process 3 1695 sugar sub s c 4
+proseccs process 3 1695 sugar sub c s 6
+proseccs process 3 1695 sugar del c s 7
+sanila animal 3 997 sugar del s # 1
+sanila animal 3 997 sugar ins a m 4
+sanila animal 3 997 sugar tra l a 5
+wamona woman 3 687 peinan sub a o 2
+wamona woman 3 687 peinan del o m 4
+wamona woman 3 687 peinan tra n a 4
+bahobr harbor 4 1694 sugar sub b h 1
+bahobr harbor 4 1694 sugar sub h r 3
+bahobr harbor 4 1694 sugar sub o b 4
+tyohgt though 3 1094 sugar sub y h 2
+tyohgt though 3 1094 sugar sub h u 4
+tyohgt though 3 1094 sugar sub t h 6
+kenn knee 3 558 sugar tra e n 2
+kenn knee 3 558 sugar sub n e 4
+cehse chest 3 800 sugar tra e h 2
+cehse chest 3 800 sugar sub e t 5
+posino poison 3 685 peinan tra s i 3
+posino poison 3 685 peinan tra n o 5
+gihg high 3 897 peinan sub g h 1
+gihg high 3 897 peinan tra h g 3
+darwrer drawer 3 2646 peinan tra a r 2
+darwrer drawer 3 2646 peinan tra r e 5
+darwrer drawer 3 2646 peinan del r e 7
+postino position 3 919 peinan ins t i 4
+postino position 3 919 peinan tra n o 7
+selseciotn selection 3 936 marujirou del s l 4
+selseciotn selection 3 936 marujirou ins i t 6
+selseciotn selection 3 936 marujirou del t o 9
+obseravaiton observation 3 2773 marujirou del a r 6
+obseravaiton observation 3 2773 marujirou tra i t 8
+worn wrong 3 542 marujirou tra o r 2
+worn wrong 3 542 marujirou ins _ g 5
+soter store 3 547 marujirou tra o t 2
+soter store 3 547 marujirou tra e r 4
+freidne friend 3 729 marujirou del e r 3
+freidne friend 3 729 marujirou sub d e 4
+freidne friend 3 729 marujirou sub e d 6
+improtna important 4 760 marujirou
+improtna important 4 760 marujirou
+improtna important 4 760 marujirou
+improtna important 4 760 marujirou
+palce plane 3 422 marujirou
+palce plane 3 422 marujirou
+palce plane 3 422 marujirou
+stratingh straight 3 1528 marujirou
+stratingh straight 3 1528 marujirou
+stratingh straight 3 1528 marujirou
+wornd wrong 3 585 marujirou
+wornd wrong 3 585 marujirou
+wornd wrong 3 585 marujirou
+internaiton international 4 1272 marujirou
+internaiton international 4 1272 marujirou
+internaiton international 4 1272 marujirou
+internaiton international 4 1272 marujirou
+wlakd walk 3 549 marujirou
+wlakd walk 3 549 marujirou
+wlakd walk 3 549 marujirou
+niformaiton information 4 1267 marujirou
+niformaiton information 4 1267 marujirou
+niformaiton information 4 1267 marujirou
+niformaiton information 4 1267 marujirou
+litm limit 3 1264 tomo
+litm limit 3 1264 tomo
+litm limit 3 1264 tomo
+attationa attraction 3 1378 a
+attationa attraction 3 1378 a
+attationa attraction 3 1378 a

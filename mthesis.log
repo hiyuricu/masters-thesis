@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.1415926-p3.4-110825-2.6 (utf8.euc) (TeX Live 2013) (format=platex 2014.11.26)  26 AUG 2015 18:26
+This is e-pTeX, Version 3.1415926-p3.4-110825-2.6 (utf8.euc) (TeX Live 2013) (format=platex 2014.11.26)  6 SEP 2015 23:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -819,18 +819,18 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 ] (./tex/chap1.tex
 第1章
-) [1
+[1
 
 
-]
+]) [2]
 \openout2 = `tex/chap2.aux'.
 
  (./tex/chap2.tex
 第2章
-[2
+[3
 
 
-]) [3]
+]) [4]
 \openout2 = `tex/chap3.aux'.
 
  (./tex/chap3.tex
@@ -847,7 +847,7 @@ LaTeX Font Info:    Try loading font information for T1+lmtt on input line 2.
 (/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-[4
+[5
 
 
 
@@ -858,7 +858,7 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 25.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 39.
-) [5]
+) [6]
 \openout2 = `tex/chap4.aux'.
 
  (./tex/chap4.tex
@@ -871,38 +871,38 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 4.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 4.
-[6
+[7
 
 
 
-]
+] [8]
 File: typing_game2.png Graphic file (type bmp)
  <typing_game2.png>
-Overfull \hbox (82.98735pt too wide) in paragraph at lines 23--24
+Overfull \hbox (82.98735pt too wide) in paragraph at lines 32--33
  [] 
  []
 
-) [7] [8]
+) [9] [10]
 \openout2 = `tex/chap5.aux'.
 
  (./tex/chap5.tex
 第5章
-[9
+[11
 
 
 
-] [10] [11] [12]) [13] [14]
+] [12] [13] [14]) [15] [16]
 \openout2 = `tex/chap6.aux'.
 
  (./tex/chap6.tex
 第6章
-[15
+[17
 
 
 
-]) [16] (./tex/reference.tex [17
+]) [18] (./tex/reference.tex [19
 
-] [18]) (./tex/furoku.tex [19]
+] [20]) (./tex/furoku.tex [21]
 付録A
 
 LaTeX Warning: No positions in optional float specifier.
@@ -914,9 +914,9 @@ LaTeX Warning: No positions in optional float specifier.
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 36.
- [20
+ [22
 
-] [21] [22]
+] [23] [24]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 36.
  (./mthesis.aux (./tex/chap2.aux) (./tex/chap3.aux)
 (./tex/chap4.aux) (./tex/chap5.aux) (./tex/chap6.aux))
@@ -931,10 +931,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 36.
 Here is how much of TeX's memory you used:
  7039 strings out of 494004
  100664 string characters out of 6147767
- 324852 words of memory out of 5000000
+ 324854 words of memory out of 5000000
  10289 multiletter control sequences out of 15000+600000
  79474 words of font info for 110 fonts, out of 8000000 for 9000
  750 hyphenation exceptions out of 8191
  31i,10n,30p,847b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on mthesis.dvi (30 pages, 137344 bytes).
+Output written on mthesis.dvi (32 pages, 139840 bytes).

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.1415926-p3.4-110825-2.6 (utf8.euc) (TeX Live 2013) (format=platex 2014.11.26)  26 AUG 2015 19:28
+This is e-pTeX, Version 3.1415926-p3.4-110825-2.6 (utf8.euc) (TeX Live 2013) (format=platex 2014.11.26)  26 AUG 2015 21:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -36,149 +36,79 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 ) (./icspresen_m22.sty
 icspresen.sty ver. 0.8 by ICS
 \c@fig=\count91
-)
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/comment/commen
-t.sty
-\CommentStream=\write3
- Excluding comment 'comment')
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/tools/longtabl
-e.sty
-Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip43
-\LTright=\skip44
-\LTpre=\skip45
-\LTpost=\skip46
-\LTchunksize=\count92
-\LTcapwidth=\dimen121
-\LT@head=\box41
-\LT@firsthead=\box42
-\LT@foot=\box43
-\LT@lastfoot=\box44
-\LT@cols=\count93
-\LT@rows=\count94
-\c@LT@tables=\count95
-\c@LT@chunks=\count96
-\LT@p@ftn=\toks15
-)
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/base/latexsym.
-sty
-Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
-\symlasy=\mathgroup5
-LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
-(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
-)
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/graphics/graph
-icx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/graphics/keyva
-l.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks16
-)
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/graphics/graph
-ics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/graphics/trig.
-sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/latexconfig/gr
-aphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
-)
-Package graphics Info: Driver file: dvipdfmx.def on input line 91.
-
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/dvipdfmx-def/d
-vipdfmx.def
-File: dvipdfmx.def 2013/09/21 v3.3 LaTeX graphics driver for dvipdfmx (TeX Live
-/ChoF)
-))
-\Gin@req@height=\dimen122
-\Gin@req@width=\dimen123
-)
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip10
-Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
-)
-(./2014m2templateA4.aux)
+) (./2014m2templateA4.aux)
 \openout1 = `2014m2templateA4.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 22.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 17.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 22.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 17.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 22.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 17.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 22.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 17.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 26.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 21.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 26.
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 37.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 21.
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 32.
 
-LaTeX Font Info:    No file OMScmtt.fd. on input line 37.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 32.
 
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbackslash' on input line 37.
+(Font)              for symbol `textbackslash' on input line 32.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 37.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 32.
 
 (/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
 
-Overfull \hbox (13.74385pt too wide) in paragraph at lines 37--45
+Overfull \hbox (13.74385pt too wide) in paragraph at lines 32--40
 []\OMS/cmtt/m/n/9 n\OT1/cmtt/m/n/9 Etitle\OMS/cmtt/m/n/9 f\OT1/cmr/m/n/9 A Stud
 y of How to Pre-pare the Manuscript\OMS/cmtt/m/n/9 g 
  []
 
 
-Overfull \hbox (2.61954pt too wide) in paragraph at lines 37--45
+Overfull \hbox (2.61954pt too wide) in paragraph at lines 32--40
 []\OMS/cmtt/m/n/9 n\OT1/cmtt/m/n/9 Author\OMS/cmtt/m/n/9 f\OT1/cmr/m/n/9 000000
 00[][][]\JY1/mc/m/n/9 首都[]太郎[][][]指導教官[][]首都[]花
  []
 
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 67.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 67.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 62.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 70.
+(Font)              <9> on input line 65.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 70.
+(Font)              <6> on input line 65.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 70.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 70.
-(/Applications/TeXLive/Library/texlive/2013/texmf-dist/tex/latex/base/ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
+(Font)              <5> on input line 65.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 82.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 77.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 82.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 77.
 [1
 
 
@@ -189,12 +119,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 932 strings out of 494004
- 12293 string characters out of 6147767
- 70565 words of memory out of 5000000
- 4407 multiletter control sequences out of 15000+600000
- 16103 words of font info for 65 fonts, out of 8000000 for 9000
+ 385 strings out of 494004
+ 4253 string characters out of 6147767
+ 61528 words of memory out of 5000000
+ 3901 multiletter control sequences out of 15000+600000
+ 15785 words of font info for 62 fonts, out of 8000000 for 9000
  745 hyphenation exceptions out of 8191
- 25i,5n,22p,245b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 22i,5n,22p,145b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 2014m2templateA4.dvi (1 page, 5556 bytes).
+Output written on 2014m2templateA4.dvi (1 page, 5528 bytes).
