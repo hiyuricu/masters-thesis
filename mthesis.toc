@@ -1,9 +1,9 @@
 \contentsline {chapter}{図目次}{v}{chapter*.2}
 \contentsline {chapter}{\numberline {第1章}はじめに}{1}{chapter.1}
-\contentsline {chapter}{\numberline {第2章}関連研究}{3}{chapter.2}
-\contentsline {chapter}{\numberline {第3章}タイピングゲームによるスペリング誤り抽出}{6}{chapter.3}
-\contentsline {chapter}{\numberline {第4章}タイピングゲームの設計と実装}{8}{chapter.4}
-\contentsline {section}{\numberline {4.1}タイピングゲームの設計}{8}{section.4.1}
+\contentsline {chapter}{\numberline {第2章}関連研究}{4}{chapter.2}
+\contentsline {chapter}{\numberline {第3章}タイピングゲームによるスペリング誤り抽出}{7}{chapter.3}
+\contentsline {chapter}{\numberline {第4章}タイピングゲームの設計と実装}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}タイピングゲームの設計}{9}{section.4.1}
 \contentsline {section}{\numberline {4.2}タイピングゲームの実装}{9}{section.4.2}
 \contentsline {chapter}{\numberline {第5章}スペリング誤りの結果と分析}{12}{chapter.5}
 \contentsline {section}{\numberline {5.1}誤りに関する定量的な分析}{12}{section.5.1}
