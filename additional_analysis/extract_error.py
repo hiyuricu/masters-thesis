@@ -48,7 +48,10 @@ def pair_compare():
 						elif damerau_distance_type == "del":
 							error_position = str(i + 1)
 							error_string = typing_list[0][i]
-							related_string = typing_list[1][i - 1]
+							if i != 0:
+								related_string = typing_list[1][i - 1]
+							else:
+								related_string = "xxx"
 						elif damerau_distance_type == "ins":
 							error_position = str(i + 1)
 							error_string = typing_list[0][i]
